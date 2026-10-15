@@ -1,0 +1,18 @@
+Bellweather Hotel — concierge background
+
+Method: built-in ImageGen; one generation followed by one composition edit.
+Final asset: bellweather-concierge-background.png
+Actual output dimensions: 941 × 1672 pixels (portrait, approximately 9:16).
+
+GENERATION PROMPT
+
+Use case: stylized-concept
+Asset type: premium illustrated environment background for a portrait mobile mystery game, fictional Bellweather Hotel, 1994. A single finished background image only.
+Scene and viewpoint: viewed from slightly above a dark walnut concierge desk at night. An elegant old hotel lobby recedes softly into layered depth in the upper background. Subtle rain on a distant window, restrained burgundy upholstery, aged wood, understated Art Deco brass details. Warm light from a brass lamp on one side against deep midnight navy shadows.
+Style and materials: polished illustrated game art with rich walnut grain, softly aged brass, tactile upholstery, convincing bounced light and controlled reflections. Sophisticated, atmospheric and welcomingly mysterious rather than frightening. Clear visual hierarchy that reads on a small phone.
+Composition: exact portrait 9:16 aspect ratio, edge-to-edge artwork, preferably 1440 by 2560 pixels. The desk occupies the foreground and lower portion. The lower-middle desk surface must be empty, uncluttered, relatively dark and low-contrast, with generous quiet negative space reserved for an envelope illustration and interface text to be overlaid separately. Do NOT draw the envelope or any interface text. Keep the lamp and important decorative objects comfortably inset from screen edges so they survive portrait phone cropping. Preserve environmental depth in the upper background without cluttering the quiet desk area.
+Constraints: no people; no readable text; no letters, numbers or symbols resembling writing; no clock faces; no logos, signatures or watermark; no buttons, interface, border frame or clue cards; no papers or objects on the lower-middle desk surface; no red moon; no train; no astronomical machinery. Period-appropriate to an old hotel in 1994. Opaque full-scene background, not transparent.
+
+FINAL EDIT PROMPT
+
+Edit this existing portrait hotel background. Preserve the camera viewpoint, elegant 1994 Bellweather Hotel lobby, rain-streaked distant windows, burgundy upholstery, walnut textures, convincing warm brass lighting, midnight navy shadows, illustrated game-art finish, layered depth, and large dark empty lower-middle desk surface. Make one compositional correction: bring the important decorative objects comfortably INSIDE the frame. Make the foreground brass lamp smaller and place the entire lamp, including shade and base, in the upper-left portion of the desk with clear breathing room from the left edge; nothing of the lamp may be clipped. Move and slightly reduce the pen holder and wooden desk organizer so each is entirely visible with breathing room from the right edge, staying toward the upper-right desk area. Keep these props out of the central/lower-middle quiet space. Keep the desk dark there for a separately added envelope and interface. No envelope, people, text, letters, numbers, clock faces, logos, buttons, interface, clue cards, red moon, train, or astronomical machinery. Maintain edge-to-edge portrait 9:16 composition, preferably exact 936 by 1664 pixels; no border or frame.
