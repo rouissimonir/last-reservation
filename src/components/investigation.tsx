@@ -78,7 +78,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
         <View style={s.caseEdition}><View style={s.editionRule} /><Label>THE BELLWEATHER FILES · {item.edition}</Label><View style={s.editionRule} /></View>
         <EnvelopeArt />
         <View style={s.coverTitleGroup}>
-          <Text style={s.hotelLocation}>Bellweather Hotel · October 1994</Text>
+          <Text style={s.hotelLocation}>{item.setting ?? 'Bellweather Hotel · October 1994'}</Text>
           <Text accessibilityRole="header" style={[s.coverTitle, compact && s.compactCoverTitle]}>{item.coverTitle}</Text>
           <Copy style={s.hook}>{item.hook}</Copy>
         </View>
@@ -97,7 +97,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
         <Text style={s.saveStatus}>{item.duration}</Text>
       </View>;
       case 'intro': return <>
-        <Label>A RAINY EVENING IN OCTOBER, 1994</Label><Title>Something is missing.</Title>
+        <Label>{item.introLabel ?? 'A RAINY EVENING IN OCTOBER, 1994'}</Label><Title>{item.introTitle ?? 'Something is missing.'}</Title>
         <Paper reference="RECEPTION / 01"><Text style={ui.documentTitle}>A note from reception</Text><Copy style={ui.ink}>{introduction}</Copy></Paper>
         <Copy>{item.reliability}</Copy>
         <Button onPress={() => navigate({ kind: 'roles' })}>Meet your two roles →</Button>

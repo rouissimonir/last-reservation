@@ -1,5 +1,6 @@
 import { CASE_ID, CASE_VERSION, ending, introduction, Round, rounds } from './case';
 import { lastReservation } from './last-reservation';
+import { silentPiano } from './silent-piano';
 
 export type CaseRound = Round & {
   id: string; act: string; label: string; requires: readonly string[]; evidenceRefs: readonly string[];
@@ -8,6 +9,8 @@ export type CaseDefinition = {
   id: string; version: number; edition: string; title: string; coverTitle: string; format: string;
   hook: string; description: string; duration: string; introduction: string; reliability: string;
   rounds: readonly CaseRound[]; ending: typeof ending;
+  // Optional presentation overrides; omitted for the original cases so their screens are unchanged.
+  setting?: string; introLabel?: string; introTitle?: string;
 };
 export const miniCase: CaseDefinition = {
   id: CASE_ID, version: CASE_VERSION, edition: '01', title: 'The Missing Envelope',
@@ -19,7 +22,7 @@ export const miniCase: CaseDefinition = {
     label: ['When', 'Who', 'Where'][i], requires: i ? [`ME${i}`] : [],
     evidenceRefs: [round.evidence.A.id, round.evidence.B.id] })), ending,
 };
-export const cases: readonly CaseDefinition[] = [miniCase, lastReservation];
+export const cases: readonly CaseDefinition[] = [miniCase, lastReservation, silentPiano];
 export function getCase(id: string = CASE_ID): CaseDefinition {
   const found = cases.find(item => item.id === id);
   if (!found) throw new Error('Unknown case');

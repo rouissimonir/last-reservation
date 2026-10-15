@@ -34,7 +34,7 @@ export function CaseLibrary({ onOpen }: { onOpen: (id: string, replay?: boolean)
           <Label>TWO / SIDES · BELLWEATHER HOTEL</Label>
           <Title>Choose your case.</Title>
           <Copy>Two people. One phone. Compare your evidence and solve it together.</Copy>
-          <View style={s.preview}><Label>LOCAL DEVELOPMENT PREVIEW</Label><Copy style={s.description}>Both cases open. Separate local saves. No purchase required.</Copy></View>
+          <View style={s.preview}><Label>LOCAL DEVELOPMENT PREVIEW</Label><Copy style={s.description}>All cases open. Separate local saves. No purchase required.</Copy></View>
           {cases.map(item => <CaseCard key={item.id} item={item} onOpen={onOpen} />)}
           <Text style={s.duration}>Play without sound. Duration targets await real two-player testing.</Text>
         </ScrollView>

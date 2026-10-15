@@ -13,3 +13,7 @@ Use React Native components, StyleSheet tokens, real accessible text, safe areas
 Run npm run check, npx expo install --check, and npx expo-doctor before handoff. Verify browser behavior when available. Record actual results and native limitations in docs/STATUS.md. Never claim browser tests establish native snapshot privacy or physical-device behavior.
 
 Keep README.md and this file concise; CLAUDE.md shares these exact rules. At a complete checkpoint inspect the diff, commit only this nested app, and pause implementation for review. Preserve parent-repository deletions and unrelated work.
+
+## Review guidance
+
+Reviewers read only; never edit files. Check: private clue leakage (a role's sheet, hint or notebook text exposing the other role's clue, a later answer or the motive early; concealed branches must unmount); ambiguous deductions (more than one option fits both sheets, or one sheet alone suffices); incorrect hints (wrong facts, or hint 1 or 2 naming the answer); save isolation (per-case keys and validation, no cross-case overwrite, unreadable saves never replaced without confirmation); existing-case regressions (The Missing Envelope and The Last Reservation ids, content, key `two-sides/missing-envelope/v1`); and unsupported completion claims in docs or reports (browser results are not native or device proof). Report concrete defects with file and line; say so plainly if there are none.
