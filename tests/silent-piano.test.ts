@@ -23,14 +23,17 @@ test('every deduction has a single supported answer from the two private sheets 
     { name: 'The action was wedged locked', keysFree: false, dampersLift: true },
     { name: 'The dampers were clipped down', keysFree: true, dampersLift: false },
   ];
-  assert.match(facts('A', 0), /moved freely/);
-  assert.match(facts('A', 0), /dampers lifted/);
+  assert.match(facts('A', 0), /Every key moved freely/);
+  assert.doesNotMatch(facts('A', 0), /damper/i);
+  assert.match(facts('B', 0), /every damper lifted cleanly/);
+  assert.match(facts('B', 0), /did not test the keys/);
   const chart = facts('B', 0);
   assert.match(chart, /Felt strip across the strings · Keys move freely · Dampers lift/);
   assert.match(chart, /Action wedged locked · Keys resist or will not go down · Dampers lift/);
   assert.match(chart, /Dampers clipped down · Keys move freely · Dampers do not lift/);
   const sp1 = causes.filter(c => c.keysFree && c.dampersLift).map(c => c.name);
   assert.deepEqual(sp1, [silentPiano.rounds[0].correct]);
+  // Each sheet alone leaves two causes; the options name mechanisms, so neither investigator can finish alone.
   assert.equal(causes.filter(c => c.keysFree).length, 2);
   assert.equal(causes.filter(c => c.dampersLift).length, 2);
 
@@ -56,9 +59,9 @@ test('every deduction has a single supported answer from the two private sheets 
   assert.match(facts('B', 2), /Ines Calder left at 20:10/);
   assert.equal(people[0].to, '20:10');
   // The page is tied to the folder: on the desk at 20:05, bare at 20:25, only paper out was Ines's folder.
-  assert.match(facts('A', 1), /last page of his score was on the music desk/);
+  assert.match(facts('A', 1), /last page of his score, with a large pencilled VII in its corner, was on the music desk/);
   assert.match(facts('A', 1), /20:25, when the desk was bare/);
-  assert.match(facts('A', 2), /printed music staves/);
+  assert.match(facts('A', 2), /pencilled VII showed at the corner of the printed music/);
   assert.match(facts('B', 2), /only paper carried out by anyone was the flat folder Ines took/);
 
   // SP3: handle and steps from the porter against the exhaustive plan, with the first leaver being Ines.

@@ -18,19 +18,19 @@ Bellweather Hotel ballroom, 25 October 1994. Pianist Tomas Reyes was to premiere
 
 ### SP1 — How was the piano silenced?
 Options: felt strip across the strings / action wedged locked / dampers clipped down. Correct: **a felt strip across the strings**.
-- A (SP-A1, Tomas): every key moved freely; with the lid raised he watched the dampers lift when he pressed the sustain pedal.
-- B (SP-B1, maker's service chart, exhaustive): felt strip = keys free + dampers lift; wedged action = keys stuck + dampers lift; clipped dampers = keys free + dampers stay down.
-- Free keys leave strip or clips; lifting dampers leave strip or wedge; both leave only the strip.
+- A (SP-A1, Tomas): every key moved freely; he touched neither pedals nor the inside of the piano.
+- B (SP-B1, maker's chart plus the house technician's 20:42 test: every damper lifted; keys untested). Chart, exhaustive: felt strip = keys free + dampers lift; wedged action = keys stuck + dampers lift; clipped dampers = keys free + dampers stay down.
+- A alone: free keys leave strip or clips. B alone: lifting dampers leave strip or wedge. Together only the strip.
 
 ### SP2 — Who silenced the piano?
 Options: Ines Calder / Hugo Lang / Marguerite Doyle. Correct: **Ines Calder**.
-- A (SP-A2, Petra): piano rang at 20:05; she watched continuously until 20:25; at 20:09 two people were near the piano but only one reached inside the lid; she saw neither face nor the object. The strings were touched once between 20:05 and 20:25, at 20:09.
+- A (SP-A2, Petra): piano rang at 20:05; she watched continuously until 20:25; at 20:09 two people were near the piano but only one reached inside the lid; she saw neither face nor the object. The strings were touched once between 20:05 and 20:25, at 20:09. The last page, marked VII in pencil, was on the music desk at 20:05 and the desk was bare at 20:25.
 - B (SP-B2, door and equipment log): ballroom locked 20:25–20:38. Ines near piano 19:55–20:10, carried a felt strip. Hugo near piano 20:08–20:11, carried wooden wedges. Marguerite near piano 20:12–20:25, also carried a felt strip. Verified inventories; nobody carried anything unlisted.
 - At 20:09 only Ines and Hugo were near (Marguerite arrived at 20:12). Ines and Marguerite carried felt, so the item alone leaves two and the time alone leaves two (Ines, Hugo); together only Ines. Requires SP1 and both sheets.
 
 ### SP3 — Where did Ines carry the missing last page?
 Options: prop store / green room / instrument cupboard. Correct: **the prop store**.
-- A (SP-A3, Lewis): two people left by the stage-right door, the first at 20:10 with a flat folder showing printed staves, the second empty-handed. He followed the first: door with a brass handle, three steps up, then the door closed.
+- A (SP-A3, Lewis): two people left by the stage-right door, the first at 20:10 with a flat folder, a pencilled VII showing at the corner of the music inside, the second empty-handed. He followed the first: door with a brass handle, three steps up, then the door closed.
 - B (SP-B3, exit log and plan): the only paper anyone carried out was Ines's folder (the page was on the desk at 20:05 and gone at 20:25, per SP-A2); first to leave stage-right at 20:10 was Ines; second at 20:11 was Hugo. Plan (exhaustive): prop store brass handle, 3 steps; green room brass handle, 5 steps; instrument cupboard iron handle, 3 steps.
 - Brass leaves prop store or green room; three steps leaves prop store or cupboard; both leave the prop store. The log ties the folder-carrier to Ines, so the route is hers. Requires SP2.
 

@@ -21,24 +21,24 @@ export const silentPiano: CaseDefinition = {
       evidence: {
         A: { id: 'SP-A1', title: 'The pianist at the keyboard', source: 'Witness statement · Tomas Reyes, 20:40', paragraphs: [
           '“I sat down at 20:40 and pressed the keys. Every key moved freely and came back up normally, like any other night. Nothing sounded at all.”',
-          '“The lid was raised. I pressed the sustain pedal and watched inside: the dampers lifted off the strings exactly as they should.”',
-          '“I did not look at what lay on the strings, and I cannot say what is wrong with it. I only know what I felt and saw.”',
+          '“I did not touch the pedals, and I did not look inside the piano. I cannot say what is wrong with it. I only know what the keys felt like under my fingers.”',
         ] },
-        B: { id: 'SP-B1', kind: 'maintenance', title: 'Why a grand piano falls silent', source: 'Certified maker’s service chart · Ballroom grand', paragraphs: [
-          'These are the only three conditions that leave this piano silent in the hall. Each is listed with what a player sees.',
+        B: { id: 'SP-B1', kind: 'maintenance', title: 'Why a grand piano falls silent', source: 'Certified service chart and technician’s test · Ballroom grand', paragraphs: [
+          'The maker’s chart lists the only three conditions that leave this piano silent in the hall, with what a player sees.',
           'Felt strip across the strings · Keys move freely · Dampers lift when the sustain pedal is pressed.',
           'Action wedged locked · Keys resist or will not go down · Dampers lift when the sustain pedal is pressed.',
           'Dampers clipped down · Keys move freely · Dampers do not lift when the sustain pedal is pressed.',
-          'The chart says what each condition looks like. It does not say which one applies to tonight’s piano.',
+          'House technician’s test at 20:42, after the recital was cancelled: with the lid raised, the sustain pedal was pressed and every damper lifted cleanly off the strings. The technician did not test the keys and did not look at anything else.',
+          'The chart and the test do not say which condition applies to tonight’s piano.',
         ] },
       },
       hints: [
-        'Match what the pianist felt and saw with what each condition looks like on the chart.',
+        'Put what the pianist felt together with the technician’s test, and read both against the maker’s chart.',
         'Free keys leave two conditions; lifting dampers leave a different two. Find the one that appears in both lists.',
         'The keys moved freely and the dampers lifted. Only the felt strip across the strings shows both.',
       ],
       deduction: 'A felt strip across the strings silenced the piano.',
-      proof: 'SP-A1 reports freely moving keys and dampers that lifted. SP-B1 lists free keys for the strip or the clips, and lifting dampers for the strip or the wedged action. Only the felt strip satisfies both.',
+      proof: 'SP-A1 reports freely moving keys. SP-B1’s test shows dampers that lifted. SP-B1’s chart lists free keys for the strip or the clips, and lifting dampers for the strip or the wedged action. Only the felt strip satisfies both.',
     },
     {
       id: 'SP2', act: 'The Silent Piano', label: 'The hands', requires: ['SP1'], evidenceRefs: ['SP-A2', 'SP-B2'],
@@ -46,7 +46,7 @@ export const silentPiano: CaseDefinition = {
       options: ['Ines Calder', 'Hugo Lang', 'Marguerite Doyle'], correct: 'Ines Calder',
       evidence: {
         A: { id: 'SP-A2', title: 'Watching from the wings', source: 'Witness statement · Petra Voss, page-turner', paragraphs: [
-          '“The piano rang clearly at 20:05 when Tomas finished warming up, and the last page of his score was on the music desk. I watched from the wings without looking away until 20:25, when the desk was bare.”',
+          '“The piano rang clearly at 20:05 when Tomas finished warming up, and the last page of his score, with a large pencilled VII in its corner, was on the music desk. I watched from the wings without looking away until 20:25, when the desk was bare.”',
           '“At 20:09 two people were beside the piano. Only one of them reached inside the raised lid. The strings were touched once between 20:05 and 20:25, at 20:09, by that one person. The lid was lowered afterwards.”',
           '“I saw only backs. I could not see faces, and I could not see what the person held. Being near the piano is not the same as reaching inside it.”',
         ] },
@@ -73,7 +73,7 @@ export const silentPiano: CaseDefinition = {
       options: ['The prop store', 'The green room', 'The instrument cupboard'], correct: 'The prop store',
       evidence: {
         A: { id: 'SP-A3', title: 'The porter in the corridor', source: 'Witness statement · Lewis Ash, porter', paragraphs: [
-          '“Two people left the ballroom through the stage-right door between 20:10 and 20:12. The first carried a flat paper folder, and a corner of printed music staves showed at its edge. The second had empty hands. I could not see either face.”',
+          '“Two people left the ballroom through the stage-right door between 20:10 and 20:12. The first carried a flat paper folder, and a pencilled VII showed at the corner of the printed music inside. The second had empty hands. I could not see either face.”',
           '“I followed the first one down the corridor. They went through a door with a brass handle and climbed exactly three steps. Then the door closed and I saw nothing more.”',
           '“I did not see inside, and I did not see what was in the folder. I did not follow the second person at all.”',
         ] },
@@ -89,11 +89,11 @@ export const silentPiano: CaseDefinition = {
       },
       hints: [
         'Work out which of the two people leaving the ballroom the porter followed. Then use the door and the steps together.',
-        'The first to leave was the person you identified, and the page left the ballroom in her folder. A brass handle leaves two rooms; three steps leaves a different two.',
+        'The first to leave was the person you identified, and the page, marked VII, left the ballroom in her folder. A brass handle leaves two rooms; three steps leaves a different two.',
         'The first to leave was Ines. Brass handle plus three steps up matches only the prop store.',
       ],
       deduction: 'Ines carried the folder to the prop store.',
-      proof: 'SP-A2 shows the page was on the desk at 20:05 and gone by 20:25. SP-B3 shows the only paper anyone carried out was Ines’s folder, and SP-A3 saw printed staves at its edge, so the page was in it. SP-B3 also shows the first person through the stage-right door was Ines, so SP-A3’s route is hers. A brass handle and exactly three steps leave only the prop store; the green room has five steps and the cupboard has an iron handle.',
+      proof: 'SP-A2 shows the page, marked VII, was on the desk at 20:05 and gone by 20:25. SP-A3 saw a pencilled VII on the music in the folder, and SP-B3 shows it was the only paper anyone carried out, so the page was in it. SP-B3 also shows the first person through the stage-right door was Ines, so SP-A3’s route is hers. A brass handle and exactly three steps leave only the prop store; the green room has five steps and the cupboard has an iron handle.',
     },
   ],
   ending: {
