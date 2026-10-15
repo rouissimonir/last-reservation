@@ -36,7 +36,7 @@ Failed runs, none treated as approval: usage error (prompt with `--base`); confi
 | 1, cycle 2 | `1d86f98` | No actionable defects. |
 | 2 Playable flow | `c1f7daa` | No concrete defects. |
 | 3 Save, privacy, compatibility | `133f075` | No concrete defects. |
-| 4 Final | see below | see below |
+| 4 Final, whole diff from baseline | `50310ff` | No concrete defects. Checks on this revision: `npm run check` 30/30 pass, web export exit 0. A docs-only edit to this row followed; no code changed after the review. |
 
 Limits of the reviews: the worktrees have no `node_modules`, so Codex could not run typecheck; I ran every check myself. A review finding no defects is evidence, not proof.
 
