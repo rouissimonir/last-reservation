@@ -25,13 +25,13 @@ Options: felt strip across the strings / action wedged locked / dampers clipped 
 ### SP2 — Who silenced the piano?
 Options: Ines Calder / Hugo Lang / Marguerite Doyle. Correct: **Ines Calder**.
 - A (SP-A2, Petra): piano rang at 20:05; she watched continuously until 20:25; at 20:09 two people were near the piano but only one reached inside the lid; she saw neither face nor the object. The strings were touched once between 20:05 and 20:25, at 20:09.
-- B (SP-B2, door and equipment log): ballroom locked 20:25–20:38. Ines near piano 19:55–20:10, carried a felt strip. Hugo near piano 20:08–20:20, carried wooden wedges. Marguerite near piano 20:12–20:25, carried clips. Verified inventories; nobody carried anything unlisted.
-- At 20:09 only Ines and Hugo were near; the confirmed felt strip rules out Hugo's wedges. Marguerite was not yet there. Requires SP1.
+- B (SP-B2, door and equipment log): ballroom locked 20:25–20:38. Ines near piano 19:55–20:10, carried a felt strip. Hugo near piano 20:08–20:11, carried wooden wedges. Marguerite near piano 20:12–20:25, also carried a felt strip. Verified inventories; nobody carried anything unlisted.
+- At 20:09 only Ines and Hugo were near (Marguerite arrived at 20:12). Ines and Marguerite carried felt, so the item alone leaves two and the time alone leaves two (Ines, Hugo); together only Ines. Requires SP1 and both sheets.
 
 ### SP3 — Where did Ines carry the missing last page?
 Options: prop store / green room / instrument cupboard. Correct: **the prop store**.
-- A (SP-A3, Lewis): two people left by the stage-right door, the first at 20:10 with a flat folder, the second empty-handed. He followed the first: door with a brass handle, three steps up, then the door closed.
-- B (SP-B3, exit log and plan): first to leave stage-right at 20:10 was Ines; second at 20:11 was Hugo. Plan (exhaustive): prop store brass handle, 3 steps; green room brass handle, 5 steps; instrument cupboard iron handle, 3 steps.
+- A (SP-A3, Lewis): two people left by the stage-right door, the first at 20:10 with a flat folder showing printed staves, the second empty-handed. He followed the first: door with a brass handle, three steps up, then the door closed.
+- B (SP-B3, exit log and plan): the only paper anyone carried out was Ines's folder (the page was on the desk at 20:05 and gone at 20:25, per SP-A2); first to leave stage-right at 20:10 was Ines; second at 20:11 was Hugo. Plan (exhaustive): prop store brass handle, 3 steps; green room brass handle, 5 steps; instrument cupboard iron handle, 3 steps.
 - Brass leaves prop store or green room; three steps leaves prop store or cupboard; both leave the prop store. The log ties the folder-carrier to Ines, so the route is hers. Requires SP2.
 
 ## Ending (motive only via the note)
@@ -41,3 +41,15 @@ Recovery: the last page and Ines's note are in the prop store. Note: Ines recogn
 ## Review focus
 
 See the Codex review guidance in `AGENTS.md`: private clue leakage, ambiguous deductions, incorrect hints, save isolation, existing-case regressions, unsupported completion claims.
+
+## Acceptance checklist
+
+- [ ] Case `the-silent-piano` plays start to ending: SP1, SP2, SP3, recovery note.
+- [ ] Each deduction needs both sheets; no option fits one sheet alone.
+- [ ] Hints 1 and 2 never name the answer; no hint reveals a later round or the motive.
+- [ ] Private sheets unmount at handoff, background, resume and back; none advances the case.
+- [ ] Notebook shows confirmed deductions only; motive appears only in Ines's note.
+- [ ] Save key `two-sides/the-silent-piano/v1` is validated, serialized and never overwrites an unreadable save without reset confirmation.
+- [ ] `the-missing-envelope` (key `two-sides/missing-envelope/v1`) and `the-last-reservation` are unchanged and still pass.
+- [ ] `npm run check`, `npx expo install --check` and `npx expo-doctor` run; results recorded in `docs/STATUS.md`.
+- [ ] No claim that browser tests prove native privacy or device behavior.

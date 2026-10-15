@@ -9,6 +9,7 @@ export const silentPiano: CaseDefinition = {
   duration: '10–15 minutes · UNVALIDATED',
   setting: 'Bellweather Hotel · October 1994',
   introLabel: 'A RECITAL EVENING IN OCTOBER, 1994', introTitle: 'Nothing will play.',
+  endingTitle: 'The page returns.', noteLabel: 'IN THE PROP STORE', noteTitle: 'Ines’s folded note',
   introduction: 'Bellweather Hotel ballroom, 25 October 1994. Pianist Tomas Reyes was to premiere his “Waltz for a Closed Room” at nine. At 20:40 he sat down and the grand piano made no sound, and the recital was cancelled. The final page of his score is gone from the music desk. Three people had a reason to be near the piano tonight. One of you has the witness accounts. The other has the hotel’s records. Find out what happened before the audience leaves.',
   reliability: 'There is no timer. Witnesses are accurate about what they directly observed and say plainly what they did not see. Maker’s charts, door and equipment logs and the backstage plan are certified and complete. A job title, an object carried or a motive is not proof of an action on its own.',
   rounds: [
@@ -45,7 +46,7 @@ export const silentPiano: CaseDefinition = {
       options: ['Ines Calder', 'Hugo Lang', 'Marguerite Doyle'], correct: 'Ines Calder',
       evidence: {
         A: { id: 'SP-A2', title: 'Watching from the wings', source: 'Witness statement · Petra Voss, page-turner', paragraphs: [
-          '“The piano rang clearly at 20:05 when Tomas finished warming up. I watched it from the wings without looking away until 20:25.”',
+          '“The piano rang clearly at 20:05 when Tomas finished warming up, and the last page of his score was on the music desk. I watched from the wings without looking away until 20:25, when the desk was bare.”',
           '“At 20:09 two people were beside the piano. Only one of them reached inside the raised lid. The strings were touched once between 20:05 and 20:25, at 20:09, by that one person. The lid was lowered afterwards.”',
           '“I saw only backs. I could not see faces, and I could not see what the person held. Being near the piano is not the same as reaching inside it.”',
         ] },
@@ -53,18 +54,18 @@ export const silentPiano: CaseDefinition = {
           'The ballroom was locked from 20:25 until Tomas entered at 20:38. No one else entered or left it in that period.',
           'Each person below was inspected on entering. These are verified times near the piano and the only items each carried; nobody carried anything unlisted or swapped items.',
           'Ines Calder, tuner · Near the piano 19:55 to 20:10 · Carried a felt strip.',
-          'Hugo Lang, stage manager · Near the piano 20:08 to 20:20 · Carried wooden wedges.',
-          'Marguerite Doyle, events manager · Near the piano 20:12 to 20:25 · Carried small spring clips.',
+          'Hugo Lang, stage manager · Near the piano 20:08 to 20:11 · Carried wooden wedges.',
+          'Marguerite Doyle, events manager · Near the piano 20:12 to 20:25 · Carried a felt strip.',
           'The log does not say who reached inside the lid, or what was done there.',
         ] },
       },
       hints: [
         'Use what silenced the piano, which is already in your notebook, together with who was near it at 20:09.',
         'Check who was near the piano at 20:09, then look at what each of them carried. Two people were there; one carried the wrong kind of item.',
-        'Ines and Hugo were both near the piano at 20:09; Marguerite arrived at 20:12. A felt strip was the cause, and only Ines carried one. Hugo carried wedges.',
+        'Ines and Hugo were both near the piano at 20:09; Marguerite arrived at 20:12. Ines and Marguerite carried felt strips and Hugo carried wedges. Only Ines fits both the cause and the time.',
       ],
       deduction: 'Ines Calder laid the felt strip across the strings.',
-      proof: 'SP-A2 narrows the lid to a single person at 20:09 with two people nearby. SP-B2 places only Ines and Hugo there; Marguerite arrived at 20:12. The confirmed cause is a felt strip, which only Ines carried; Hugo carried wedges.',
+      proof: 'SP-A2 puts the single act of reaching into the lid at 20:09. SP-B2 places only Ines and Hugo near the piano then; Marguerite arrived at 20:12. The confirmed cause is a felt strip, which Ines and Marguerite carried but Hugo did not. Only Ines fits both the item and the time.',
     },
     {
       id: 'SP3', act: 'The Silent Piano', label: 'The page', requires: ['SP2'], evidenceRefs: ['SP-A3', 'SP-B3'],
@@ -72,12 +73,13 @@ export const silentPiano: CaseDefinition = {
       options: ['The prop store', 'The green room', 'The instrument cupboard'], correct: 'The prop store',
       evidence: {
         A: { id: 'SP-A3', title: 'The porter in the corridor', source: 'Witness statement · Lewis Ash, porter', paragraphs: [
-          '“Two people left the ballroom through the stage-right door between 20:10 and 20:12. The first carried a flat paper folder. The second had empty hands. I could not see either face.”',
+          '“Two people left the ballroom through the stage-right door between 20:10 and 20:12. The first carried a flat paper folder, and a corner of printed music staves showed at its edge. The second had empty hands. I could not see either face.”',
           '“I followed the first one down the corridor. They went through a door with a brass handle and climbed exactly three steps. Then the door closed and I saw nothing more.”',
           '“I did not see inside, and I did not see what was in the folder. I did not follow the second person at all.”',
         ] },
-        B: { id: 'SP-B3', kind: 'storage', title: 'The exit log and backstage plan', source: 'Certified exit log and floor plan · Facilities desk', paragraphs: [
+        B: { id: 'SP-B3', kind: 'access', title: 'The exit log and backstage plan', source: 'Certified exit log and floor plan · Facilities desk', paragraphs: [
           'Exit log, stage-right door: Ines Calder left at 20:10. Hugo Lang left at 20:11. No one else used that door between 20:05 and 20:25.',
+          'Everyone leaving the ballroom between 20:05 and 20:25 was inspected. The only paper carried out by anyone was the flat folder Ines took through the stage-right door.',
           'The rooms reached from the stage-right corridor are listed in full. There are no hidden rooms.',
           'Prop store · Brass handle · Three steps up.',
           'Green room · Brass handle · Five steps up.',
@@ -87,11 +89,11 @@ export const silentPiano: CaseDefinition = {
       },
       hints: [
         'Work out which of the two people leaving the ballroom the porter followed. Then use the door and the steps together.',
-        'The first to leave was the person you identified. A brass handle leaves two rooms; three steps leaves a different two.',
+        'The first to leave was the person you identified, and the page left the ballroom in her folder. A brass handle leaves two rooms; three steps leaves a different two.',
         'The first to leave was Ines. Brass handle plus three steps up matches only the prop store.',
       ],
       deduction: 'Ines carried the folder to the prop store.',
-      proof: 'SP-B3 shows the first person through the stage-right door was Ines, so SP-A3’s folder and route are hers. A brass handle and exactly three steps leave only the prop store; the green room has five steps and the cupboard has an iron handle.',
+      proof: 'SP-A2 shows the page was on the desk at 20:05 and gone by 20:25. SP-B3 shows the only paper anyone carried out was Ines’s folder, and SP-A3 saw printed staves at its edge, so the page was in it. SP-B3 also shows the first person through the stage-right door was Ines, so SP-A3’s route is hers. A brass handle and exactly three steps leave only the prop store; the green room has five steps and the cupboard has an iron handle.',
     },
   ],
   ending: {

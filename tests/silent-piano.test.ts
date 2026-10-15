@@ -37,14 +37,29 @@ test('every deduction has a single supported answer from the two private sheets 
   // SP2: near the piano at 20:09 and carrying the confirmed item.
   const people = [
     { name: 'Ines Calder', from: '19:55', to: '20:10', item: 'felt strip' },
-    { name: 'Hugo Lang', from: '20:08', to: '20:20', item: 'wooden wedges' },
-    { name: 'Marguerite Doyle', from: '20:12', to: '20:25', item: 'small spring clips' },
+    { name: 'Hugo Lang', from: '20:08', to: '20:11', item: 'wooden wedges' },
+    { name: 'Marguerite Doyle', from: '20:12', to: '20:25', item: 'felt strip' },
   ];
   for (const p of people) assert.ok(facts('B', 1).includes(`${p.name}`) && facts('B', 1).includes(`${p.from} to ${p.to}`) && facts('B', 1).includes(p.item), p.name);
   assert.match(facts('A', 1), /20:09/);
   const near = people.filter(p => p.from <= '20:09' && '20:09' <= p.to);
   assert.equal(near.length, 2);
   assert.deepEqual(near.filter(p => p.item === 'felt strip').map(p => p.name), [silentPiano.rounds[1].correct]);
+  // Each filter alone must leave more than one candidate, so neither sheet (nor SP1) can be skipped.
+  assert.equal(people.filter(p => p.item === 'felt strip').length, 2, 'record sheet alone is not enough');
+  assert.equal(near.length, 2, 'time alone is not enough');
+  // Hugo's exit (SP-B3) must lie inside his presence window (SP-B2).
+  const hugo = people[1];
+  assert.match(facts('B', 2), /Hugo Lang left at 20:11/);
+  assert.ok(hugo.from <= '20:11' && '20:11' <= hugo.to);
+  // Ines's exit equals the end of her window.
+  assert.match(facts('B', 2), /Ines Calder left at 20:10/);
+  assert.equal(people[0].to, '20:10');
+  // The page is tied to the folder: on the desk at 20:05, bare at 20:25, only paper out was Ines's folder.
+  assert.match(facts('A', 1), /last page of his score was on the music desk/);
+  assert.match(facts('A', 1), /20:25, when the desk was bare/);
+  assert.match(facts('A', 2), /printed music staves/);
+  assert.match(facts('B', 2), /only paper carried out by anyone was the flat folder Ines took/);
 
   // SP3: handle and steps from the porter against the exhaustive plan, with the first leaver being Ines.
   const rooms = [

@@ -171,8 +171,8 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
       }
       case 'ending': {
         if (p.round !== rounds.length) return <><Title>The case is still open.</Title><Button onPress={conceal}>Return to cover</Button></>;
-        return <><Label>{item.title.toUpperCase()} · RESOLVED</Label><Title>{item.edition === '01' ? 'Safe. Still sealed.' : 'A visitor found.'}</Title><Copy>{ending.recovery}</Copy>
-          <Paper reference={`RESOLVED / ${item.edition}`}><Label paper>{item.edition === '01' ? 'FOUND BESIDE THE ENVELOPE' : 'IN THE STAFF READING ROOM'}</Label><Text style={ui.documentTitle}>{item.edition === '01' ? 'A signed note' : 'Elin’s closing words'}</Text><Copy style={ui.ink}>{ending.note}</Copy><Text style={s.signature}>{ending.signature}</Text></Paper>
+        return <><Label>{item.title.toUpperCase()} · RESOLVED</Label><Title>{item.endingTitle ?? (item.edition === '01' ? 'Safe. Still sealed.' : 'A visitor found.')}</Title><Copy>{ending.recovery}</Copy>
+          <Paper reference={`RESOLVED / ${item.edition}`}><Label paper>{item.noteLabel ?? (item.edition === '01' ? 'FOUND BESIDE THE ENVELOPE' : 'IN THE STAFF READING ROOM')}</Label><Text style={ui.documentTitle}>{item.noteTitle ?? (item.edition === '01' ? 'A signed note' : 'Elin’s closing words')}</Text><Copy style={ui.ink}>{ending.note}</Copy><Text style={s.signature}>{ending.signature}</Text></Paper>
           <Copy>{ending.conclusion}</Copy><View style={s.rule} /><Label>THE COMPLETE EVIDENCE CHAIN</Label>
           {rounds.map((round, i) => <View key={i} style={s.proofCard}><Label>0{i + 1} · {round.label.toUpperCase()}</Label><Text style={s.proofTitle}>{round.deduction}</Text><Copy>{round.proof}</Copy></View>)}
           <View style={s.closedStamp}><Text style={s.closedText}>CASE CLOSED</Text></View>

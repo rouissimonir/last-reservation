@@ -11,6 +11,7 @@ export type CaseDefinition = {
   rounds: readonly CaseRound[]; ending: typeof ending;
   // Optional presentation overrides; omitted for the original cases so their screens are unchanged.
   setting?: string; introLabel?: string; introTitle?: string;
+  endingTitle?: string; noteLabel?: string; noteTitle?: string;
 };
 export const miniCase: CaseDefinition = {
   id: CASE_ID, version: CASE_VERSION, edition: '01', title: 'The Missing Envelope',
