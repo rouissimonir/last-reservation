@@ -1,6 +1,6 @@
 # TWO SIDES — The Bellweather Files
 
-Two cooperative mysteries for two people sharing one phone: the three-deduction mini-case “The Missing Envelope” and the six-deduction, three-act “The Last Reservation”. An illustrated case library connects private folder handoffs, readable documents, hints, confirmed notebooks, separate local saves and complete endings. Both cases are open in this local development preview. Duration targets of 5–8 and 30–45 minutes are UNVALIDATED until paired playtests.
+Three cooperative mysteries for two people sharing one phone: the three-deduction mini-case “The Missing Envelope”, the six-deduction, three-act “The Last Reservation” and the three-deduction “The Silent Piano”. An illustrated case library connects private folder handoffs, readable documents, hints, confirmed notebooks, separate local saves and complete endings. All cases are open in this local development preview. Duration targets of 5–8, 30–45 and 10–15 minutes are UNVALIDATED until paired playtests.
 
 ## Windows setup and launch
 

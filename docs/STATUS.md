@@ -2,6 +2,10 @@
 
 Review checkpoint · 15 October 2026 · Windows PowerShell.
 
+## Third case: The Silent Piano
+
+See `docs/project/STATUS.md` and `THIRD_CASE_REPORT.md` for the checks, Codex checkpoint reviews, browser evidence and what remains unverified. Short version: three deductions, private role handoffs, hints, notebook, ending and an independent save key are implemented; the two earlier cases are unchanged (content digests pinned by a test); no device or human playtest has been done.
+
 ## Latest review input — reported iOS startup failure
 
 The new `fixes/logs.md` reports missing native ExpoAsset/constants modules and a subsequent registration error. Its hash and reviewed findings are in `FIXES_LOG.md`. Native launch is **BLOCKED pending installed iPhone client version/SDK/source and a device retest**, not fixed or reproduced here. The local package tree and Apple autolinking resolve both modules, and both current Metro manifests point to the correct SDK-57 app. A physical-iOS App Store client is incompatible according to current Expo guidance; the actual installed client remains unknown. README now states this limitation explicitly, and `IOS_RUNTIME_TROUBLESHOOTING.md` records the supported browser route and native follow-up. No game, artwork, dependency or registration code was changed. The latest check passed TypeScript/lint/14 tests and dependency alignment; Doctor's online schema fetch failed again (one failed check). Earlier passing Doctor and bundle exports do not establish native-device launch success.
