@@ -59,7 +59,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
   const renderScene = () => {
     if (scene.kind === 'reset') return <>
       <Label>A FRESH INVESTIGATION</Label><Title>Start this case again?</Title>
-      <Copy>This replaces progress, deductions, hints and reading settings for {item.title} only. Your other case is preserved. Both investigators will start this case from the beginning.</Copy>
+      <Copy>This replaces progress, deductions, hints and reading settings for {item.title} only. Your other cases are preserved. Both investigators will start this case from the beginning.</Copy>
       <Button disabled={game.status === 'loading'} onPress={() => { game.reset(); navigate({ kind: 'cover' }); }}>Yes, reset this case</Button>
       <Button secondary onPress={() => navigate({ kind: 'cover' })}>Keep current progress</Button>
     </>;
