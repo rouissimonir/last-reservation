@@ -1,7 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { CollectionOffer } from '@/components/collection-offer';
 
-const sources = ['library', 'locked_case', 'ending'] as const;
+const sources = ['library', 'locked_case'] as const;
 
 export default function AfterMidnightOffer() {
   const { source } = useLocalSearchParams<{ source?: string }>();

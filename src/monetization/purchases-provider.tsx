@@ -1,11 +1,11 @@
-import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 
 import { addAnalyticsSink, track } from '../analytics/analytics';
 import { Access, isDevPreviewEnabled } from './access';
 import { AFTER_MIDNIGHT } from './catalogue';
 import { purchaseConfig } from './config';
-import { initialPurchaseState, PurchaseState, purchaseReducer } from './purchase-state';
+import { createSnapshotGate, initialPurchaseState, PurchaseState, purchaseReducer } from './purchase-state';
 import { createPurchaseService } from './service';
 
 type PurchasesValue = {
@@ -23,6 +23,8 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(purchaseReducer, initialPurchaseState);
   const current = useRef(state);
   useEffect(() => { current.current = state; }, [state]);
+  // Synchronous: set before the first await, so a double tap cannot start a second store call.
+  const [gate] = useState(createSnapshotGate);
 
   const loadOffer = useCallback(() => {
     if (service.unavailable) { dispatch({ type: 'offer-unavailable', reason: service.unavailable }); return; }
@@ -33,8 +35,11 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
   const refresh = useCallback(() => {
     if (service.unavailable) return;
     // A failed refresh leaves the last verified state in place; the SDK's own cache covers offline play.
-    service.refresh().then(snapshot => dispatch({ type: 'entitlements', snapshot, entitlementId: ENTITLEMENT })).catch(() => undefined);
-  }, [service]);
+    const ticket = gate.begin();
+    service.refresh().then(snapshot => {
+      if (gate.accept(ticket)) dispatch({ type: 'entitlements', snapshot, entitlementId: ENTITLEMENT });
+    }).catch(() => undefined);
+  }, [service, gate]);
 
   useEffect(() => {
     if (!isDev) return;
@@ -44,7 +49,7 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
     let alive = true;
     let stop = () => undefined as void;
     if (service.unavailable) { dispatch({ type: 'offer-unavailable', reason: service.unavailable }); return; }
-    service.start(snapshot => { if (alive) dispatch({ type: 'entitlements', snapshot, entitlementId: ENTITLEMENT }); })
+    service.start(snapshot => { if (!alive) return; gate.advance(); dispatch({ type: 'entitlements', snapshot, entitlementId: ENTITLEMENT }); })
       .then(unsubscribe => {
         if (!alive) { unsubscribe(); return; }
         stop = unsubscribe;
@@ -60,15 +65,17 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
       if (current.current.offer.status === 'unavailable') loadOffer();
     });
     return () => { alive = false; stop(); sub.remove(); };
-  }, [service, refresh, loadOffer]);
+  }, [service, refresh, loadOffer, gate]);
 
   const purchase = useCallback(async () => {
     const s = current.current;
-    if (s.offer.status !== 'ready' || s.activity === 'purchasing' || s.activity === 'restoring') return;
+    if (gate.busy || s.offer.status !== 'ready' || s.activity === 'purchasing' || s.activity === 'restoring') return;
     const { packageId } = s.offer.offer;
+    gate.hold();
     dispatch({ type: 'purchase-started' });
     track({ name: 'purchase_started', collection_id: AFTER_MIDNIGHT.id });
     const outcome = await service.purchase(OFFERING, packageId).catch(() => ({ kind: 'failed', failure: 'unknown' } as const));
+    gate.release();
     dispatch({ type: 'purchase-finished', outcome, entitlementId: ENTITLEMENT });
     if (outcome.kind === 'success' && outcome.snapshot.ids.includes(ENTITLEMENT)) {
       track({ name: 'purchase_verified', collection_id: AFTER_MIDNIGHT.id, sandbox: outcome.snapshot.sandbox });
@@ -76,17 +83,19 @@ export function PurchasesProvider({ children }: { children: ReactNode }) {
       const reason = outcome.kind === 'failed' ? outcome.failure : outcome.kind === 'success' ? 'unverified' : outcome.kind;
       track({ name: 'purchase_failed', collection_id: AFTER_MIDNIGHT.id, reason });
     }
-  }, [service]);
+  }, [service, gate]);
   const restore = useCallback(async () => {
     const s = current.current;
-    if (service.unavailable || s.activity === 'purchasing' || s.activity === 'restoring') return;
+    if (service.unavailable || gate.busy || s.activity === 'purchasing' || s.activity === 'restoring') return;
+    gate.hold();
     dispatch({ type: 'restore-started' });
     try {
       const snapshot = await service.restore();
+      gate.release();
       dispatch({ type: 'restore-finished', snapshot, entitlementId: ENTITLEMENT });
       if (snapshot.ids.includes(ENTITLEMENT)) track({ name: 'purchase_restored', collection_id: AFTER_MIDNIGHT.id, sandbox: snapshot.sandbox });
-    } catch { dispatch({ type: 'restore-failed' }); }
-  }, [service]);
+    } catch { gate.release(); dispatch({ type: 'restore-failed' }); }
+  }, [service, gate]);
 
   const value = useMemo<PurchasesValue>(() => ({
     state, access: { entitlements: state.entitlements, devPreview }, storeUnavailable: service.unavailable !== null,

@@ -90,3 +90,20 @@ export function outcomeFromStoreError(error: unknown): PurchaseOutcome {
   if (code === '2' || code === '4' || code === '5' || code === '8' || code === '23') return { kind: 'failed', failure: 'store' };
   return { kind: 'failed', failure: 'unknown' };
 }
+
+// Orders entitlement snapshots. A polled refresh may resolve after a newer listener event, purchase or
+// restore result; its answer is then stale and must not replace the newer one.
+export function createSnapshotGate() {
+  let version = 0;
+  let busy = 0;
+  return {
+    // Call before polling; pass the ticket to accept() with the result.
+    begin: () => version,
+    accept: (ticket: number) => busy === 0 && ticket === version,
+    // Call when a pushed or transactional snapshot is applied, or when a purchase/restore starts and ends.
+    advance: () => { version += 1; },
+    hold: () => { busy += 1; version += 1; },
+    release: () => { busy = Math.max(0, busy - 1); version += 1; },
+    get busy() { return busy > 0; },
+  };
+}

@@ -42,7 +42,7 @@ function activityCopy(state: PurchaseState): string | null {
   }
 }
 
-export function CollectionOffer({ source, onClose }: { source: 'library' | 'locked_case' | 'ending' | 'direct'; onClose: () => void }) {
+export function CollectionOffer({ source, onClose }: { source: 'library' | 'locked_case' | 'direct'; onClose: () => void }) {
   const { state, access, storeUnavailable, purchase, restore, retryOffer } = usePurchases();
   const verifiedOwner = state.entitlements.includes(AFTER_MIDNIGHT.entitlementId ?? '');
   const busy = state.activity === 'purchasing' || state.activity === 'restoring';

@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { router } from 'expo-router';
+import { router, useIsFocused } from 'expo-router';
 import { Button, ClosedFolder, Copy, EvidenceDocument, HotelBackdrop, Label,
   Paper, ReadingContext, RoleGlyph, SceneReveal, TextAction, Title, ui, useReducedMotion } from './game-ui';
 
@@ -27,6 +27,11 @@ export function Investigation() {
     setSelected(null);
     router.push({ pathname: '/after-midnight', params: { source } });
   }, []);
+  // Access is checked here, above the case: without it the case (scene, saved progress, any private
+  // sheet) is unmounted entirely, and a later grant remounts it fresh at its cover.
+  const { access } = usePurchases();
+  if (selected && !canPlayCase(access, selected.id)) return <LockedCase caseId={selected.id}
+    onCases={() => setSelected(null)} onOffer={openOffer} />;
   return selected ? <CaseInvestigation key={`${selected.id}:${selected.replay}`} caseId={selected.id}
     replay={selected.replay} onCases={() => setSelected(null)} onOffer={openOffer} /> :
     <CaseLibrary onOpen={(id, replay = false) => setSelected({ id, replay })} onOffer={openOffer} />;
@@ -36,9 +41,6 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
   caseId: string; replay: boolean; onCases: () => void; onOffer: (source: OfferSource) => void;
 }) {
   const item = getCase(caseId);
-  // Checked on every render: if access is revoked mid-case, the whole case unmounts behind this gate.
-  const { access } = usePurchases();
-  const allowed = canPlayCase(access, caseId);
   const { rounds, ending, introduction } = item;
   const game = useInvestigation(caseId);
   const p = game.progress;
@@ -54,9 +56,10 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
     setScene(target);
   }, []);
   const conceal = useCallback(() => navigate(resumeScene()), [navigate]);
-  usePrivacy(conceal);
+  // Only while this screen is focused, so Android back on a route opened above it still works.
+  usePrivacy(conceal, useIsFocused());
 
-  const ready = allowed && game.status === 'ready';
+  const ready = game.status === 'ready';
   const privateScene = scene.kind === 'pass' || scene.kind === 'private';
   const isCover = ready && scene.kind === 'cover';
   const showHeaderTools = ready && !privateScene && ['discuss', 'confirmed', 'ending'].includes(scene.kind);
@@ -74,12 +77,6 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
   </View>;
 
   const renderScene = () => {
-    if (!allowed) return <>
-      <Label>{AFTER_MIDNIGHT.title.toUpperCase()}</Label><Title>This case is part of a collection you don’t own yet.</Title>
-      <Copy>{item.title} is one of three After Midnight cases. Any saved progress on this device is kept.</Copy>
-      <Button onPress={() => onOffer('locked_case')}>See the collection</Button>
-      <TextAction onPress={onCases}>Back to the cases</TextAction>
-    </>;
     if (scene.kind === 'reset') return <>
       <Label>A FRESH INVESTIGATION</Label><Title>Start this case again?</Title>
       <Copy>This replaces progress, deductions, hints and reading settings for {item.title} only. Your other cases are preserved. Both investigators will start this case from the beginning.</Copy>
@@ -321,3 +318,19 @@ const s = StyleSheet.create({
   saveWarning: { padding: 12, gap: 10, backgroundColor: c.burgundy },
   saveWarningText: { color: c.ivory, fontSize: 13, lineHeight: 21 },
 });
+
+function LockedCase({ caseId, onCases, onOffer }: { caseId: string; onCases: () => void; onOffer: (source: OfferSource) => void }) {
+  return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion: true }}>
+    <View style={s.root}><View style={s.frame}>
+      <HotelBackdrop cover={false} />
+      <SafeAreaView style={s.safeArea}>
+        <ScrollView contentContainerStyle={s.scrollContent}><View style={s.scene}>
+          <Label>{AFTER_MIDNIGHT.title.toUpperCase()}</Label><Title>This case is part of a collection you don’t own yet.</Title>
+          <Copy>{getCase(caseId).title} is one of three After Midnight cases. Any saved progress on this device is kept.</Copy>
+          <Button onPress={() => onOffer('locked_case')}>See the collection</Button>
+          <TextAction onPress={onCases}>Back to the cases</TextAction>
+        </View></ScrollView>
+      </SafeAreaView>
+    </View></View>
+  </ReadingContext.Provider>;
+}

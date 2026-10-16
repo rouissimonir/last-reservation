@@ -10,7 +10,7 @@ import { ownsCollection } from '@/monetization/access';
 import { AFTER_MIDNIGHT, FREE_COLLECTION, RECOMMENDED_FIRST_CASE } from '@/monetization/catalogue';
 import { usePurchases } from '@/monetization/purchases-provider';
 
-export type OfferSource = 'library' | 'locked_case' | 'ending';
+export type OfferSource = 'library' | 'locked_case';
 type Open = (id: string, replay?: boolean) => void;
 
 function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; locked: boolean; onOpen: Open; onOffer: (source: OfferSource) => void }) {

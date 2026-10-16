@@ -167,3 +167,34 @@ test('support and privacy links must be https', () => {
   assert.equal(safeLink('https://example.org/privacy'), 'https://example.org/privacy');
   for (const bad of [undefined, '', 'http://example.org', 'javascript:alert(1)', 'not a url']) assert.equal(safeLink(bad), null, String(bad));
 });
+
+test('a stale polled snapshot cannot overwrite a newer purchase, restore or listener result', async () => {
+  const { createSnapshotGate } = await import('../src/monetization/purchase-state');
+  const gate = createSnapshotGate();
+  // Refresh sent, then a purchase completes before the refresh answers: the old answer is dropped.
+  let ticket = gate.begin();
+  gate.hold();
+  assert.equal(gate.busy, true);
+  assert.equal(gate.accept(ticket), false);
+  gate.release();
+  assert.equal(gate.accept(ticket), false);
+  // A refresh while a purchase is in flight is dropped too.
+  gate.hold();
+  ticket = gate.begin();
+  assert.equal(gate.accept(ticket), false);
+  gate.release();
+  // A listener push between request and answer wins.
+  ticket = gate.begin();
+  gate.advance();
+  assert.equal(gate.accept(ticket), false);
+  // With nothing newer, a refresh (for example a refund noticed on resume) is applied.
+  ticket = gate.begin();
+  assert.equal(gate.accept(ticket), true);
+  assert.equal(gate.busy, false);
+});
+
+test('the provider takes the in-flight lock synchronously before any await', () => {
+  const provider = read(source.find(f => f.endsWith('purchases-provider.tsx'))!);
+  const body = provider.slice(provider.indexOf('const purchase = useCallback'), provider.indexOf('const restore = useCallback'));
+  assert.ok(body.indexOf('gate.busy') < body.indexOf('gate.hold()') && body.indexOf('gate.hold()') < body.indexOf('await'), 'guard, then hold, then await');
+});

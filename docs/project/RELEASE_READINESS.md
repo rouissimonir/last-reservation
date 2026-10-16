@@ -6,7 +6,7 @@
 
 | Check | Result |
 |---|---|
-| `npm run check` (strict TypeScript, Expo ESLint, 49 tests) | Pass, 0 warnings |
+| `npm run check` (strict TypeScript, Expo ESLint, 51 tests) | Pass, 0 warnings |
 | `npm run build:preview` (web export) | Pass, 4 static routes including `/after-midnight`; the web bundle contains no RevenueCat code |
 | `npx expo export --platform android --platform ios` | Pass, Hermes JS bundles (not a native build) |
 | `npx expo install --check` | Fails on pre-existing patch drift only: `expo` 57.0.29→57.0.30, `expo-router` 57.0.27→57.0.28, `@expo/ui` 57.0.24→57.0.25. The two new packages are accepted. |
@@ -17,6 +17,18 @@
 Screenshots: `docs/screenshots/2026-10-16/`. The offer-unavailable image is a tiled capture artefact of the browser tool; its top-left quarter is the real screen.
 
 **Browser results are not native or device evidence.** They do not establish purchase behaviour, native snapshot privacy, safe areas or system font scaling on a phone.
+
+## Independent code review (AI, read-only)
+
+A separate Claude reviewer read the committed diff (8d293a1..15dbd70). It found no release-build path to a paid case without a verified entitlement, no gated free case, correct RevenueCat 10.14 API use and unchanged existing saves. It reported five defects, all fixed in the follow-up commit:
+
+1. A revoked case kept its scene, so a re-grant could reopen a private sheet without a handoff. Access is now checked above the case; without it the case unmounts entirely and a later grant remounts it at its cover.
+2. A slow foreground refresh could overwrite a newer purchase result with pre-purchase data. Snapshots are now ordered (); stale polls are dropped.
+3. A fast double tap could start two store calls. A synchronous in-flight lock is taken before any await (purchase and restore).
+4. A deep link to the offer over an open case let the case's Android back handler swallow back. The handler now runs only while the case screen is focused.
+5. An unused  offer source was removed.
+
+The provider and gating are not covered by component tests; the gate, lock order and reducer are.
 
 ## Mocked or unit-tested only
 

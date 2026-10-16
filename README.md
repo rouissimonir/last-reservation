@@ -47,7 +47,7 @@ npx expo install --check
 npx expo-doctor
 ```
 
-`typecheck` uses strict TypeScript; `lint` uses Expo ESLint. `test:ci` runs the Node test-runner suite (49 tests) through tsx once and exits; it has no watch mode. Tests cover both complete walkthroughs, wrong choices, read/hint gates, duplicate/stale submissions, case-specific saving/reset, malformed saves, write failures and broken/cyclic content references. `build:preview` performs a real Expo web export into ignored `dist/`; it does not publish anything. `npm run check` remains available for typecheck, lint and tests together. Optional `npx expo export --platform all` checks iOS/Android JavaScript bundling, not native compilation or device behavior.
+`typecheck` uses strict TypeScript; `lint` uses Expo ESLint. `test:ci` runs the Node test-runner suite (51 tests) through tsx once and exits; it has no watch mode. Tests cover both complete walkthroughs, wrong choices, read/hint gates, duplicate/stale submissions, case-specific saving/reset, malformed saves, write failures and broken/cyclic content references. `build:preview` performs a real Expo web export into ignored `dist/`; it does not publish anything. `npm run check` remains available for typecheck, lint and tests together. Optional `npx expo export --platform all` checks iOS/Android JavaScript bundling, not native compilation or device behavior.
 
 Install future dependencies with `npx expo install <package>` (or `--dev` for tools). Preserve package-lock.json and SDK-compatible versions.
 
