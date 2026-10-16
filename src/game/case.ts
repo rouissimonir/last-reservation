@@ -7,7 +7,7 @@ export const CASE_VERSION = 1;
 export const introduction = "A guest’s sealed envelope has vanished from the archive. Three hotel employees had access tonight. One of you has the witness statements. The other has the hotel records. Work together to recover it before the guest returns.";
 
 export type Evidence = { id: string; title: string; source: string; paragraphs: readonly string[];
-  kind?: 'statement' | 'maintenance' | 'access' | 'storage' | 'letter' };
+  kind?: 'statement' | 'maintenance' | 'access' | 'storage' | 'letter' | 'log' | 'plan' | 'archive' };
 export type Round = {
   title: string; question: string; options: readonly string[]; correct: string;
   evidence: Record<Role, Evidence>; hints: readonly string[]; deduction: string; proof: string;

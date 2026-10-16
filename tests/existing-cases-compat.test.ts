@@ -18,9 +18,11 @@ test('existing case content is byte-for-byte what the baseline shipped', () => {
   }
 });
 
-test('existing ids, versions, order and save keys are unchanged; the new case is appended', () => {
+test('existing ids, versions, order and save keys are unchanged; new cases are appended', () => {
   assert.deepEqual(cases.map(c => [c.id, c.version, c.edition]),
-    [['the-missing-envelope', 1, '01'], ['the-last-reservation', 1, '02'], ['the-silent-piano', 1, '03']]);
+    [['the-missing-envelope', 1, '01'], ['the-last-reservation', 1, '02'], ['the-silent-piano', 1, '03'],
+      ['the-masquerade-coat', 1, '04'], ['the-music-box', 1, '05'], ['the-room-never-booked', 1, '06'],
+      ['the-last-call', 1, '07'], ['the-portrait-behind-the-wall', 1, '08']]);
   assert.equal(saveKey('the-missing-envelope'), 'two-sides/missing-envelope/v1');
   assert.equal(saveKey('the-last-reservation'), 'two-sides/the-last-reservation/v1');
 });

@@ -2,6 +2,8 @@
 
 Review checkpoint · 15 October 2026 · Windows PowerShell.
 
+**Current status (16 October 2026): see `docs/project/STATUS.md`.** The After Midnight Collection, two new free cases and RevenueCat purchases were added; the local-preview "all cases open" library and the "no purchase flow" statements below are historical.
+
 ## Third case: The Silent Piano
 
 See `docs/project/STATUS.md` and `THIRD_CASE_REPORT.md` for the checks, Codex checkpoint reviews, browser evidence and what remains unverified. Short version: three deductions, private role handoffs, hints, notebook, ending and an independent save key are implemented; the two earlier cases are unchanged (content digests pinned by a test); no device or human playtest has been done.

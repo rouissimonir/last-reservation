@@ -1,6 +1,11 @@
 import { CASE_ID, CASE_VERSION, ending, introduction, Round, rounds } from './case';
 import { lastReservation } from './last-reservation';
 import { silentPiano } from './silent-piano';
+import { masqueradeCoat } from './masquerade-coat';
+import { musicBox } from './music-box';
+import { roomNeverBooked } from './room-never-booked';
+import { lastCall } from './last-call';
+import { portraitBehindWall } from './portrait-behind-wall';
 
 export type CaseRound = Round & {
   id: string; act: string; label: string; requires: readonly string[]; evidenceRefs: readonly string[];
@@ -23,7 +28,10 @@ export const miniCase: CaseDefinition = {
     label: ['When', 'Who', 'Where'][i], requires: i ? [`ME${i}`] : [],
     evidenceRefs: [round.evidence.A.id, round.evidence.B.id] })), ending,
 };
-export const cases: readonly CaseDefinition[] = [miniCase, lastReservation, silentPiano];
+// New cases are appended so existing ids, order and saves are untouched. Whether a case is free
+// or paid is kept separately, in src/monetization/catalogue.ts.
+export const cases: readonly CaseDefinition[] = [miniCase, lastReservation, silentPiano,
+  masqueradeCoat, musicBox, roomNeverBooked, lastCall, portraitBehindWall];
 export function getCase(id: string = CASE_ID): CaseDefinition {
   const found = cases.find(item => item.id === id);
   if (!found) throw new Error('Unknown case');

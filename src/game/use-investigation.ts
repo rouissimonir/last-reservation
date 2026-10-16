@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Action, freshProgress, investigationReducer, Progress } from './engine';
 import { createSaveQueue, loadProgress, LoadResult } from './storage';
 import { CASE_ID } from './case';
+import { caseEvents } from './case-events';
+import { track } from '../analytics/analytics';
 
 // The case screen is keyed by caseId, so each hook owns one case for its lifetime.
 export function useInvestigation(caseId = CASE_ID) {
@@ -55,6 +57,7 @@ export function useInvestigation(caseId = CASE_ID) {
     // Update the ref synchronously so rapid events always see the latest domain state.
     const next = investigationReducer(current.current, action);
     if (next !== current.current) {
+      caseEvents(current.current, next).forEach(track);
       current.current = next;
       setProgress(next);
       persist(next);

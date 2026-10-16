@@ -5,7 +5,8 @@ import { AccessibilityInfo, Animated, Image, Platform, Pressable, StyleSheet, Te
 import { Evidence, Role } from '@/game/case';
 import { colors as c, mono, serif, space } from '@/game/tokens';
 
-export const ReadingContext = createContext({ largeText: false, compact: false, reducedMotion: true });
+export const ReadingContext = createContext<{ largeText: boolean; compact: boolean; reducedMotion: boolean; paperDate?: string }>(
+  { largeText: false, compact: false, reducedMotion: true });
 export function Copy({ style, ...props }: TextProps) {
   const { largeText } = useContext(ReadingContext);
   return <Text {...props} style={[ui.copy, largeText && ui.largeCopy, style]} />;
@@ -73,14 +74,16 @@ export function ClosedFolder() {
   </View>;
 }
 
-type DocumentKind = 'statement' | 'maintenance' | 'access' | 'storage' | 'letter';
+type DocumentKind = NonNullable<Evidence['kind']>;
 const documentNames: Record<DocumentKind, string> = {
   statement: 'WITNESS STATEMENT', maintenance: 'MAINTENANCE NOTE', access: 'ACCESS REGISTER',
   storage: 'STORAGE-KEY RECORD', letter: 'HOTEL CORRESPONDENCE',
+  log: 'NIGHT LOG', plan: 'FLOOR PLAN', archive: 'ARCHIVE RECORD',
 };
 export function Paper({ children, kind = 'letter', reference = 'BELLWEATHER / 01' }: {
   children: ReactNode; kind?: DocumentKind; reference?: string;
 }) {
+  const { paperDate = 'OCTOBER 1994' } = useContext(ReadingContext);
   return <View style={ui.paperStack}>
     <View pointerEvents="none" aria-hidden style={ui.paperBacking} />
     <View style={[ui.paper, kind === 'statement' && ui.statementPaper]}>
@@ -89,7 +92,7 @@ export function Paper({ children, kind = 'letter', reference = 'BELLWEATHER / 01
           resizeMode="cover" style={[StyleSheet.absoluteFill, ui.paperTextureImage]} />
       </View>
       <View style={ui.paperTop}><View style={ui.hotelRule} /><Text style={ui.hotelName}>Bellweather Hotel</Text>
-        <Text style={ui.hotelDate}>PRIVATE ARCHIVE · OCTOBER 1994</Text></View>
+        <Text style={ui.hotelDate}>PRIVATE ARCHIVE · {paperDate}</Text></View>
       <View style={ui.documentMeta}><Label paper>{documentNames[kind]}</Label><Text style={ui.reference}>{reference}</Text></View>
       {children}
       <View style={ui.paperFooter}><View style={ui.footerRule} /><Text style={ui.filed}>FILED IN CONFIDENCE</Text><View style={ui.footerRule} /></View>

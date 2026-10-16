@@ -2,26 +2,43 @@ import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Button, ClosedFolder, Copy, EnvelopeArt, EvidenceDocument, HotelBackdrop, Label,
+import { router } from 'expo-router';
+import { Button, ClosedFolder, Copy, EvidenceDocument, HotelBackdrop, Label,
   Paper, ReadingContext, RoleGlyph, SceneReveal, TextAction, Title, ui, useReducedMotion } from './game-ui';
 
-import { CaseLibrary } from './case-library';
+import { CaseEmblem } from './case-emblem';
+import { CaseLibrary, OfferSource } from './case-library';
 import { roleNames } from '@/game/case';
 import { getCase } from '@/game/cases';
 import { canAnswer, evidenceUnlocked, nextScene, resumeScene, Scene, visibleHints } from '@/game/engine';
+import { presentationFor } from '@/game/presentation';
 import { colors as c, serif, space } from '@/game/tokens';
 import { useInvestigation } from '@/game/use-investigation';
 import { usePrivacy } from '@/game/use-privacy';
+import { canPlayCase } from '@/monetization/access';
+import { AFTER_MIDNIGHT } from '@/monetization/catalogue';
+import { usePurchases } from '@/monetization/purchases-provider';
 
 export function Investigation() {
   const [selected, setSelected] = useState<{ id: string; replay: boolean } | null>(null);
+  // The offer is its own route. The case screen is closed first, so no case (and no private sheet)
+  // stays mounted underneath it.
+  const openOffer = useCallback((source: OfferSource) => {
+    setSelected(null);
+    router.push({ pathname: '/after-midnight', params: { source } });
+  }, []);
   return selected ? <CaseInvestigation key={`${selected.id}:${selected.replay}`} caseId={selected.id}
-    replay={selected.replay} onCases={() => setSelected(null)} /> :
-    <CaseLibrary onOpen={(id, replay = false) => setSelected({ id, replay })} />;
+    replay={selected.replay} onCases={() => setSelected(null)} onOffer={openOffer} /> :
+    <CaseLibrary onOpen={(id, replay = false) => setSelected({ id, replay })} onOffer={openOffer} />;
 }
 
-function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay: boolean; onCases: () => void }) {
+function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
+  caseId: string; replay: boolean; onCases: () => void; onOffer: (source: OfferSource) => void;
+}) {
   const item = getCase(caseId);
+  // Checked on every render: if access is revoked mid-case, the whole case unmounts behind this gate.
+  const { access } = usePurchases();
+  const allowed = canPlayCase(access, caseId);
   const { rounds, ending, introduction } = item;
   const game = useInvestigation(caseId);
   const p = game.progress;
@@ -39,7 +56,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
   const conceal = useCallback(() => navigate(resumeScene()), [navigate]);
   usePrivacy(conceal);
 
-  const ready = game.status === 'ready';
+  const ready = allowed && game.status === 'ready';
   const privateScene = scene.kind === 'pass' || scene.kind === 'private';
   const isCover = ready && scene.kind === 'cover';
   const showHeaderTools = ready && !privateScene && ['discuss', 'confirmed', 'ending'].includes(scene.kind);
@@ -57,6 +74,12 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
   </View>;
 
   const renderScene = () => {
+    if (!allowed) return <>
+      <Label>{AFTER_MIDNIGHT.title.toUpperCase()}</Label><Title>This case is part of a collection you don’t own yet.</Title>
+      <Copy>{item.title} is one of three After Midnight cases. Any saved progress on this device is kept.</Copy>
+      <Button onPress={() => onOffer('locked_case')}>See the collection</Button>
+      <TextAction onPress={onCases}>Back to the cases</TextAction>
+    </>;
     if (scene.kind === 'reset') return <>
       <Label>A FRESH INVESTIGATION</Label><Title>Start this case again?</Title>
       <Copy>This replaces progress, deductions, hints and reading settings for {item.title} only. Your other cases are preserved. Both investigators will start this case from the beginning.</Copy>
@@ -76,7 +99,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
     switch (scene.kind) {
       case 'cover': return <View style={[s.coverScene, compact && s.compactCover]}>
         <View style={s.caseEdition}><View style={s.editionRule} /><Label>THE BELLWEATHER FILES · {item.edition}</Label><View style={s.editionRule} /></View>
-        <EnvelopeArt />
+        <CaseEmblem emblem={presentationFor(caseId).emblem} />
         <View style={s.coverTitleGroup}>
           <Text style={s.hotelLocation}>{item.setting ?? 'Bellweather Hotel · October 1994'}</Text>
           <Text accessibilityRole="header" style={[s.coverTitle, compact && s.compactCoverTitle]}>{item.coverTitle}</Text>
@@ -177,7 +200,8 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
           {rounds.map((round, i) => <View key={i} style={s.proofCard}><Label>0{i + 1} · {round.label.toUpperCase()}</Label><Text style={s.proofTitle}>{round.deduction}</Text><Copy>{round.proof}</Copy></View>)}
           <View style={s.closedStamp}><Text style={s.closedText}>CASE CLOSED</Text></View>
           <Copy style={s.center}>Two perspectives. One complete story.</Copy>
-          <Button onPress={() => navigate({ kind: 'reset' })}>Play the case again…</Button>
+          <Button onPress={onCases}>Choose your next mystery</Button>
+          <TextAction onPress={() => navigate({ kind: 'reset' })}>Play the case again…</TextAction>
           <TextAction onPress={conceal}>Return to cover</TextAction>
         </>;
       }
@@ -207,7 +231,7 @@ function CaseInvestigation({ caseId, replay, onCases }: { caseId: string; replay
     }
   };
 
-  return <ReadingContext.Provider value={{ largeText: p.settings.largeText, compact, reducedMotion }}>
+  return <ReadingContext.Provider value={{ largeText: p.settings.largeText, compact, reducedMotion, paperDate: presentationFor(caseId).paperDate }}>
     <View style={s.root}><View style={s.frame}>
       <HotelBackdrop cover={isCover} />
       <SafeAreaView style={s.safeArea} edges={['top', 'left', 'right', 'bottom']}>

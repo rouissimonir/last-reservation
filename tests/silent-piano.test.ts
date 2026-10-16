@@ -8,9 +8,11 @@ const text = (r: (typeof silentPiano.rounds)[number], role: 'A' | 'B') =>
 const facts = (role: 'A' | 'B', i: number) => text(silentPiano.rounds[i], role);
 
 test('third case is registered once with its own identity and valid references', () => {
-  assert.equal(cases.length, 3);
+  // The catalogue has grown since this case was added; it must still appear exactly once, third.
+  assert.equal(cases.filter(c => c.id === 'the-silent-piano').length, 1);
+  assert.equal(cases[2], silentPiano);
   assert.equal(getCase('the-silent-piano'), silentPiano);
-  assert.equal(new Set(cases.map(c => c.id)).size, 3);
+  assert.equal(new Set(cases.map(c => c.id)).size, cases.length);
   assert.deepEqual(validateCase(silentPiano), []);
   assert.equal(silentPiano.rounds.length, 3);
   assert.deepEqual(silentPiano.rounds.map(r => r.id), ['SP1', 'SP2', 'SP3']);
