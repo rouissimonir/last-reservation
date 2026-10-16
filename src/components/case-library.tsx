@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 import { CaseEmblem } from './case-emblem';
 import { Button, Copy, HotelBackdrop, Label, ReadingContext, TextAction, Title } from './game-ui';
 import { CaseDefinition, getCase } from '@/game/cases';
@@ -32,7 +33,7 @@ function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; loc
       <View style={s.cardEmblem}><CaseEmblem emblem={presentationFor(item.id).emblem} small /></View>
     </View>
     <Copy style={s.description}>{item.description}</Copy>
-    <Text style={s.duration}>{item.duration}</Text>
+    <Text style={s.duration}>{item.rounds.length} deductions · No time limit</Text>
     {locked ? <>
       <Text style={s.status}>Part of the After Midnight Collection{ready && p.started ? ' · your saved progress is kept' : ''}</Text>
       <Button secondary accessibilityLabel={`See the After Midnight Collection, which includes ${item.title}`} onPress={() => onOffer('locked_case')}>See the collection</Button>
@@ -68,6 +69,7 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
           <Label>TWO / SIDES · BELLWEATHER HOTEL</Label>
           <Title>Choose your case.</Title>
           <Copy>Two people. One phone. Compare your evidence and solve it together.</Copy>
+          <TextAction onPress={() => router.push('/help')}>How to play, support & privacy</TextAction>
           <FirstCaseNote onOpen={onOpen} />
           {access.devPreview && <View style={s.devNote}><Label>DEVELOPMENT PREVIEW</Label>
             <Copy style={s.description}>After Midnight cases are open without a purchase because this development build was started with the preview flag. Release builds ignore it.</Copy></View>}
@@ -84,7 +86,7 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
             <Button secondary onPress={() => onOffer('library')}>{owned ? 'About this collection' : 'See the collection'}</Button>
           </View>
           {AFTER_MIDNIGHT.caseIds.map(id => <CaseCard key={id} item={getCase(id)} locked={!owned} onOpen={onOpen} onOffer={onOffer} />)}
-          <Text style={s.duration}>Play without sound. Case lengths have not yet been measured with real players.</Text>
+          <Text style={s.duration}>Play at your own pace. No sound required.</Text>
         </ScrollView>
       </SafeAreaView>
     </View></View>

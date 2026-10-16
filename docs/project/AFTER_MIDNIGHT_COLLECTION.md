@@ -25,14 +25,14 @@ The existing three free cases were verified (ids, content digests pinned in `tes
 - Tests: every new case played to its ending in code with every wrong option rejected; hints 1–2 never contain the answer; motive keywords appear only in the ending note; mechanics tests confirm the key facts sit on the intended sheet.
 - **AI blind solves (not human playtesting).** Independent Claude subagents received only the player-facing text, without answers, hints or endings, and solved each case. Round 1 found every intended answer but reported defects (one sheet sufficing in four deductions, three wording contradictions, guessable watermark order, one leaked fact). All were fixed. Round 2 on the revised text again found every intended answer, reported each deduction as unique and needing both sheets, and raised smaller wording issues, which were fixed. Details in each spec's review record.
 
-## Cover art — temporary
+## Cover art — illustrated set added 16 October
 
-No image-generation tool was available in this session. Each new case has a **temporary** cover object drawn with native views (`src/components/case-emblem.tsx`): mask (04), music box (05), key and blank tag (06), telephone (07), empty gilt frame with a silhouette (08), and a piano for The Silent Piano (03, replacing the borrowed envelope). They carry no text and no clue. They are not final art.
+The earlier temporary native shapes have been replaced with six transparent generated illustrations in `assets/art/covers/`: a piano, masquerade mask and coat cuff, wrapped music box, brass room key with blank tag, 1990s desk telephone with blank keys, and empty gilt frame with plaster fragments. `CaseEmblem` uses the 640px RGBA exports in `optimized/` for covers, cards and the collection offer. Every clue/title/action remains native text. Existing hotel/envelope/folder/paper assets are unchanged.
 
-Artwork still needed (transparent PNG, same treatment as `assets/art/optimized/case-envelope.png`, no text, no clue content): a masquerade mask with a camel-coat sleeve; a wrapped music box; an old brass room key with a blank tag; a 1990s hotel desk telephone; an ornate empty frame against broken plaster; a ballroom grand piano. Shared backgrounds, the handoff folder and paper are reused.
+Built-in imagegen was used; exact prompts and provenance are in `assets/art/covers/PROMPTS.md`. The source files and exports are real repository files. Visual subject/text/transparency inspection passed; phone layout/device review is separately required. No new case was added.
 
 ## Not yet done
 
 - Human paired playtests of all five new cases (fairness, hint quality, length). Lengths are not advertised; the provisional design target for each premium case is 40–60 minutes and for each new free case 10–15 minutes, both unmeasured.
-- Final artwork (above).
+- Final native-device inspection of the illustrated set (above).
 - Native purchase tests (see `PURCHASE_SETUP.md`).

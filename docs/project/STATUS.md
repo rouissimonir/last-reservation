@@ -2,6 +2,37 @@
 
 Authoritative status, 16 October 2026 · Windows. Earlier history: `docs/STATUS.md`, `THIRD_CASE_REPORT.md`.
 
+## Current submission polish checkpoint — iOS first
+
+The user's current goal is submission readiness, superseding the historical two-case overnight boundary. **Not submission-ready yet.** The active Git root is now the nested app directory (`git rev-parse --show-toplevel` verified), not the old outer repository. No parent work was changed.
+
+Completed in this checkpoint:
+
+- Compatible SDK-57 patches: Expo 57.0.30, Router 57.0.28, Expo UI 57.0.25. Lockfile root dependencies/devDependencies match package.json. A clean `npm ci --ignore-scripts` followed by `npm rebuild` completed successfully.
+- Original navy/brass/two-evidence-leaf launcher identity, splash and favicon; no Expo template logo remains referenced by app.json. iOS inherits the opaque 1024px RGB icon; initial build number 1, portrait iPhone configuration.
+- Six transparent generated cover illustrations replace the temporary native shapes for cases 03–08. Originals and 640px RGBA runtime exports are real repository files. Exact prompts and built-in imagegen provenance: `assets/art/covers/PROMPTS.md`. Existing game art, all authored case content, save keys and entitlement rules are preserved.
+- Help & Privacy route linked from the library; instructions, local save/reset behavior, accessibility and restore guidance. Configured public links have error feedback. Case lengths show true deduction counts without unvalidated time claims.
+- EAS development/preview/production profiles, production preview flag 0, and a real `release:preflight` command with four new negative/configuration tests. No build/account/store configuration or upload was performed.
+- iOS gate register and spoiler-free store-copy draft: `IOS_SUBMISSION.md`, `IOS_STORE_COPY.md`. Dependency risk assessment: `SECURITY_REVIEW.md`.
+
+Actual final checks:
+
+| Check | Result |
+| --- | --- |
+| `npm run check` | PASS: strict TypeScript, Expo lint, **55 tests**, no skipped tests |
+| `npm run build:preview` | PASS: five static routes including `/help` and `/after-midnight` |
+| iOS + Android Expo export | PASS: Hermes JavaScript bundles and all six illustrated runtime assets; **not native binaries** |
+| `npx expo install --check` | PASS: dependencies up to date |
+| `npx expo-doctor` | FAIL: one online app-config schema fetch (`fetch failed`); no check disabled |
+| `npm run release:preflight` | FAIL intentionally: permanent iOS bundle id, Apple RevenueCat public SDK key, support URL and privacy URL are missing |
+| Dependency audit | 30 advisories remain (19 high, 11 moderate); compatibility-only fix attempt did not clear them; see SECURITY_REVIEW.md |
+| Visual asset inspection | All six subjects and alpha checked; runtime exports total about 2.44MB; no clue text |
+| New browser inspection | NOT completed: browser webview attachment timed out; an open request for the local production preview was queued. Historical screenshots do not prove this new layout. |
+
+Local development server is running at localhost:8097. A loopback-only static preview of the completed web export is also running at 127.0.0.1:8098 for the queued browser inspection. Neither publishes the app externally. Existing 8081 process was not stopped.
+
+Still required: publisher details (user selected iOS first and will provide them), live policy/support pages, App Store/RevenueCat setup, signed iPhone and sandbox purchase tests, new UI/device accessibility inspection, human paired playtests, final store screenshots and the open dependency assessment. Keep the goal active; do not describe the app as submission-ready on local tests alone.
+
 ## After Midnight Collection and five-case free catalogue (this checkpoint)
 
 Implemented:

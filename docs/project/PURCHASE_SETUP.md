@@ -69,7 +69,7 @@ Expo Go cannot test purchases (the app treats it as unavailable on purpose). Ins
 npx eas-cli build --profile development --platform ios
 ```
 
-`expo-dev-client` and `react-native-purchases` are already installed with `npx expo install`. Run `npx eas-cli build:configure` first if `eas.json` does not exist (it does not yet).
+`expo-dev-client` and `react-native-purchases` are already installed with `npx expo install`. Local `eas.json` profiles now exist for development, internal preview and production/store; they do not link an Expo/Apple account or create signing credentials. The user selected iOS first. Follow `IOS_SUBMISSION.md`, supply the permanent bundle id/public configuration and pass `npm run release:preflight` before authorizing a cloud build. No EAS build or store setup has been performed here.
 
 Native test checklist (record results in `RELEASE_READINESS.md`):
 

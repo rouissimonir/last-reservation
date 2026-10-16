@@ -1,5 +1,9 @@
 # Checkpoint fixes
 
+## Submission audit · 16 October 2026
+
+The user's active submission-readiness goal supersedes the old two-case implementation boundary; iOS first was confirmed in chat. Current-state audit found compatible Expo patch drift, an inherited Expo launcher/splash icon, temporary cover shapes, a missing easily accessible help/privacy entry, unhandled support-link rejection and unvalidated player-facing time claims. These were addressed without altering case content, saves or entitlement rules. EAS profiles, a real failing-on-missing-config release preflight, four tests and an iOS evidence register were added. See `docs/project/STATUS.md` for actual checks and unresolved gates. The raw `fixes/logs.md` evidence is unchanged; none of this proves its reported native failure is fixed. No new fixes.md finding was invented, no external reviewer was invoked and no publish/push/store change was made.
+
 15 October 2026: hourly in-thread automation `two-sides-hourly-checkpoint-fixes` is active. It searches this repository for files named `fixes.md`, case-insensitively, excluding dependencies, Git internals and generated exports. Review findings are verified against current code and content before changes. Unchanged files are recognized by path and SHA-256, and rejected findings receive an explanation here. This log is not a fixes.md input.
 
 Initial scan: no fixes.md inputs found. No findings applied or rejected. The untracked overnight kit is preserved and its separate runner has not been started. Work follows the user's expanded mission saved in `OVERNIGHT_MISSION.md`, which supersedes the old mini-case-only scope and pause-for-review request. No external review or CLI agent has been invoked.

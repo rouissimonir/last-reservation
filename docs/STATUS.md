@@ -2,6 +2,8 @@
 
 Review checkpoint · 15 October 2026 · Windows PowerShell.
 
+**Submission checkpoint, 16 October:** user selected iOS first. See `docs/project/STATUS.md` and `docs/project/IOS_SUBMISSION.md` for current evidence. Compatible Expo patches, launcher identity, six illustrated covers, Help & Privacy, production build profiles and release preflight are added. TypeScript/lint/55 tests and web/native JS exports pass. Doctor still fails one online schema fetch; release preflight correctly fails on missing publisher configuration. No signed device/purchase test or new browser-layout verification is claimed. The current Git root is the nested app repository; older outer-root and check results below are historical.
+
 **Current status (16 October 2026): see `docs/project/STATUS.md`.** The After Midnight Collection, two new free cases and RevenueCat purchases were added; the local-preview "all cases open" library and the "no purchase flow" statements below are historical.
 
 ## Third case: The Silent Piano

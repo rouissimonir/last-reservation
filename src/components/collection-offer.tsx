@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -49,6 +49,11 @@ export function CollectionOffer({ source, onClose }: { source: 'library' | 'lock
   const message = activityCopy(state);
   const support = safeLink(purchaseConfig.supportUrl);
   const privacy = safeLink(purchaseConfig.privacyUrl);
+  const [linkError, setLinkError] = useState(false);
+  const openLink = async (url: string) => {
+    setLinkError(false);
+    try { await Linking.openURL(url); } catch { setLinkError(true); }
+  };
   useEffect(() => { track({ name: 'collection_offer_viewed', collection_id: AFTER_MIDNIGHT.id, source }); }, [source]);
 
   const purchaseArea = () => {
@@ -112,9 +117,10 @@ export function CollectionOffer({ source, onClose }: { source: 'library' | 'lock
           {storeUnavailable && !verifiedOwner && <Copy style={[s.small, s.muted]}>Restore Purchases needs the iPhone or Android app, signed in to the store account that bought the collection.</Copy>}
 
           <View style={s.links}>
-            {support ? <TextAction onPress={() => { void Linking.openURL(support); }}>Support</TextAction> : null}
-            {privacy ? <TextAction onPress={() => { void Linking.openURL(privacy); }}>Privacy policy</TextAction> : null}
+            {support ? <TextAction onPress={() => { void openLink(support); }}>Support</TextAction> : null}
+            {privacy ? <TextAction onPress={() => { void openLink(privacy); }}>Privacy policy</TextAction> : null}
           </View>
+          {linkError && <Copy accessibilityLiveRegion="polite" style={s.small}>The page could not be opened. Check your connection and try again.</Copy>}
           {(!support || !privacy) && <Copy style={[s.small, s.muted]}>Support and privacy links have not been configured in this build.</Copy>}
           <TextAction onPress={onClose}>Back to the cases</TextAction>
         </ScrollView>

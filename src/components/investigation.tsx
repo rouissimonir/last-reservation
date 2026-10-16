@@ -114,7 +114,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
           <TextAction onPress={() => navigate({ kind: 'settings' })}>Settings</TextAction>
         </View>
         <Text accessibilityLiveRegion="polite" style={s.saveStatus}>{saveLabel}</Text>
-        <Text style={s.saveStatus}>{item.duration}</Text>
+        <Text style={s.saveStatus}>{rounds.length} deductions · No time limit</Text>
       </View>;
       case 'intro': return <>
         <Label>{item.introLabel ?? 'A RAINY EVENING IN OCTOBER, 1994'}</Label><Title>{item.introTitle ?? 'Something is missing.'}</Title>

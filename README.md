@@ -2,6 +2,8 @@
 
 Cooperative mysteries for two people sharing one phone. **Free:** The Missing Envelope, The Last Reservation, The Silent Piano, The Masquerade Coat and The Music Box. **After Midnight Collection** (one non-consumable purchase through RevenueCat): The Room That Was Never Booked, The Last Call at Midnight and The Portrait Behind the Wall. Purchases need a native development or release build; the web preview and Expo Go show the collection locked. Lengths of the new cases are not yet measured; older duration targets remain UNVALIDATED. Current status: `docs/project/STATUS.md`; monetization rules: `docs/project/MONETIZATION.md`; store setup: `docs/project/PURCHASE_SETUP.md`.
 
+**Submission work now targets iOS first.** See [the current submission gates](docs/project/IOS_SUBMISSION.md). The app is not ready for store submission until publisher configuration, native purchase/device checks and human playtests are complete. `npm run release:preflight` reports missing local configuration without printing values. Original launcher/splash art and six generated cover illustrations now replace the template logo and temporary case shapes. Help, support and privacy are reachable from the case library.
+
 To open the paid cases in a local development preview without buying, start the web server with `EXPO_PUBLIC_DEV_PREVIEW_PREMIUM=1` (development bundles only; release builds ignore it).
 
 ## Windows setup and launch
@@ -36,7 +38,7 @@ Use a **matching SDK 57** native client and scan Expo's terminal QR code. Expo's
 
 ## Checks
 
-The Git repository root is `C:\Users\thinkpad t490\Documents\apps\last-reservation`; the Expo application and all npm commands use its nested `last-reservation` directory. The overnight runner should use the application as its working directory. Existing unrelated deletions in the repository root are not part of the app checkpoint; do not clean or stage them automatically.
+The active Git root, verified on 16 October, is now `C:\Users\thinkpad t490\Documents\apps\last-reservation\last-reservation`. Run all npm commands there. Historical overnight reports refer to the separate outer repository. Do not clean or stage parent-repository work.
 
 ```powershell
 npm run typecheck
@@ -45,9 +47,10 @@ npm run test:ci
 npm run build:preview
 npx expo install --check
 npx expo-doctor
+npm run release:preflight
 ```
 
-`typecheck` uses strict TypeScript; `lint` uses Expo ESLint. `test:ci` runs the Node test-runner suite (51 tests) through tsx once and exits; it has no watch mode. Tests cover both complete walkthroughs, wrong choices, read/hint gates, duplicate/stale submissions, case-specific saving/reset, malformed saves, write failures and broken/cyclic content references. `build:preview` performs a real Expo web export into ignored `dist/`; it does not publish anything. `npm run check` remains available for typecheck, lint and tests together. Optional `npx expo export --platform all` checks iOS/Android JavaScript bundling, not native compilation or device behavior.
+`typecheck` uses strict TypeScript; `lint` uses Expo ESLint. `test:ci` runs the Node test-runner suite through tsx once and exits; it has no watch mode. Tests cover all authored walkthroughs, wrong choices, read/hint gates, duplicate/stale submissions, case-specific saving/reset, malformed saves, write failures, broken/cyclic content references, entitlement boundaries and release configuration checks. `build:preview` performs a real Expo web export into ignored `dist/`; it does not publish anything. `npm run check` remains available for typecheck, lint and tests together. Optional `npx expo export --platform all` checks iOS/Android JavaScript bundling, not native compilation or device behavior. Release preflight intentionally fails until the publisher's iOS identifier, Apple public SDK key and live URLs are configured.
 
 Install future dependencies with `npx expo install <package>` (or `--dev` for tools). Preserve package-lock.json and SDK-compatible versions.
 
@@ -71,4 +74,4 @@ See `docs/MORNING_HANDOFF.md` for actual results, screenshot links and a ten-min
 
 Native AppState handling returns to cover when inactive/backgrounded; Android back does the same. Browser visibility/pagehide/blur conceals content. These are best-effort lifecycle responses, **not verified native screenshot protection**. No screen-capture prevention is installed. Short 160ms reveals and press feedback respect reduced motion; outgoing private content unmounts immediately and never crossfades into the next role. There is no essential audio, backend, authentication or remote analytics. The only purchase is the After Midnight Collection through RevenueCat. React DOM is inherited solely for Expo's web runtime; the UI uses React Native components and StyleSheet, with Expo LinearGradient for decorative shading.
 
-The surrounding Git repository has unrelated root-template deletions and an untracked `Two_Sides_Overnight_Kit/`. Checkpoints include this nested app only. The current expanded overnight mission supersedes the earlier pause-for-review boundary. Hourly in-chat checks look for new `fixes.md` findings and record verified fixes/rejections in `docs/FIXES_LOG.md`; the separate kit runner has not been started.
+The separate parent repository contains unrelated work preserved by this session. Checkpoints include this app only. Hourly in-chat checks look for new `fixes.md` findings and record verified fixes/rejections in `docs/FIXES_LOG.md`; the separate kit runner has not been started. The user's current submission goal supersedes the historical overnight implementation scope.
