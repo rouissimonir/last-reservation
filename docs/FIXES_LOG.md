@@ -1,5 +1,9 @@
 # Checkpoint fixes
 
+## Submission regression · 16 October 2026
+
+Confirmed and fixed two defects during actual current-state review: route focus only disabled Android back handling but did not unmount a private sheet, and the reproduced Help → collection → “Back to the cases” path returned to Help. The case subtree now unmounts while unfocused with navigation focus cleanup; collection case-selection actions explicitly dismiss to the library, while Close preserves prior-screen behavior. Eleven actual component tests were added without changing the original 55 tests or case/save/entitlement rules. Final typecheck/lint/66 tests and exports pass. Production-browser navigation, art and private readiness/reload checks passed with saved JPEG evidence; device/store checks remain open. See `docs/project/SUBMISSION_REGRESSION.md` for actual results, setup repairs, dependency audit changes and limitations. This is progress on the user's submission goal, not a new fixes.md input or a claim the original iPhone startup report is repaired.
+
 ## Submission audit · 16 October 2026
 
 The user's active submission-readiness goal supersedes the old two-case implementation boundary; iOS first was confirmed in chat. Current-state audit found compatible Expo patch drift, an inherited Expo launcher/splash icon, temporary cover shapes, a missing easily accessible help/privacy entry, unhandled support-link rejection and unvalidated player-facing time claims. These were addressed without altering case content, saves or entitlement rules. EAS profiles, a real failing-on-missing-config release preflight, four tests and an iOS evidence register were added. See `docs/project/STATUS.md` for actual checks and unresolved gates. The raw `fixes/logs.md` evidence is unchanged; none of this proves its reported native failure is fixed. No new fixes.md finding was invented, no external reviewer was invoked and no publish/push/store change was made.

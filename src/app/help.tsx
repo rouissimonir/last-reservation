@@ -15,7 +15,7 @@ export default function HelpScreen() {
     setLinkError(false);
     try { await Linking.openURL(url); } catch { setLinkError(true); }
   };
-  const close = () => router.canGoBack() ? router.back() : router.replace('/');
+  const close = () => router.dismissTo('/');
   return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion: true }}>
     <View style={s.root}><View style={s.frame}>
       <HotelBackdrop cover={false} />

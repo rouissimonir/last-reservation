@@ -2,6 +2,12 @@
 
 Authoritative status, 16 October 2026 · Windows. Earlier history: `docs/STATUS.md`, `THIRD_CASE_REPORT.md`.
 
+## Latest regression checkpoint
+
+See `SUBMISSION_REGRESSION.md` for current evidence. Fixed route-focus private-sheet unmounting and the reproduced Help → collection → “Back to the cases” destination bug. Added 11 real component tests alongside the unchanged 55 domain/configuration tests; `npm run check` passes all **66**. `test:ci` now runs both suites once and exits. The compatible renderer is pinned to 1.2.0; full dependency-tree validation has no problems. Web and iOS/Android JS exports pass; source maps show no test-tool modules in native exports. Expo alignment passes; Doctor still fails one online schema fetch.
+
+The production browser is now attached and inspected at 375×667 and 390×844. Artwork, Help/offer navigation, locked web purchases, private readiness/reload and scoped QA reset were verified. Ten actual JPEG captures are in `docs/screenshots/2026-10-16/submission/`; the private-sheet capture contains a spoiler. These supersede the earlier “browser inspection pending” entry below. No device/sandbox/human evidence is claimed. Latest full audit is 65 advisories (49 high, 16 moderate) after adding test tooling; no clean-security claim. Publisher details and the remaining gates in IOS_SUBMISSION.md are still required.
+
 ## Current submission polish checkpoint — iOS first
 
 The user's current goal is submission readiness, superseding the historical two-case overnight boundary. **Not submission-ready yet.** The active Git root is now the nested app directory (`git rev-parse --show-toplevel` verified), not the old outer repository. No parent work was changed.

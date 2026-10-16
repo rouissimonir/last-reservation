@@ -2,6 +2,8 @@
 
 16 October 2026. Target selected by the user: **iOS first**. **Not yet submission-ready.** This is an evidence register, not a claim of App Review approval.
 
+Latest local evidence: `SUBMISSION_REGRESSION.md` — 66 passing tests, two privacy/navigation fixes, passing exports and completed production-web visual/flow inspection. Browser-only gaps below remain native-device gates.
+
 ## Current checkout
 
 `git rev-parse --show-toplevel` now returns `C:\Users\thinkpad t490\Documents\apps\last-reservation\last-reservation`. This nested folder has its own Git repository. The old outer-repository paths in historical mission reports are not the active Git root. Do not stage or clean the parent repository.
@@ -36,9 +38,9 @@ Never paste signing secrets, .p8 files, passwords or service-account keys into c
 | Physical iPhone stability | A signed build installs and cold-launches, all five free cases and three owned cases can complete, offline saves survive force-quit/relaunch | No device evidence |
 | Native purchase recovery | Sandbox buy, cancel, pending/approval, failed/unverified response, offline ownership, reinstall/restore, refund/revoke, rapid taps | Unit tests only; real sandbox evidence required |
 | Private handoffs | VoiceOver focus and app-switch/back/notification behavior never advances or exposes the other sheet; OS screenshots/privacy limits recorded honestly | Browser and source evidence only |
-| Accessibility/layout | Large and accessibility text sizes, reduced motion, VoiceOver, 375/390px and modern large iPhone screens, safe areas and scroll-to-bottom | Browser checks cannot prove native behavior |
+| Accessibility/layout | Large and accessibility text sizes, reduced motion, VoiceOver, 375/390px and modern large iPhone screens, safe areas and scroll-to-bottom | Production web checked at 375×667/390×844 with final art; native behavior still unverified |
 | Story fairness | Fresh two-person sessions, one phone, no solutions; record solve paths, ambiguous alternatives, hints and duration for each case | No human playtest evidence |
-| Final case cover art | Consistent art for cases 03–08, no clue leakage; inspect on small phones | Six transparent illustrations added; source/alpha inspection passed, device inspection pending |
+| Final case cover art | Consistent art for cases 03–08, no clue leakage; inspect on small phones | Source/alpha and small browser layouts inspected; device inspection pending |
 | Metadata and screenshots | Final English store copy, age-rating answers, rights confirmation, real correctly sized iPhone screenshots of the signed release build | Draft copy only in IOS_STORE_COPY.md; existing browser captures are not submission assets |
 | Production guard | Signed production build has no dev client/preview label; paid cases stay locked without verified entitlement even if a preview env flag is accidentally set | Pure guard tests only; signed build required |
 | Dependencies/security | SDK alignment, Doctor, lockfile validation, audit assessment and regression after fixes | See STATUS.md for current command results |

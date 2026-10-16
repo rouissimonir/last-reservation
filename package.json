@@ -32,10 +32,15 @@
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^14.1.0",
+    "@types/jest": "29.5.14",
     "@types/node": "^26.6.5",
     "@types/react": "~19.2.2",
     "eslint": "^9.39.5",
     "eslint-config-expo": "~57.0.2",
+    "jest": "~29.7.0",
+    "jest-expo": "~57.0.6",
+    "test-renderer": "1.2.0",
     "tsx": "^4.23.15",
     "typescript": "~6.0.3"
   },
@@ -46,11 +51,13 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts",
-    "test:ci": "tsx --test tests/*.test.ts",
+    "test": "npm run test:ci",
+    "test:ci": "npm run test:domain && npm run test:ui",
     "build:preview": "expo export --platform web --output-dir dist",
     "check": "npm run typecheck && npm run lint && npm test",
-    "release:preflight": "tsx scripts/release-preflight.ts"
+    "release:preflight": "tsx scripts/release-preflight.ts",
+    "test:domain": "tsx --test tests/*.test.ts",
+    "test:ui": "jest --ci --runInBand"
   },
   "private": true
 }

@@ -14,7 +14,10 @@ Written 16 October 2026 from an audit of commit `8d293a1`. Status as of the end 
 | 8 | The Silent Piano reused the envelope cover | Native piano emblem (temporary) | Done |
 | 9 | Ending only offered replay | "Choose your next mystery" on every ending | Done |
 | 10 | `.gitignore` already ignores `.env*`, `*.p8`, credentials | Add `.env.example` with public keys only | Done |
-| 11 | Expo patch drift (`expo`, `expo-router`, `@expo/ui`) predates this work | Left as is; upgrade in its own change | Open |
-| 12 | No artwork generator in this session | Temporary native emblems; list final art | Open (art) |
+| 11 | Expo patch drift (`expo`, `expo-router`, `@expo/ui`) predates this work | Compatible SDK-57 patches installed in submission checkpoint | Done; separate dependency/security assessment remains open |
+| 12 | Native cover emblems were temporary | Six transparent illustrations added and checked in small production-web layouts | Done for browser; device review pending |
 | 13 | No human playtests exist for any case | Paired sessions for cases 04–08 | Open (people) |
 | 14 | Native purchase behaviour cannot be exercised in a browser | EAS development build and sandbox tests (`PURCHASE_SETUP.md`) | Open (accounts) |
+| 15 | Route focus only disabled Android back; a case could remain mounted below another route | Immediate subtree unmount plus navigation focus cleanup | Done; real component regression test passes |
+| 16 | Help → collection → Back to the cases returned to Help | Separate Close from explicit library destination | Done; component and production-browser checks pass |
+| 17 | Purchase provider/private unmounts lacked component coverage | 11 Jest Expo/RNTL tests, preserved 55 original domain/configuration tests | Done; all 66 pass; mocked native boundaries remain a limit |

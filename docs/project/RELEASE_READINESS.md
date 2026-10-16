@@ -1,5 +1,7 @@
 # Release readiness — After Midnight Collection
 
+**Latest regression evidence:** `SUBMISSION_REGRESSION.md` records two verified privacy/navigation fixes, all 66 tests passing and completed production-browser inspection. This supersedes the earlier pending-browser and 55-test statements below. Submission gates remain open; no hardware/store success is claimed.
+
 **Status: NOT release-ready.** Current iOS-first submission work is recorded in `IOS_SUBMISSION.md` and the top of `STATUS.md`. SDK-compatible patches, illustrated covers, launcher branding, Help & Privacy, EAS profiles and release preflight were added in the later checkpoint. TypeScript/lint/55 tests and web/native JavaScript exports passed. Doctor now has one online schema-fetch failure, not dependency drift. Preflight correctly fails on missing publisher configuration, and dependency audit risks remain open. New browser inspection could not attach; no updated screenshot/device claim is made. The tables below record the earlier After Midnight implementation session.
 
 ## Verified in this session (16 October 2026, Windows, Node 22.14.0)

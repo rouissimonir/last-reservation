@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { router, useIsFocused } from 'expo-router';
+import { router, useFocusEffect, useIsFocused } from 'expo-router';
 import { Button, ClosedFolder, Copy, EvidenceDocument, HotelBackdrop, Label,
   Paper, ReadingContext, RoleGlyph, SceneReveal, TextAction, Title, ui, useReducedMotion } from './game-ui';
 
@@ -21,6 +21,8 @@ import { usePurchases } from '@/monetization/purchases-provider';
 
 export function Investigation() {
   const [selected, setSelected] = useState<{ id: string; replay: boolean } | null>(null);
+  const focused = useIsFocused();
+  useFocusEffect(useCallback(() => () => setSelected(null), []));
   // The offer is its own route. The case screen is closed first, so no case (and no private sheet)
   // stays mounted underneath it.
   const openOffer = useCallback((source: OfferSource) => {
@@ -30,6 +32,9 @@ export function Investigation() {
   // Access is checked here, above the case: without it the case (scene, saved progress, any private
   // sheet) is unmounted entirely, and a later grant remounts it fresh at its cover.
   const { access } = usePurchases();
+  // A deep link can open another route without an AppState event. Remove the entire case
+  // immediately on focus loss; returning starts at the library and requires a fresh handoff.
+  if (!focused) return null;
   if (selected && !canPlayCase(access, selected.id)) return <LockedCase caseId={selected.id}
     onCases={() => setSelected(null)} onOffer={openOffer} />;
   return selected ? <CaseInvestigation key={`${selected.id}:${selected.replay}`} caseId={selected.id}

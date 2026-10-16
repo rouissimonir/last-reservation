@@ -1,6 +1,8 @@
 # Dependency audit — 16 October 2026
 
-**Open release assessment; no clean-security claim.** After compatible Expo patches, `npm audit` still reports **30 advisories: 19 high, 11 moderate** (includes inherited/transitive dependency chains). `npm audit fix --ignore-scripts` was attempted without force; it did not reduce that total. Package ranges retain Expo SDK 57 and React Native 0.86.3. No advisory was suppressed, ignored by a check, or hidden with an audit threshold.
+**Later regression checkpoint:** adding Jest Expo/RNTL for actual component tests increased the inventory. Latest explicit full audit reports **65 (49 high, 16 moderate)**, adding sprintf-js through tooling to the roots below. Do not read the earlier 30-advisory snapshot as current. A non-dev inventory query also includes testing peers reached through Router and is not an exact shipped-module list. Native export source maps were inspected: no Jest, RNTL, test-renderer or tests/ui modules appear in those iOS/Android JS outputs. No test-tooling exception or global audit suppression was added. Full dependency validation is clean after pinning test-renderer 1.2.0 to preserve React 19.2.3 compatibility. The security gate remains open.
+
+**Earlier patch-only snapshot; no clean-security claim.** After compatible Expo patches, `npm audit` reported **30 advisories: 19 high, 11 moderate** (including inherited/transitive chains). The later test-tooling inventory is recorded above. `npm audit fix --ignore-scripts` was attempted without force; it did not reduce the earlier total. Package ranges retain Expo SDK 57 and React Native 0.86.3. No advisory was suppressed, ignored by a check, or hidden with an audit threshold.
 
 The audit's forced fixes include downgrading Expo to 44.0.6 or React Native to 0.72.17, and upgrading Router to 58.0.21 independently of SDK 57. Those are not compatibility fixes for this project and were not applied.
 

@@ -42,7 +42,9 @@ function activityCopy(state: PurchaseState): string | null {
   }
 }
 
-export function CollectionOffer({ source, onClose }: { source: 'library' | 'locked_case' | 'direct'; onClose: () => void }) {
+export function CollectionOffer({ source, onClose, onCases }: {
+  source: 'library' | 'locked_case' | 'direct'; onClose: () => void; onCases: () => void;
+}) {
   const { state, access, storeUnavailable, purchase, restore, retryOffer } = usePurchases();
   const verifiedOwner = state.entitlements.includes(AFTER_MIDNIGHT.entitlementId ?? '');
   const busy = state.activity === 'purchasing' || state.activity === 'restoring';
@@ -58,7 +60,7 @@ export function CollectionOffer({ source, onClose }: { source: 'library' | 'lock
 
   const purchaseArea = () => {
     if (verifiedOwner) return <View style={s.owned}><Label>OWNED</Label><Copy>This collection is yours. Start or continue any of its cases from the case list.</Copy>
-      <Button onPress={onClose}>Choose a case</Button></View>;
+      <Button onPress={onCases}>Choose a case</Button></View>;
     if (state.offer.status === 'loading') return <View style={s.priceBox}><Copy accessibilityLiveRegion="polite">Checking the store for the price…</Copy></View>;
     if (state.offer.status === 'unavailable') {
       const reason = state.offer.reason;
@@ -122,7 +124,7 @@ export function CollectionOffer({ source, onClose }: { source: 'library' | 'lock
           </View>
           {linkError && <Copy accessibilityLiveRegion="polite" style={s.small}>The page could not be opened. Check your connection and try again.</Copy>}
           {(!support || !privacy) && <Copy style={[s.small, s.muted]}>Support and privacy links have not been configured in this build.</Copy>}
-          <TextAction onPress={onClose}>Back to the cases</TextAction>
+          <TextAction onPress={onCases}>Back to the cases</TextAction>
         </ScrollView>
       </SafeAreaView>
     </View></View>

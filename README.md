@@ -52,6 +52,8 @@ npm run release:preflight
 
 `typecheck` uses strict TypeScript; `lint` uses Expo ESLint. `test:ci` runs the Node test-runner suite through tsx once and exits; it has no watch mode. Tests cover all authored walkthroughs, wrong choices, read/hint gates, duplicate/stale submissions, case-specific saving/reset, malformed saves, write failures, broken/cyclic content references, entitlement boundaries and release configuration checks. `build:preview` performs a real Expo web export into ignored `dist/`; it does not publish anything. `npm run check` remains available for typecheck, lint and tests together. Optional `npx expo export --platform all` checks iOS/Android JavaScript bundling, not native compilation or device behavior. Release preflight intentionally fails until the publisher's iOS identifier, Apple public SDK key and live URLs are configured.
 
+`test:ci` now includes both `test:domain` (55 tsx tests) and `test:ui` (11 Jest Expo/RNTL component tests, `--ci --runInBand`). Both exit without watching. Component tests cover real private-sheet unmounting, route focus, revoked access, damaged-save UI, purchase-provider timing and collection return navigation with mocked native boundaries. `test-renderer` is pinned to 1.2.0 for React 19.2.3 compatibility. They do not contact a store or replace device testing. Latest evidence and actual browser captures: [submission regression](docs/project/SUBMISSION_REGRESSION.md).
+
 Install future dependencies with `npx expo install <package>` (or `--dev` for tools). Preserve package-lock.json and SDK-compatible versions.
 
 ## Human inspection

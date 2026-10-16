@@ -8,6 +8,7 @@ node_modules/
 dist/
 dist-native/
 web-build/
+coverage/
 expo-env.d.ts
 
 # Native
