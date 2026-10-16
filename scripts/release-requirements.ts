@@ -1,6 +1,8 @@
 export type IosReleaseConfig = {
   name?: string; version?: string; icon?: string;
-  ios?: { bundleIdentifier?: string; buildNumber?: string; icon?: unknown };
+  ios?: { bundleIdentifier?: string; buildNumber?: string; icon?: unknown;
+    privacyManifests?: { NSPrivacyAccessedAPITypes?: { NSPrivacyAccessedAPIType: string; NSPrivacyAccessedAPITypeReasons: string[] }[] };
+  };
 };
 type ProductionProfile = { distribution?: string; developmentClient?: boolean; environment?: string; autoIncrement?: boolean; env?: Record<string, string> };
 
@@ -24,6 +26,15 @@ export function iosReleaseIssues(config: IosReleaseConfig, env: Record<string, s
     issues.push('Set the permanent publisher-owned ios.bundleIdentifier in app.json.');
   if (!/^\d+\.\d+\.\d+$/.test(config.version ?? '')) issues.push('Set a numeric major.minor.patch app version.');
   if (!/^\d+(?:\.\d+){0,2}$/.test(config.ios?.buildNumber ?? '')) issues.push('Set the initial ios.buildNumber; EAS production increments subsequent builds.');
+  const reasons = config.ios?.privacyManifests?.NSPrivacyAccessedAPITypes ?? [];
+  const expectedReasons = [
+    ['NSPrivacyAccessedAPICategoryFileTimestamp', 'C617.1'],
+    ['NSPrivacyAccessedAPICategoryUserDefaults', 'CA92.1'],
+    ['NSPrivacyAccessedAPICategorySystemBootTime', '35F9.1'],
+  ];
+  if (!expectedReasons.every(([category, reason]) => reasons.some(item =>
+    item.NSPrivacyAccessedAPIType === category && item.NSPrivacyAccessedAPITypeReasons.includes(reason))))
+    issues.push('Add the verified iOS required-reason declarations; see PRIVACY_DATA_INVENTORY.md.');
   if (!env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY?.startsWith('appl_') || env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY.length < 15)
     issues.push('Configure EXPO_PUBLIC_REVENUECAT_IOS_API_KEY with the Apple public SDK key (not a secret or test-store key).');
   for (const key of ['EXPO_PUBLIC_SUPPORT_URL', 'EXPO_PUBLIC_PRIVACY_URL']) {

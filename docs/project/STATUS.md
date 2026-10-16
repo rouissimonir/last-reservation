@@ -2,6 +2,12 @@
 
 Authoritative status, 16 October 2026 · Windows. Earlier history: `docs/STATUS.md`, `THIRD_CASE_REPORT.md`.
 
+## Latest privacy and native-link checkpoint
+
+See `PRIVACY_AND_LINK_CHECKPOINT.md` and `PRIVACY_DATA_INVENTORY.md`. Corrected inaccurate RevenueCat store-disclosure instructions and clarified SDK startup traffic in Help. Added three evidenced minimum app-level required-reason declarations and preflight/provenance/Expo-merge checks; final archive/privacy-label verification is still required. Added a native external-link whitelist that sends only bounded canonical public routes to Router, with actual SDK registration/event tests. This is an entry-point mitigation, not a cleared dependency advisory or a protection claim for web/Expo Go preprocessing.
+
+`npm run check` passes **75 tests** (62 domain/config + 13 component/SDK tests), TypeScript and lint. Web and both native JS exports pass; source maps confirm the native filter is included. Dependency alignment passes. Latest Doctor now fails **two online checks (19/21)**: schema fetch and React Native Directory metadata. Release preflight still correctly fails on four missing publisher fields. No dependencies, case content, saves, entitlement rules or supplied art changed. The updated Help privacy section was inspected at 375×667 with an actual JPEG capture; no horizontal overflow or browser warnings/errors. Signed device/sandbox/human/owner gates remain open.
+
 ## Latest regression checkpoint
 
 See `SUBMISSION_REGRESSION.md` for current evidence. Fixed route-focus private-sheet unmounting and the reproduced Help → collection → “Back to the cases” destination bug. Added 11 real component tests alongside the unchanged 55 domain/configuration tests; `npm run check` passes all **66**. `test:ci` now runs both suites once and exits. The compatible renderer is pinned to 1.2.0; full dependency-tree validation has no problems. Web and iOS/Android JS exports pass; source maps show no test-tool modules in native exports. Expo alignment passes; Doctor still fails one online schema fetch.

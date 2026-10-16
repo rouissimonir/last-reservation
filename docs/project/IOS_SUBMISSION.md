@@ -2,7 +2,7 @@
 
 16 October 2026. Target selected by the user: **iOS first**. **Not yet submission-ready.** This is an evidence register, not a claim of App Review approval.
 
-Latest local evidence: `SUBMISSION_REGRESSION.md` — 66 passing tests, two privacy/navigation fixes, passing exports and completed production-web visual/flow inspection. Browser-only gaps below remain native-device gates.
+Latest local evidence: `PRIVACY_AND_LINK_CHECKPOINT.md` — 75 passing tests, corrected disclosures, evidenced minimum required-reason declarations and a native link-entry mitigation. `PRIVACY_DATA_INVENTORY.md` records current data flows and exact native-manifest sources. Earlier visual/flow checks are in `SUBMISSION_REGRESSION.md`. Final archive aggregation, store privacy answers and native-device gates remain unverified; local checks do not clear them.
 
 ## Current checkout
 
@@ -44,6 +44,7 @@ Never paste signing secrets, .p8 files, passwords or service-account keys into c
 | Metadata and screenshots | Final English store copy, age-rating answers, rights confirmation, real correctly sized iPhone screenshots of the signed release build | Draft copy only in IOS_STORE_COPY.md; existing browser captures are not submission assets |
 | Production guard | Signed production build has no dev client/preview label; paid cases stay locked without verified entitlement even if a preview env flag is accidentally set | Pure guard tests only; signed build required |
 | Dependencies/security | SDK alignment, Doctor, lockfile validation, audit assessment and regression after fixes | See STATUS.md for current command results |
+| Native privacy manifests and disclosures | Generated/archive manifest resources match actual SDKs and usage; owner verifies live policy and store answers | Three evidenced app-level reasons and local Expo merge tested; final archive, extra SDK reasons and dashboard review pending |
 
 ## Build sequence once configuration is complete
 

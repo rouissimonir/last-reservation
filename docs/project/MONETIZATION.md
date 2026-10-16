@@ -9,7 +9,7 @@ Decided 16 October 2026. This supersedes every earlier monetization proposal in 
 - US storefront target price **USD 4.99** (set in App Store Connect / Google Play, not in code). The app always shows the store's localized `priceString`; "$4.99" is never hard-coded.
 - The purchase covers this named collection only. It does not promise future releases. No subscriptions, advertising, paid hints, energy, timers or consumables.
 - Positioning line: **“One purchase. Two players. Three new mysteries.”**
-- No playtime is advertised. Cases show "Length not yet measured by playtests"; the original three keep their labelled UNVALIDATED targets.
+- No playtime is advertised. Player-facing covers/cards show deduction counts and no time limit; provisional durations remain author metadata only.
 
 ## Player flow (implemented)
 
@@ -46,7 +46,7 @@ Resetting a case only rewrites that case's save key; purchases live in the store
 
 ## Analytics
 
-No analytics provider existed and none was added (CLAUDE.md forbids remote analytics without a deliberate decision). `src/analytics/analytics.ts` defines the only events and a sink registry; development builds log to the console; **release builds currently send nothing anywhere**.
+No gameplay analytics provider was added (CLAUDE.md forbids remote analytics without a deliberate decision). `src/analytics/analytics.ts` defines gameplay/purchase UI events and a sink registry; development builds log to the console, and release builds install no event sink. **This describes the custom event layer only.** RevenueCat's native purchase verification has separate network traffic and dashboard analytics; it must not be described as an app that sends no data.
 
 Events (stable ids only, no names, answers, free text or device ids): `case_started`, `case_completed`, `premium_case_started` (`case_id`, `collection_id`), `collection_offer_viewed` (`source`), `purchase_started`, `purchase_verified` and `purchase_restored` (`sandbox` flag), `purchase_failed` (`reason`). Sandbox/TestFlight purchases carry `sandbox: true`; RevenueCat also separates sandbox from production revenue in its dashboard.
 
@@ -54,9 +54,8 @@ To turn analytics on later: choose a provider, add one sink in `purchases-provid
 
 ## SDK data collection and privacy disclosures
 
-RevenueCat (`react-native-purchases` 10.14.0) is now in the native app. It sends to RevenueCat: an anonymous app user id it generates, purchase/receipt and transaction data, device/OS/app-version information, storefront/country and IP address (for service operation). Required before release:
+See `PRIVACY_DATA_INVENTORY.md` for the source-audited data flow and native manifest evidence. The app configures RevenueCat without a custom user id or customer attributes; configured native builds start the purchase service and refresh it at app startup, including for free-case players. Local case saves are not sent to that service.
 
-- App Store privacy label: declare **Purchases** (linked to an anonymous identifier, not used for tracking) and the diagnostics/identifiers RevenueCat documents; Google Play Data safety: **Financial info → purchase history**, app info/performance as applicable.
-- Privacy policy must name RevenueCat as a processor and describe the purchase data above.
-- No ATT prompt is needed: nothing is used for tracking.
-- Confirm against RevenueCat's current privacy documentation at release time; this list is not legal advice.
+- The earlier blanket instructions to mark purchase data linked and to declare diagnostics/identifiers were inaccurate. RevenueCat's current [Apple privacy guide](https://www.revenuecat.com/docs/platform-resources/apple-platform-resources/apple-app-privacy) requires purchase history for App Functionality and Analytics; other fields depend on actual integrations and identification.
+- Publisher review must confirm dashboard integrations, identity linking, tracking and retention/contact handling before entering final store answers or publishing the policy. No tracking SDK/IDFA collection calls or custom identity attributes were found in this app's source. That source finding does not certify an uninspected dashboard or final binary.
+- Android store disclosure remains a separate future-platform review; the selected target is iOS first.

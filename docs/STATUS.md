@@ -2,6 +2,8 @@
 
 Review checkpoint · 15 October 2026 · Windows PowerShell.
 
+**Latest privacy/link checkpoint, 16 October:** `docs/project/PRIVACY_AND_LINK_CHECKPOINT.md` records corrected purchase-data disclosures, evidenced minimum iOS required-reason config, native external-link filtering, 75 passing tests and passing web/native JS exports. Latest Doctor is 19/21 due to two online failures. Four publisher fields, native/archive/store tests, human playtests and dependency assessment remain open. Earlier totals/results below are history, not current readiness claims.
+
 **Latest regression checkpoint, 16 October:** `docs/project/SUBMISSION_REGRESSION.md` records two verified fixes (route-focus privacy and collection return destination), 55 + 11 passing domain/component tests, passing web/native JS exports, a valid dependency tree, and completed production-browser inspection with ten JPEG captures. Doctor's online schema fetch, publisher configuration, dependency assessment, signed iPhone/purchase tests and human playtests remain open. Earlier pending-browser and 55-test totals below are historical.
 
 **Submission checkpoint, 16 October:** user selected iOS first. See `docs/project/STATUS.md` and `docs/project/IOS_SUBMISSION.md` for current evidence. Compatible Expo patches, launcher identity, six illustrated covers, Help & Privacy, production build profiles and release preflight are added. TypeScript/lint/55 tests and web/native JS exports pass. Doctor still fails one online schema fetch; release preflight correctly fails on missing publisher configuration. No signed device/purchase test or new browser-layout verification is claimed. The current Git root is the nested app repository; older outer-root and check results below are historical.

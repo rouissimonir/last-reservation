@@ -30,7 +30,7 @@ export default function HelpScreen() {
           </View>
           <View style={s.section}><Label>READING & PROGRESS</Label>
             <Copy>Play at your own pace, without sound or timers. Your device’s text size is supported. Each case also has a Larger body text option in Settings.</Copy>
-            <Copy>Progress and reading settings are saved on this device. You can leave a case and continue later. Saves do not sync between devices. Reset this case in its Settings to remove its progress; other cases and purchases are preserved.</Copy>
+            <Copy>Progress and reading settings are saved locally. You can leave a case and continue later. The game does not sync saves between devices. Reset this case in its Settings to remove its progress; other cases and purchases are preserved.</Copy>
             <Copy>Hiding a sheet helps keep the two roles separate. It does not prevent screenshots or someone looking over your shoulder.</Copy>
           </View>
           <View style={s.section}><Label>PURCHASES</Label>
@@ -39,7 +39,8 @@ export default function HelpScreen() {
             <Button secondary onPress={() => router.push('/after-midnight')}>Collection & Restore Purchases</Button>
           </View>
           <View style={s.section}><Label>PRIVACY & SUPPORT</Label>
-            <Copy>Case progress stays in local storage. The game has no account, advertising or remote gameplay analytics. Native purchase verification uses RevenueCat and your app store; this is separate from your case saves.</Copy>
+            <Copy>Case progress is saved locally. The game has no account, advertising or remote gameplay analytics.</Copy>
+            <Copy>In the installed app, RevenueCat and your app store verify purchases using purchase history and an app-generated identifier. The purchase service may connect when the app starts. Your case progress is not sent to these services.</Copy>
             <Copy>Read the privacy policy for purchase-data handling and contact details. If you need help, include the case title and what happened, and avoid sending payment details or private evidence unless needed.</Copy>
             {privacy && <Button secondary onPress={() => { void open(privacy); }}>Privacy policy</Button>}
             {support && <Button secondary onPress={() => { void open(support); }}>Contact support</Button>}
