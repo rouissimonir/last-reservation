@@ -23,10 +23,10 @@ Screenshots: `docs/screenshots/2026-10-16/`. The offer-unavailable image is a ti
 A separate Claude reviewer read the committed diff (8d293a1..15dbd70). It found no release-build path to a paid case without a verified entitlement, no gated free case, correct RevenueCat 10.14 API use and unchanged existing saves. It reported five defects, all fixed in the follow-up commit:
 
 1. A revoked case kept its scene, so a re-grant could reopen a private sheet without a handoff. Access is now checked above the case; without it the case unmounts entirely and a later grant remounts it at its cover.
-2. A slow foreground refresh could overwrite a newer purchase result with pre-purchase data. Snapshots are now ordered (); stale polls are dropped.
+2. A slow foreground refresh could overwrite a newer purchase result with pre-purchase data. Snapshots are now ordered (`createSnapshotGate`); stale polls are dropped.
 3. A fast double tap could start two store calls. A synchronous in-flight lock is taken before any await (purchase and restore).
 4. A deep link to the offer over an open case let the case's Android back handler swallow back. The handler now runs only while the case screen is focused.
-5. An unused  offer source was removed.
+5. An unused `ending` offer source was removed.
 
 The provider and gating are not covered by component tests; the gate, lock order and reducer are.
 
