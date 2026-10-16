@@ -55,6 +55,36 @@ beforeEach(async () => {
 afterEach(() => { jest.restoreAllMocks(); });
 
 describe('real investigation component privacy and save boundaries', () => {
+  it('shows the rescue only after the first correct Last Call deduction, before the remaining inquiry', async () => {
+    const id = 'the-last-call';
+    const item = getCase(id);
+    const passage = item.rounds[0].afterDeduction!;
+    mockAccess = { entitlements: ['after_midnight_collection'], devPreview: false };
+    await render(<Investigation />);
+    await openPrivate(id);
+    expect(screen.queryByText(passage, { includeHiddenElements: true })).toBeNull();
+    await fireEvent.press(screen.getByRole('button', { name: 'Hide evidence & continue' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'I’m ready' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Hide evidence & continue' }));
+    await fireEvent.press(screen.getByRole('button', { name: /The wine cellar/ }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Confirm our deduction →' }));
+    expect(screen.queryByText(passage, { includeHiddenElements: true })).toBeNull();
+    await fireEvent.press(screen.getByRole('button', { name: /The roof plant room/ }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Confirm our deduction →' }));
+    expect(screen.getByText(passage)).toBeTruthy();
+    expect(screen.queryByText(item.rounds[1].evidence.A.paragraphs[0], { includeHiddenElements: true })).toBeNull();
+    await fireEvent.press(screen.getByRole('button', { name: 'Open the next chapter →' }));
+    expect(screen.getByRole('button', { name: 'I’m ready' })).toBeTruthy();
+    expect(screen.queryByText(passage, { includeHiddenElements: true })).toBeNull();
+    const saved = await loadProgress(AsyncStorage, id);
+    await waitFor(async () => {
+      const latest = await loadProgress(AsyncStorage, id);
+      expect(latest.kind).toBe('loaded');
+      if (latest.kind === 'loaded') expect(latest.progress.round).toBe(1);
+    });
+    expect(saved.kind).toBe('loaded');
+  });
+
   it('unmounts a private sheet on route focus loss without an AppState event; return requires readiness', async () => {
     const view = await render(<Investigation />);
     await openPrivate();

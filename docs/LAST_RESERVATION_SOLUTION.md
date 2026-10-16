@@ -70,13 +70,13 @@ Hints: use both branch and floor; ground-west and first-east each fail one condi
 
 ### LR6 · Act III: A visitor found
 
-Question: What does the authenticated message establish? A6: text W6, claimed signature E.W., says she chose to retreat, can leave, holds originals and awaits independent witnesses. Without B, author is unverified. B6: Celia witnessed Elin write/sign W6 at 21:59 after press-card identity verification; message custody intact. Facilities inspection confirms free interior release, but this alone cannot establish her motive. Answer **Elin withdrew voluntarily to protect originals and await witnesses**. Alternatives Owen held her captive / Celia invented the message. Both conflict with the authenticated words; release mechanism independently corroborates freedom, without alone proving willingness. Prerequisite LR5; references LR-A6, LR-B6.
+Question: What do W6 and its custody record support? A6: text W6, claimed signature E.W., says she chose to retreat, can leave, holds originals and awaits independent witnesses. Without B, author is unverified. B6: Celia witnessed Elin write/sign W6 at 21:59 after press-card identity verification; message custody intact. Facilities inspection confirms free interior release, but custody/release alone cannot establish her plan. Answer **Elin withdrew voluntarily to protect originals and await witnesses**. Alternatives: voluntary withdrawal to await police collection of the originals / a forged message concealing detention. The words alone leave genuine or forged; provenance alone leaves the two voluntary plans. Together they select one explanation. Prerequisite LR5; references LR-A6, LR-B6.
 
-Hints: distinguish message content from provenance; combine exact words with independent authorship verification; authenticated Elin explains a voluntary retreat to protect the originals.
+Hints: distinguish message content from provenance; compare the actual plan with the witnessed authorship record; authenticated Elin explains a voluntary retreat to protect originals and await independent witnesses.
 
 ## Walkthrough and ending
 
-Ruth Vane → east archive passage → Owen escort → Victor substitution → west staff reading room → authenticated voluntary preservation. Investigators find Elin safe and able to leave. She presents the original reservation and asks them to witness copies. Victor's false vacancy declaration can be challenged with his own admitted substitution and the original carbon. The guests give the record to the duty manager for preservation; the game does not pronounce a criminal conviction or add off-screen arrest facts. Every essential inference was available before the reveal. The ending thanks the players and recaps all six proof records; replay is available and has no purchase gate.
+Ruth Vane → east archive passage → Owen escort → Victor substitution → west staff reading room → authenticated voluntary preservation. Investigators find Elin safe and able to leave. She presents the original reservation and asks them to witness copies. Victor's false vacancy declaration can be challenged with his own admitted substitution and the original carbon. The guests give the record to the duty manager for preservation; the game does not pronounce a criminal conviction or add off-screen arrest facts. Every essential inference was available before the reveal. The ending thanks the players and recaps all six proof records; replay is available under the existing case access rules.
 
 ## Adversarial logic pass before integration
 
@@ -92,3 +92,7 @@ Ruth Vane → east archive passage → Owen escort → Victor substitution → w
 - Alternative rooms: B5 declares its route/floor table exhaustive for these service branches; none matches both constraints except reading room.
 
 No independent reviewer or paired human playtest has validated this authored logic. The six proofs were challenged by the implementing agent; automated structural tests cannot certify narrative fairness or duration.
+
+## 16 October authorized repair
+
+LR6 now asks what W6 and its custody record support, without pre-authenticating the message in the question. Its alternatives distinguish police collection, a forged detention message, and the unchanged correct answer (protect originals and await witnesses). The words alone leave a genuine/forged ambiguity; custody alone leaves two voluntary plans. The resolution explains Elin’s alias as concealing a reporter’s visit from the buyer. Player prose is shortened; original answers, ids, versions and save keys are unchanged. Current evidence: `project/CASE_REPAIR_POLISH.md`.

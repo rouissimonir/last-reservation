@@ -20,8 +20,9 @@ Primary mechanic: **spatial evidence combined with access records** — a buildi
 | 00:00:05 | Teddy finds the house phone by touch and calls Ruth Okoye on line group C. Lift moves 00:00:08–16 and 00:00:22–31 (gear rumbles). The laundry's service-lift bell rings at 00:00:12 (not heard: wrong room). |
 | 00:00:40 | Carl switches off the roof circuit at the sixth-floor board, as every night; it feeds the plant-room phone's line amplifier. The call fades out. |
 | 00:10 | Key 2 returned. |
-| 00:15 | Telephone engineer finds the wire intact. |
+| 00:15 | Telephone engineer tests the wire from the switchboard; nobody enters the plant room. |
 | 00:20 | Investigation begins. |
+| 00:25 | After LC1 identifies the phone, Ruth takes the returned spare key from Mara and rescues Teddy with the investigators. Mara remains at reception. LC2–LC5 reconstruct the incident after he is safe. |
 
 ## Characters and knowledge
 
@@ -37,8 +38,12 @@ Ruth (sounds and call timing), Penrose (sightline across the roof; weather), Ver
 
 ## Ending
 
-Teddy found behind the tank with the case. Carl's round-book entry: he could not see Teddy, switched off the circuit not knowing, takes the blame, sets new rules. Confirms what Carl knew; no one meant harm.
+Teddy has already been rescued after LC1; the shared confirmation passage reveals no culprit, blind spot or circuit answer. The ending returns to the warm switchboard. Carl's round-book entry: he could not see Teddy, switched off the circuit not knowing, takes the blame, sets new rules. Confirms what Carl knew; no one meant harm.
 
-## Review record (AI, not human playtesting)
+## Historical review record (AI, not human playtesting)
 
 Round 1: all answers unique and none solvable from one sheet. Wording defects fixed: which lamp the circuit feeds; key "signed out" now "handed in person" plus Mara's desk alibi; Vera's time made "about ten to twelve". Round 2: all unique; fixed "plant-room door closed" (read as found closed) and the "kicked" versus "bent down" wedge description; explained why Teddy had no light. Noted, not changed: in LC4 each sheet points strongly to the answer though neither proves it alone. No human playtest yet.
+
+## 16 October repair checkpoint
+
+Earlier AI review records are historical, not proof of fairness. The user-authorized repairs, counterexample checks and actual command/browser results are recorded in `docs/project/CASE_REPAIR_POLISH.md`. No human playtest or measured duration is claimed.

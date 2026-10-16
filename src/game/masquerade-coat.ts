@@ -5,12 +5,12 @@ export const masqueradeCoat: CaseDefinition = {
   id: 'the-masquerade-coat', version: 1, edition: '04', title: 'The Masquerade Coat',
   coverTitle: 'The Masquerade\nCoat', format: 'Short case · 3 deductions',
   hook: 'Every face masked. One coat gone.',
-  description: 'At the hotel’s masquerade, a guest’s camel coat leaves the cloakroom with her grandmother’s brooch pinned inside. Three deductions: which ticket was hers, who collected it and where the coat went.',
+  description: 'A lost cloakroom ticket. Two identical coats. Somewhere behind a mask, a guest has walked away with Agnes Hart’s last keepsake of her grandmother.',
   duration: 'Length not yet measured by playtests',
   setting: 'Bellweather Hotel · October 1994',
   introLabel: 'A MASQUERADE BALL, 29 OCTOBER 1994', introTitle: 'Behind every mask.',
-  endingTitle: 'Still pinned in place.', noteLabel: 'ON THE DRESSING TABLE IN ROOM 316', noteTitle: 'A hurried note',
-  introduction: 'Bellweather Hotel ballroom, 29 October 1994: the autumn masquerade. At 22:50 Agnes Hart went to collect her camel coat. Pinned inside its lining was her late grandmother’s silver brooch. The coat was gone. Someone had collected it at 22:40 with her ticket, which she had lost while dancing. Every guest wore a mask all evening. One of you has what people saw. The other has the cloakroom and hotel records. Find the coat before the last guests go home.',
+  endingTitle: 'Still pinned in place.', noteLabel: 'RECORDED AT RECEPTION', noteTitle: 'Margaret’s apology',
+  introduction: 'Bellweather Hotel’s autumn masquerade, 29 October 1994. At 22:50 Agnes Hart finds her camel coat gone, her grandmother’s brooch pinned inside. Someone collected it ten minutes earlier using the ticket she lost while dancing. Every face was masked. Find the coat before the last guests go home.',
   reliability: 'There is no timer. Witnesses are accurate about what they directly saw and say plainly what they did not. The cloakroom book, the steward’s mask check and the lift log are complete for what they cover. Masks hid every face, so nobody can be identified by sight.',
   rounds: [
     {
@@ -75,29 +75,29 @@ export const masqueradeCoat: CaseDefinition = {
       evidence: {
         A: { id: 'MC-A3', title: 'The lift attendant', source: 'Witness statement · Sam Achter, lift attendant', paragraphs: [
           '“At 22:46 a guest in a raven mask stepped into my lift at the ballroom level with a plain camel coat over her arm. Two other guests got in with her.”',
-          '“I went straight up, stopping wherever anyone had asked and opening the doors each time. She stepped out at the second stop. I didn’t see which way she turned or which door she used.”',
+          '“I went straight up, opening the doors at each stop. She stepped out at the second stop. While I held the lift, she unlocked the single room door directly opposite it and carried the coat inside. I couldn’t read its number.”',
           '“I didn’t write the floors down. I only remember the order.”',
         ] },
         B: { id: 'MC-B3', kind: 'access', title: 'Lift log and room keys', source: 'Verified record · Lift indicator log and reception register', paragraphs: [
           'Lift 1 left the ballroom level, the ground floor, at 22:46 going up. It stopped at the first floor, then the third floor, then the fourth floor, then came back down. It made no other stops.',
-          'Mrs Lind and her sister share one booking of two rooms: Room 108 on the first floor and Room 316 on the third floor. Both keys were with the Lind party all evening.',
+          'The single room door directly opposite the lift is Room 108 on the first floor, Room 316 on the third floor and Room 412 on the fourth floor.',
           'Room 412, on the fourth floor, is the Hart suite. It stayed locked; its only key was at reception until Agnes Hart collected it at 23:00.',
           'A room number begins with its floor. The log does not record who got out where.',
         ] },
       },
       hints: [
         'You know who wore the raven mask. The attendant remembers the order of the stops; the lift log remembers the floors.',
-        'Count the stops in the log in order. Then look for a room on that floor that the raven mask’s party could open.',
-        'The second stop was the third floor, and the Lind party’s room there is 316. Mrs Lind took the coat to Room 316.',
+        'Find the floor of the second stop, then match the door the attendant actually saw her enter.',
+        'The second stop was the third floor. The door directly opposite that lift is Room 316, and the attendant saw her carry the coat inside.',
       ],
       deduction: 'Mrs Lind took the coat up to Room 316.',
-      proof: 'MC-B2 makes the raven mask Mrs Lind’s. MC-A3 has her leave the lift at its second stop, and MC-B3 makes that the third floor, where the Lind party holds Room 316. Room 108 was the first stop, and Room 412 was locked with its key at reception.',
+      proof: 'MC-B2 identifies the raven mask as Mrs Lind. MC-A3 follows her into the room directly opposite the lift at its second stop. MC-B3 makes that stop the third floor and that door Room 316. This establishes entry, not merely access to a room.',
     },
   ],
   ending: {
-    recovery: 'A housekeeper lets you into Room 316. A plain camel coat lies across the bed. Inside the lining the silver brooch is still pinned in place. On the dressing table, beside a raven mask, lie a ticket marked 35 and a hurried note.',
+    recovery: 'A housekeeper opens Room 316. The camel coat lies across the bed, its silver brooch still pinned inside. At reception Margaret Lind sees the brooch, reaches for her raven mask and stops. Agnes waits for her explanation.',
     note: '“I found this ticket on the floor by the punch bowl and was certain it was the one I had dropped. Our coats must be twins. I only felt the brooch when I hung the coat up, and I was about to bring it down and find its owner. My own coat must still be on its hook, number 36. Please forgive me.”',
-    signature: 'Margaret Lind · Room 316',
-    conclusion: 'The note confirms it was a mistake. Before it, you had established the ticket, the collector and the room, not her reason. Agnes has her coat and her grandmother’s brooch, Mrs Lind collects her own coat from hook 36, and the dancing goes on until one. The Masquerade Coat is resolved.',
+    signature: 'Margaret Lind · Speaking to Agnes Hart',
+    conclusion: 'Agnes checks the brooch’s clasp before helping Margaret into her own coat from hook 36. Two identical coats return to two different owners. Neither woman puts her mask back on. The Masquerade Coat is resolved.',
   },
 };

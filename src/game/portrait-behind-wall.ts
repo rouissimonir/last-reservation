@@ -4,13 +4,13 @@ import type { CaseDefinition } from './cases';
 export const portraitBehindWall: CaseDefinition = {
   id: 'the-portrait-behind-the-wall', version: 1, edition: '08', title: 'The Portrait Behind the Wall',
   coverTitle: 'The Portrait\nBehind the Wall', format: 'After Midnight · 5 deductions',
-  hook: 'A face sealed away for sixty years.',
-  description: 'Night plasterers open a wall in the old writing room and find a portrait nobody remembers. Date the paper, catch the document that lies about its age and recover the story the hotel chose to forget.',
+  hook: 'Someone rewrote her life. The wall kept the original.',
+  description: 'A portrait hidden behind a wall contradicts the hotel’s official history. Old letters and the paper beneath their words hold a different story.',
   duration: 'Length not yet measured by playtests',
   setting: 'Bellweather Hotel · November 1994',
   introLabel: 'AFTER MIDNIGHT · 20 NOVEMBER 1994', introTitle: 'A face in the wall.',
   endingTitle: 'Let the wall keep it.', noteLabel: 'TUCKED INSIDE THE FRAME', noteTitle: 'A note in a heavy, careful hand',
-  introduction: 'Bellweather Hotel, 20 November 1994, 01:30. The old writing room is being restored by night so that guests are not disturbed. When the plasterers took down a panel, they found a sealed alcove holding a portrait of a young woman and three old letters. A guest, Ms June Reed, has written to the hotel twice about her grandmother, who she says was painted here. The hotel’s official history, written in 1939, says the founder’s daughter, Clara Bellweather, gave up a man she loved and stayed at home, and it quotes a 1933 letter from her to prove it. The archivist, Celia Rook, has brought that letter up from the archive. One of you has the restorer’s notes on everything in the room tonight. The other has the hotel’s archive records. Work out what really happened, from the paper itself.',
+  introduction: 'Bellweather Hotel, 20 November 1994, 01:30. Behind a panel in the closed writing room, restorers find a portrait and three letters. Guest June Reed believes the sitter was her grandmother. The hotel’s 1939 history says the founder’s daughter, Clara, gave up the man she loved and stayed home. Archivist Celia Rook brings out the letter used to prove it. Compare the documents with the archive. Which story survives?',
   reliability: 'There is no timer. The restorer describes only what he can see and measure; he does not judge dates. The archive records are certified and complete for what they cover. A date written on a document is a claim. The paper, print and machine it was made with are evidence. What a living person remembers being told is a claim until something supports it.',
   rounds: [
     {
@@ -24,6 +24,7 @@ export const portraitBehindWall: CaseDefinition = {
           'Letter B, from the alcove · Handwritten in ink, signed “C.”, dated 2 September 1935. Letterhead: “Telephone: Bellweather 12”. Watermark: CRANE & LISLE, with a small crescent.',
           'Letter C, from the alcove · Typed, signed “A. Bellweather”, dated 6 January 1936. Letterhead: “Telephone: Bellweather 12”. Watermark: CRANE & LISLE, with a small crescent.',
           'Letter D, from the archive file for the 1939 history · Typed, signed “Clara” in ink, dated 3 May 1933. Plain sheet, no letterhead. Watermark: CRANE & LISLE, with a small anchor.',
+          'Letter D reads: “Father, I have given up Jonah. I shall stay here as you wish. Clara.” The history presents it as her original letter, not a later copy.',
           'I record what is on each sheet. I make no judgement about when any of them was written.',
         ] },
         B: { id: 'PB-B1', kind: 'archive', title: 'Paper and print', source: 'Certified records · Hotel stationery accounts, 1920–1946', paragraphs: [
@@ -104,51 +105,51 @@ export const portraitBehindWall: CaseDefinition = {
           'In Letter D, every lower-case “e” has a break at the top of its loop, and every capital “T” sits slightly below the line. Both faults appear every single time those letters are used, so they belong to the machine, not to a slip.',
           'The signature “Clara” on Letter D is in ink, written on top of the finished typing.',
         ] },
-        B: { id: 'PB-B4', kind: 'archive', title: 'The office typewriters', source: 'Certified records · Office inventory; archive register', paragraphs: [
+        B: { id: 'PB-B4', kind: 'archive', title: 'The office typewriters', source: 'Certified records · Machine inventory, use register and archive receipt', paragraphs: [
           'Typewriter No. 1, front office, 1930 to 1946 · Used by the secretary, Edith Marlow, for all hotel letters. Clean type throughout its life.',
-          'Typewriter No. 2, bought October 1938 · Kept in the founder’s private rooms, locked. Ambrose Bellweather held the only key and, the secretary noted, typed his private papers on it himself. Faults from new: a broken loop at the top of the lower-case “e” and a capital “T” that drops below the line.',
-          'Family register, 1936 to 1946: no member of the Bellweather family other than Ambrose is recorded living at the hotel. Jonah Reed’s engagement ended in August 1935.',
-          'Archive register: Letter D first entered in the archive on 2 May 1939.',
+          'Typewriter No. 2, bought October 1938 · Founder’s private rooms. Faults from new: a broken loop at the top of the lower-case “e” and a capital “T” that drops below the line.',
+          'The certified use register establishes exclusive operation: Edith Marlow alone used No. 1 and Ambrose Bellweather alone used No. 2 between October 1938 and May 1939. Neither machine was lent or used by a visitor.',
+          'Archive receipt, 2 May 1939: Ambrose personally deposited Letter D as Clara’s original 1933 letter. It was sealed then and has not been altered since.',
         ] },
       },
       hints: [
         'Letter D was typed. Match what the magnifier shows to the hotel’s machines, then ask who could reach the machine that matches.',
-        'Only one typewriter makes exactly those two faults, and it did not exist until 1938. Check who could use it, and who was still at the hotel by then.',
-        'Letter D’s broken “e” and dropped “T” are Typewriter No. 2’s faults. That machine was bought in October 1938, kept locked, and only Ambrose held its key. Neither Clara nor Jonah was at the hotel after 1935.',
+        'Match both faults to a machine, then check its verified operator during the period before the letter was sealed.',
+        'Letter D’s broken “e” and dropped “T” match No. 2. Its only operator from purchase in October 1938 to the sealed deposit in May 1939 was Ambrose Bellweather.',
       ],
-      deduction: 'Letter D was typed on Ambrose Bellweather’s own locked typewriter, bought in 1938, which only he could use.',
-      proof: 'PB-A4 finds a broken “e” and a dropped “T” throughout Letter D. PB-B4 gives those faults only to Typewriter No. 2, bought in October 1938 and locked away with Ambrose as sole keyholder, which agrees with Letter D’s 1938 paper in PB-A1. Edith’s machine typed cleanly, and neither Clara nor Jonah was living at the hotel after 1935.',
+      deduction: 'Ambrose typed Letter D on No. 2 between October 1938 and its sealed deposit in May 1939, then presented it as Clara’s original 1933 letter.',
+      proof: 'PB-A4’s two faults identify No. 2. PB-B4 bounds the typing between that machine’s October 1938 purchase and the letter’s sealed May 1939 deposit, and verifies Ambrose as its sole operator throughout. The receipt claims a 1933 original; the machine and PB-A1’s 1938 paper disprove that claim. This is not merely a later acknowledged copy.',
     },
     {
       id: 'PB5', act: 'Part III · The story the hotel told', label: 'The truth', requires: ['PB1', 'PB2', 'PB4'], evidenceRefs: ['PB-A2', 'PB-A5', 'PB-B5'],
       title: 'The 7:10 train', question: 'What does the evidence establish about Clara in 1935?',
-      options: ['She gave up Jonah Reed and stayed at the hotel', 'She left on the 7:10 train to marry Jonah Reed, against her father’s wishes', 'Her father sent her away before the portrait was finished', 'She never knew the portrait had been painted'],
+      options: ['She left on the 7:10 train to visit a relative and did not marry Jonah Reed', 'She left on the 7:10 train to marry Jonah Reed, against her father’s wishes', 'She left on the 7:40 train to marry Jonah Reed, against her father’s wishes', 'She left on the 7:10 coach to marry Jonah Reed, against her father’s wishes'],
       correct: 'She left on the 7:10 train to marry Jonah Reed, against her father’s wishes',
       evidence: {
-        A: { id: 'PB-A5', kind: 'statement', title: 'What June Reed was told', source: 'Witness statement · Ms June Reed, guest', paragraphs: [
-          '“My grandmother was Clara Reed. She told me she sat for her portrait in a room with a round window, in secret, and that her father never forgave her for marrying the painter.”',
-          '“She said she met my grandfather Jonah on the platform at Bellweather Halt for the 7:10 on a Saturday morning, with one suitcase, and that they were married that week. She never went back. He died in 1971; she died in 1988.”',
-          '“I only have what she told me. I’ve never seen the hotel’s records.”',
+        A: { id: 'PB-A5', kind: 'statement', title: 'What June brought with her', source: 'Restorer’s transcription · Family document C482; June Reed’s account', paragraphs: [
+          'Document C482, original civil marriage certificate: Clara Bellweather and Jonah Reed, married 12 September 1935. Tobias transcribes the names, date and document number from the sheet June brought.',
+          'June: “She said her father never forgave her. She kept this certificate beside his photograph, not hidden away. I thought the hotel might tell me why.”',
+          'June has no travel ticket. This sheet says nothing about how the couple left Bellweather. The certificate’s authenticity must be checked against the archive’s verification.',
         ] },
-        B: { id: 'PB-B5', kind: 'archive', title: 'The family register and the timetable', source: 'Certified records · Family register; railway timetable kept at the front desk, 1935', paragraphs: [
-          'Family register: Clara Bellweather left the hotel on Saturday 7 September 1935, with one suitcase. The entry is in the secretary’s hand. She is not recorded at the hotel again.',
-          'Railway timetable, 1935: the 7:10 from Bellweather Halt runs on Saturdays only, and it is the only train from the Halt before noon on a Saturday.',
+        B: { id: 'PB-B5', kind: 'archive', title: 'The departure and the document check', source: 'Certified records · Railway boarding register; civil-registry verification', paragraphs: [
+          'Railway boarding register, Saturday 7 September 1935: Clara Bellweather and Jonah Reed personally checked aboard the 7:10 train at Bellweather Halt. This records boarding, not a reservation. Neither took the 7:40 train or the coach.',
+          'Civil-registry verification: document C482 is a genuine original marriage certificate, unaltered; its transcribed names and date are accurate. This verification does not reproduce those fields.',
           'The 1939 official history gives one source for the claim that Clara gave up Jonah Reed and stayed: the letter now filed as Letter D. It names no other.',
         ] },
       },
       hints: [
-        'Put Letter B and June’s account next to what the register and the timetable record. Then remember what you now know about the history’s only source.',
-        'June’s account names a day and a train; Letter B names a place and a reason. The register and the timetable say whether that is what happened. The story that she stayed rests on a document you have already tested.',
-        'Letter B plans to meet J. at the Halt against her father’s threat, and June says it was the Saturday 7:10. The register has Clara leaving on Saturday 7 September 1935 with one suitcase, and the 7:10 runs only on Saturdays. The history’s only source for her staying is the forged Letter D.',
+        'Separate the journey from what followed it. One sheet describes a family document; the other verifies it and records the actual departure.',
+        'A marriage document does not identify a train. A boarding entry does not establish a marriage. Combine both, then recall the father’s threat in Letter B.',
+        'The verified certificate names Clara and Jonah as married on 12 September. The boarding register puts them on the 7:10 train on 7 September. Letter B shows she chose Jonah despite her father’s threat; Letter D’s contrary history is forged.',
       ],
       deduction: 'Clara left on Saturday 7 September 1935, on the 7:10, to marry Jonah Reed against her father’s wishes. The story that she stayed rests on a forgery.',
-      proof: 'PB-A2’s Letter B, dated 2 September 1935, chooses J. and a meeting at the Halt despite her father’s threat, and PB-A5 remembers the Saturday 7:10 and a marriage that week. PB-B5 records Clara leaving on Saturday 7 September with one suitcase, the day the 7:10 runs, never to return, which supports June’s account, and shows that the history’s only contrary source is Letter D, typed in 1938 or later.',
+      proof: 'PB-B5 records actual boarding of the 7:10 on 7 September, not merely a possible service. PB-A5 names Clara and Jonah on marriage certificate C482 dated 12 September; B5 verifies that document. PB-A2’s Letter B supplies their plan against her father’s wishes. A alone cannot select the journey; B alone cannot distinguish marriage from the alternative purpose. Letter D cannot establish that she stayed.',
     },
   ],
   ending: {
     recovery: 'Celia lifts the canvas from the alcove so that June Reed can see it under the work lamps. June touches the round window in the painting and says nothing for a long time. When the restorer eases the backing board from the frame, a folded sheet slips out, written in ink in a heavy, careful hand.',
-    note: '“March 1936. She has married her painter and gone, and I told her she was no daughter of mine. I cannot look at this picture, and I cannot burn it. Let the wall keep it. If anyone ever finds her here, tell her I was wrong.”',
+    note: '“March 1936. She has married her painter and gone, and I told her she was no daughter of mine. I cannot look at this picture, and I cannot burn it. Let the wall keep it. If anyone ever finds her here, tell her I was wrong. Outside this room I am still too proud to say it.”',
     signature: 'Ambrose Bellweather',
-    conclusion: 'The note confirms what Ambrose knew and felt. Before it, you had shown that the 1933 letter was typed on his own machine on paper from 1938, that the sitter was Clara and that she left to marry Jonah Reed, but not what lay behind it. By 1939 he knew she had married, so the story he gave the archive was knowingly false. The portrait goes to the hotel archive with June Reed’s name beside Clara’s, and the history will be corrected. The Portrait Behind the Wall is resolved.',
+    conclusion: 'His private apology stayed behind a wall; his public lie entered the archive three years later. June asks for a copy of the portrait and a corrected caption beneath the original. This time it will name Clara Bellweather and Jonah Reed together. The Portrait Behind the Wall is resolved.',
   },
 };

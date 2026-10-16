@@ -5,12 +5,12 @@ export const musicBox: CaseDefinition = {
   id: 'the-music-box', version: 1, edition: '05', title: 'The Music Box',
   coverTitle: 'The Music\nBox', format: 'Short case · 3 deductions',
   hook: 'A birthday dinner arrived. The present did not.',
-  description: 'A wrapped music box goes up in the kitchen dumbwaiter with a birthday dinner and never reaches the second floor. Three deductions: where it left the lift, whose story does not hold and where it was taken.',
+  description: 'The birthday dinner arrives. The present does not. A lighter service lift, a false account and a trail on the carpet lead away from Room 207.',
   duration: 'Length not yet measured by playtests',
   setting: 'Bellweather Hotel · November 1994',
   introLabel: 'A BIRTHDAY DINNER, 1 NOVEMBER 1994', introTitle: 'One parcel short.',
-  endingTitle: 'Dry, and wrapped again.', noteLabel: 'ON THE IRONING BOARD', noteTitle: 'A note on the wrapping paper',
-  introduction: 'Bellweather Hotel, 1 November 1994. Mr Hollis in Room 207 ordered dinner for his wife’s birthday, and the concierge wrapped his present, a small music box, to go up with it. At 21:00 the kitchen sent them up in the dumbwaiter, the little service lift that runs from the kitchen to hatches on the first and second floors. The present never reached Room 207. One of you has what staff and guests saw, did and said. The other has the hotel’s records. Find the music box before the candles are lit.',
+  endingTitle: 'Dry, and wrapped again.', noteLabel: 'THE DUTY MANAGER’S RECORD', noteTitle: 'Lucy answers',
+  introduction: 'Bellweather Hotel, 1 November 1994. Mr Hollis orders a birthday dinner for Room 207 and sends his wrapped music box up with it. At 21:00 both leave the kitchen in the dumbwaiter, a service lift with first- and second-floor hatches. The present never reaches the room. Find it before the candles are lit.',
   reliability: 'There is no timer. Witnesses report accurately what they saw, did and measured. What a person says about where they were is a claim, not a fact. Hotel records and logs are accurate and complete for what they cover.',
   rounds: [
     {
@@ -95,9 +95,9 @@ export const musicBox: CaseDefinition = {
     },
   ],
   ending: {
-    recovery: 'With the duty manager’s key you open the pressing room. A drying rail stands by the radiator, and on it, sheet by sheet, hangs the present’s soup-stained paper. On the ironing board sits the music box, dry and unharmed, beside a fresh roll of wrapping paper and a note.',
+    recovery: 'The duty manager opens the pressing room. Soup-stained paper hangs by the radiator. Lucy stands at the ironing board, folding fresh paper around the unharmed music box. The manager asks why she said she was in the locked Room 105. Lucy sets down the ribbon.',
     note: '“The soup had soaked the paper and was running towards the box. If it went up like that the birthday would be spoiled, so I took it to dry and wrap it again. We are never allowed to touch room service, so when I was asked I said I had been in 105. I am sorry. I was going to carry it up myself.”',
     signature: 'Lucy Marsh · Chambermaid, first floor',
-    conclusion: 'The note confirms why Lucy took it. Before it, you had established where the present left the dumbwaiter, that her account was false and where the trail led, not her reason. Wrapped again, the music box goes up to Room 207 before the candles are lit. The Music Box is resolved.',
+    conclusion: 'The false account gave you a question to ask, not a motive to assume. Lucy finishes the ribbon and carries the present upstairs with the manager. This time reception knows exactly where it is. The candles are still waiting. The Music Box is resolved.',
   },
 };

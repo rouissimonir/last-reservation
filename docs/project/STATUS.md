@@ -1,5 +1,11 @@
 # TWO SIDES — status
 
+## Latest case repair and prose polish
+
+See `CASE_REPAIR_POLISH.md`. Fixed LR6 and PB5 cross-role finales, actual coat-room entry proof, exclusive key/machine use, original-document provenance and rescue immediately after LC1. Shortened seven introductions by about 43% combined; all 33 correct answers, case/save identities and the complete mini-case are preserved. Three cases were played through their endings in the phone-width browser, plus LC1 rescue/retry/handoff. Five actual JPEGs are saved.
+
+TypeScript/lint and **87 current-worktree tests** pass (72 domain + 15 component); web and iOS/Android JS exports pass. The scoped repair-only checkpoint contains **83** tests; four passing tests and notice validation belong to earlier unfinished licensing work preserved outside this commit. No dependency changes. Expo alignment passes; Doctor is now **20/21**, failing only the online schema fetch. Publisher fields, native startup/device/archive/sandbox checks, human tests and dependency assessment remain open; this is not submission-ready.
+
 Authoritative status, 16 October 2026 · Windows. Earlier history: `docs/STATUS.md`, `THIRD_CASE_REPORT.md`.
 
 ## Latest privacy and native-link checkpoint

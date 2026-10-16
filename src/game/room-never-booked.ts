@@ -5,12 +5,12 @@ export const roomNeverBooked: CaseDefinition = {
   id: 'the-room-never-booked', version: 1, edition: '06', title: 'The Room That Was Never Booked',
   coverTitle: 'The Room That\nWas Never Booked', format: 'After Midnight · 5 deductions',
   hook: 'An unsold room. A slept-in bed. No guest at all.',
-  description: 'At dawn, a room that was never for sale is found slept in, two teacups on the desk and its key still locked away. Rebuild one night from overlapping memories that rarely mention a clock, and find the guest nobody booked.',
+  description: 'Room 309 was not for sale. At dawn its bed is slept in, two teacups sit on the desk, and its key is still locked away. Find the guest nobody booked.',
   duration: 'Length not yet measured by playtests',
   setting: 'Bellweather Hotel · November 1994',
   introLabel: 'AFTER MIDNIGHT · 5 NOVEMBER 1994', introTitle: 'Somebody slept here.',
   endingTitle: 'Warm, and waiting.', noteLabel: 'ON THE DRYING-ROOM BENCH', noteTitle: 'A note in the porter’s hand',
-  introduction: 'Bellweather Hotel, 5 November 1994, 06:30. Room 309 has been out of order for a week with a broken radiator and was never offered for sale. At 06:00 the day housekeeper unlocked it and found the bed slept in and two used teacups on the desk. The register shows no guest, and the room’s own key spent the night in the locked key cabinet. The night staff and two guests each remember part of the night, mostly without looking at a clock. One of you has their accounts. The other has the hotel’s logs. Before the morning manager arrives at seven, work out when the room was entered, who opened it, who slept there and where they are now.',
+  introduction: 'Bellweather Hotel, 5 November 1994, 06:30. Room 309 has a broken radiator and no booking. Yet the day housekeeper found its bed slept in and two used teacups on the desk. Its key never left the locked cabinet. The night staff remember fragments: rain, footsteps, a taxi. Rebuild the night and find the missing guest before the morning manager arrives at seven.',
   reliability: 'There is no timer. Witnesses are accurate about what they directly saw or heard and about the order in which things happened to them; most did not look at a clock. Logs record exact times and are complete for what they cover. What a person says about their own movements is a claim until something else supports it.',
   rounds: [
     {
@@ -19,7 +19,7 @@ export const roomNeverBooked: CaseDefinition = {
       options: ['Before 00:05', 'Between 00:05 and 00:15', 'After 00:15'], correct: 'Between 00:05 and 00:15',
       evidence: {
         A: { id: 'RB-A1', title: 'Through the wall of Room 307', source: 'Witness statement · Lionel Grey, guest, Room 307', paragraphs: [
-          '“I couldn’t sleep, so I read with my door ajar and no clock in sight. First, rain began against my window.”',
+          '“I couldn’t sleep. I stayed in my room reading with the door ajar and no clock in sight. First, rain began against my window.”',
           '“Some time after that, two sets of footsteps came along the corridor and stopped next door, at 309. A key turned, the door opened, and it closed again.”',
           '“Some time after that, the lift’s low hum, which I’d heard through the wall all evening, stopped.”',
           '“I can tell you the order I heard things in. I can’t give you a single time.”',
@@ -50,12 +50,12 @@ export const roomNeverBooked: CaseDefinition = {
           'Dora Pike: “I stayed in 214 until the radiator was warm. I didn’t go up to the third floor until my linen round at three, and I opened no room then.”',
           'Mrs Osei saw nothing of the corridor or any other floor.',
         ] },
-        B: { id: 'RB-B2', kind: 'access', title: 'Who could open 309', source: 'Certified records · Master-key book; locksmith’s report', paragraphs: [
+        B: { id: 'RB-B2', kind: 'access', title: 'Who could open 309', source: 'Certified records · Master-key custody; locksmith’s report', paragraphs: [
           'Room 309’s own key never left the locked cabinet. At 06:20 the locksmith found its lock undamaged, with no sign of forcing or picking.',
           'The only other keys that open 309 are the two night master keys, which are kept in the night manager’s office, not in the key cabinet.',
           'Master key 1 · Signed out at 22:00 by Abel Finch, night porter · Returned at 06:05.',
           'Master key 2 · Signed out at 22:00 by Dora Pike, night chambermaid · Returned at 06:05.',
-          'Each master key hangs on a chain locked to its holder’s belt; it cannot be lent without unlocking the chain, and both chains were found locked when the keys came back. Grace Holloway, night receptionist, and Carl Brandt, night engineer, hold no key that opens a guest room.',
+          'The custody record confirms that each master key stayed with and was used only by its named holder all night; there were no loans, exchanges or assisted uses. Numbered seals on both belt chains remained intact. Grace Holloway and Carl Brandt hold no guest-room key.',
         ] },
       },
       hints: [
@@ -64,7 +64,7 @@ export const roomNeverBooked: CaseDefinition = {
         'Only Abel Finch and Dora Pike held master keys. Mrs Osei was with Dora from 00:05 to 00:15, the whole window, so Abel unlocked 309.',
       ],
       deduction: 'Abel Finch, the night porter, unlocked Room 309 with his master key.',
-      proof: 'RB-B2 leaves only the two master keys, held by Abel and Dora. RB-A2 puts Dora in Room 214 with Mrs Osei from the moment the rain began until the hum stopped, which RB-B1 times at 00:05 and 00:15. That covers the whole confirmed window, so the key in 309’s lock was Abel’s.',
+      proof: 'RB-B2 verifies exclusive custody and use of the two master keys by Abel and Dora. RB-A2 keeps Dora in Room 214 throughout the confirmed 00:05–00:15 window. She could neither use nor lend her key at 309, leaving Abel as its operator.',
     },
     {
       id: 'RB3', act: 'Part II · A story about a taxi', label: 'The guest', requires: ['RB2'], evidenceRefs: ['RB-A1', 'RB-A2', 'RB-A3', 'RB-B3'],

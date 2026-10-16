@@ -42,7 +42,7 @@ Name check: The Last Reservation is about a real booking falsely cancelled; this
 ## Evidence and deductions
 
 1. **RB1 — Between 00:05 and 00:15.** A: Grey's order (rain → 309 opened → hum stops). B: rain 00:05, lift off 00:15, 309 out of order, key cabinet unopened. Neither alone gives times for the door.
-2. **RB2 — Abel Finch** (RB1). A: Osei with Dora from rain start to hum stop. B: only the two chained master keys open 309; Grace and Carl hold none. B alone leaves Abel/Dora; A alone cannot exclude Grace/Carl.
+2. **RB2 — Abel Finch** (RB1). A: Osei with Dora from rain start to hum stop. B: only two master keys open 309; a verified custody record establishes exclusive use by the named holders with no loans, exchanges or assisted use; intact numbered seals support continuity. Grace and Carl hold none. B alone leaves Abel/Dora; A alone cannot exclude Grace/Carl.
 3. **RB3 — She went up to 309 with Abel** (RB2; reuses RB-A1, RB-A2). A: Grace (lobby empty after the audit, watched to morning) versus Abel's taxi story. B: front doors unopened after 23:58, yard door shut, no taxi call, Grace's and Carl's unbroken sessions, guest-room door counters 23:30–00:30 (only 214 and 309). Taxi, yard and lobby are all excluded; every other person is accounted for.
 4. **RB4 — At 05:41** (RB3). A: Grey (one heavy set left first, heels stayed; later light steps a few minutes before his booked call); Grace (Abel with her from his return to 06:05). B: stair counter 00:41, 03:12, 03:15, 05:41; Abel on desk 00:45; Dora's linen round 03:12–03:15; Grey's call at 05:45; room empty at 06:00.
 5. **RB5 — The laundry** (RB4). A: Carl saw her pass the ground floor to the basement and go through one of two doors; she has not come back. B: boiler room locked since 00:20 with Carl's only key, no lock use; laundry one door, no other exit; yard alarmed and unopened.
@@ -53,6 +53,10 @@ Ruled-out options are listed in each round's `proof` in the content module.
 
 Laundry drying room: Hannah with her suitcase, and Abel's note to the morning manager (four pounds, cold room with a bed, he pays — envelope in the till marked 309 — taxi story to protect Grace, 07:10 train). Motive only in the note.
 
-## Review record (AI, not human playtesting)
+## Historical review record (AI, not human playtesting)
 
 Round 1 blind solve: all five answers found. Defects fixed: RB4 solvable from A alone (options reworded to times; Dora's round and Grey's booked call added); RB2 relied on the eventual liar's signed claim (keys now chained, verified); Carl's timing and the 06:00 lift switch-on clarified; guest-door window widened to 23:30. Round 2: all unique, none solvable from one sheet; fixed Dora's "never on the third floor" conflict with her linen round, and the key cabinet versus master-key office ambiguity; removed "early … train" so A cannot place the call by common sense. No human playtest yet.
+
+## 16 October repair checkpoint
+
+Earlier AI review records are historical, not proof of fairness. The user-authorized repairs, counterexample checks and actual command/browser results are recorded in `docs/project/CASE_REPAIR_POLISH.md`. No human playtest or measured duration is claimed.

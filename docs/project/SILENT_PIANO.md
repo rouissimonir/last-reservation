@@ -36,7 +36,7 @@ Options: prop store / green room / instrument cupboard. Correct: **the prop stor
 
 ## Ending (motive only via the note)
 
-Recovery: the last page and Ines's note are in the prop store. Note: Ines recognised the waltz's closing theme as her late teacher's, unpublished, and silenced the piano to delay a credit-less premiere, saving the page unharmed. Before the note, deductions establish actions and place, not intent.
+Recovery: the last page and Ines's note are in the prop store. Note: Ines recognised the waltz's closing theme as her late teacher's, unpublished, and silenced the piano to delay a credit-less premiere, saving the page unharmed. The unsigned programme correction in the introduction foreshadows a dispute without naming a motive or culprit. Before the note, deductions establish actions and place, not intent. Attribution remains a claim to check before rescheduling; the ending does not automatically certify plagiarism.
 
 ## Review focus
 
@@ -53,3 +53,7 @@ See the Codex review guidance in `AGENTS.md`: private clue leakage, ambiguous de
 - [ ] `the-missing-envelope` (key `two-sides/missing-envelope/v1`) and `the-last-reservation` are unchanged and still pass.
 - [ ] `npm run check`, `npx expo install --check` and `npx expo-doctor` run; results recorded in `docs/STATUS.md`.
 - [ ] No claim that browser tests prove native privacy or device behavior.
+
+## 16 October repair checkpoint
+
+Earlier AI review records are historical, not proof of fairness. The user-authorized repairs, counterexample checks and actual command/browser results are recorded in `docs/project/CASE_REPAIR_POLISH.md`. No human playtest or measured duration is claimed.

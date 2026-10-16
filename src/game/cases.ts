@@ -9,6 +9,7 @@ import { portraitBehindWall } from './portrait-behind-wall';
 
 export type CaseRound = Round & {
   id: string; act: string; label: string; requires: readonly string[]; evidenceRefs: readonly string[];
+  afterDeduction?: string;
 };
 export type CaseDefinition = {
   id: string; version: number; edition: string; title: string; coverTitle: string; format: string;

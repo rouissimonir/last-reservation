@@ -5,12 +5,12 @@ export const lastCall: CaseDefinition = {
   id: 'the-last-call', version: 1, edition: '07', title: 'The Last Call at Midnight',
   coverTitle: 'The Last Call\nat Midnight', format: 'After Midnight · 5 deductions',
   hook: 'One call. Thirty-five seconds. Then silence.',
-  description: 'At midnight the switchboard takes a call from a bellboy who cannot get out, and the line goes dead. Read the hotel as a map of sounds, doors and sightlines to find out where he is, what shut him in and why nobody saw him.',
+  description: 'A bellboy calls from somewhere inside the hotel. He cannot get out. Then the line dies. Find him through the sounds on the wire, then reconstruct what went wrong.',
   duration: 'Length not yet measured by playtests',
   setting: 'Bellweather Hotel · November 1994',
   introLabel: 'AFTER MIDNIGHT · 12 NOVEMBER 1994', introTitle: 'Then the line went dead.',
-  endingTitle: 'The door opens.', noteLabel: 'IN THE NIGHT ROUND BOOK', noteTitle: 'An entry made at 00:40',
-  introduction: 'Bellweather Hotel, 12 November 1994, 00:20. At midnight the night operator, Ruth Okoye, took an internal call. A young voice said, “Ruth, it’s Teddy. I’m shut in. The door won’t open and it’s pitch dark—” and the line went dead. Teddy Marsh, the sixteen-year-old bellboy, is missing from his post. The hotel has forty house telephones, and the switchboard shows only which group of lines rang. One of you has what people heard and saw tonight. The other has the hotel’s plans, registers and logs. Find Teddy, and work out what shut him in.',
+  endingTitle: 'A routine changes.', noteLabel: 'IN THE NIGHT ROUND BOOK', noteTitle: 'An entry made at 00:40',
+  introduction: 'Bellweather Hotel, 12 November 1994, 00:20. At midnight Ruth Okoye took a call: “Ruth, it’s Teddy. I’m shut in. The door won’t open and it’s pitch dark—” Then silence. Teddy Marsh, the sixteen-year-old bellboy, is missing. Forty house telephones share a switchboard that identifies only groups of lines. Locate Teddy first. Once he is safe, reconstruct what shut him in.',
   reliability: 'There is no timer. Witnesses are accurate about what they directly saw and heard and say what they could not see. Plans, registers and logs are certified and complete for what they cover. A guess about why someone acted is not evidence of it.',
   rounds: [
     {
@@ -39,9 +39,10 @@ export const lastCall: CaseDefinition = {
       ],
       deduction: 'Teddy called from the house telephone in the roof plant room.',
       proof: 'LC-A1 hears steady dripping and two rumbles that start and stop, and no bell. In LC-B1 the boiler room is dry and rumbles without a break, the wine cellar has no machinery, and the laundry’s bell rang during the call. The plant room drips and its winding gear ran exactly twice while the lift moved.',
+      afterDeduction: 'Ruth takes the spare roof key from the night manager and goes straight upstairs with you. The plant-room door opens from outside; Teddy answers Ruth’s call and comes out holding the telescope case. By 00:25 he is safe at the switchboard with a mug of tea. Now reconstruct how an ordinary night round shut him in and cut off his call.',
     },
     {
-      id: 'LC2', act: 'Part I · A voice on line C', label: 'The door', requires: ['LC1'], evidenceRefs: ['LC-A2', 'LC-B2'],
+      id: 'LC2', act: 'Part II · After the rescue', label: 'The door', requires: ['LC1'], evidenceRefs: ['LC-A2', 'LC-B2'],
       title: 'A door with no handle', question: 'What shut Teddy in?',
       options: ['Someone locked the door with a key', 'A gust of wind swung the door shut', 'Someone removed its wedge and the door latched itself', 'Teddy jammed the latch from inside'],
       correct: 'Someone removed its wedge and the door latched itself',
@@ -78,9 +79,9 @@ export const lastCall: CaseDefinition = {
         ] },
         B: { id: 'LC-B3', kind: 'access', title: 'The roof door', source: 'Certified logs · Roof-door counter; night manager’s key safe', paragraphs: [
           'The roof door, at the top of the service stairs, locks itself when it closes. From the stairs it opens only with a roof key. From the roof it opens by its push bar.',
-          'Roof-door counter: opened at 23:41, 23:53 and 23:56. Not opened since.',
+          'Roof-door counter, extract ending 00:20: opened at 23:41, 23:53 and 23:56. No other openings in that extract. The later rescue is outside this record.',
           'Roof key 1 · Signed out at 23:40 by Teddy Marsh, “to fetch Dr Penrose’s telescope case from the plant room.” Not returned.',
-          'Roof key 2 · The spare, kept in the night manager’s key safe · Handed to Carl Brandt, night engineer, in person at 23:52 for his midnight round, and handed back by him at 00:10. The safe holds no other roof key.',
+          'Roof key 2 · The spare · In Carl Brandt’s exclusive custody and use from 23:52 until its return to the night manager’s safe at 00:10; no loans or exchanges. The safe holds no other roof key.',
           'Switchboard log: Mara Vale, night manager, was at the front desk without a break from 23:30 to 00:30.',
           'There are no other roof keys and no other way onto the roof.',
         ] },
@@ -134,7 +135,7 @@ export const lastCall: CaseDefinition = {
         B: { id: 'LC-B5', kind: 'log', title: 'The midnight round', source: 'Certified round sheet · Night engineer; telephone engineer’s check', paragraphs: [
           'Midnight round, signed C. Brandt: 23:53, roof, plant-room wedge removed and door let close. 00:00:40, sixth-floor distribution board: roof circuit switched off, as every night.',
           'The roof circuit feeds the lamp over the roof door, the outside lamp over the plant-room door and the line amplifier for the plant-room telephone. With the circuit off, that telephone goes dead. No other line is affected.',
-          'Telephone engineer’s check at 00:15: the plant-room wire is intact from end to end.',
+          'Telephone engineer’s check at 00:15, tested from the switchboard without entering the plant room: its wire is intact from end to end.',
         ] },
       },
       hints: [
@@ -147,9 +148,9 @@ export const lastCall: CaseDefinition = {
     },
   ],
   ending: {
-    recovery: 'You climb to the roof with Carl and Ruth. Carl pulls the plant-room door open by its outside handle. Behind the water tank, Teddy blinks into the torchlight, cold and stiff, holding Dr Penrose’s telescope case. He is unhurt. Carl switches the roof circuit back on, and in the round book on the sixth-floor landing he writes an entry before anyone asks him to.',
+    recovery: 'Teddy has finished his tea. Dr Penrose’s telescope case is back in his hands, and the roof circuit is on again. Carl listens to the reconstruction without interrupting. Then he opens the night round book and writes beneath his own signature.',
     note: '“00:40. Closed the plant-room door at 23:53 without seeing T. Marsh behind the tank; my torch could not reach him. Switched off the roof circuit at midnight as usual, not knowing he was on the telephone. My fault, not the boy’s. From tonight: look behind the tank, call twice, and never close that door again until its inside lever is back.”',
     signature: 'Carl Brandt · Night engineer',
-    conclusion: 'Carl’s entry confirms it was a mistake. Before it, you had established where Teddy was, what shut him in, whose hand took the wedge away, why he was not seen and why the line died, but not what Carl knew. Teddy goes down to a mug of tea at the switchboard, Dr Penrose has his case, and the inside lever is refitted by breakfast. The Last Call at Midnight is resolved.',
+    conclusion: 'Carl signs the repair ticket himself. Until the inside lever is refitted, nobody closes that door. Teddy stays at the warm switchboard for the rest of the shift. Finding him ended the danger; reconstructing the night changed the routine. The Last Call at Midnight is resolved.',
   },
 };

@@ -5,12 +5,12 @@ export const silentPiano: CaseDefinition = {
   id: 'the-silent-piano', version: 1, edition: '03', title: 'The Silent Piano',
   coverTitle: 'The Silent\nPiano', format: 'Short case · 3 deductions',
   hook: 'A premiere cancelled. A page gone missing.',
-  description: 'The ballroom piano falls silent minutes before a premiere, and the last page of the score vanishes. Three deductions: how it was silenced, who did it and where the page went.',
+  description: 'A grand piano falls silent before a premiere. The score’s final page has vanished. Follow the hands at the keyboard and the paper leaving backstage.',
   duration: '10–15 minutes · UNVALIDATED',
   setting: 'Bellweather Hotel · October 1994',
   introLabel: 'A RECITAL EVENING IN OCTOBER, 1994', introTitle: 'Nothing will play.',
   endingTitle: 'The page returns.', noteLabel: 'IN THE PROP STORE', noteTitle: 'Ines’s folded note',
-  introduction: 'Bellweather Hotel ballroom, 25 October 1994. Pianist Tomas Reyes was to premiere his “Waltz for a Closed Room” at nine. At 20:40 he sat down and the grand piano made no sound, and the recital was cancelled. The final page of his score is gone from the music desk. Three people had a reason to be near the piano tonight. One of you has the witness accounts. The other has the hotel’s records. Find out what happened before the audience leaves.',
+  introduction: 'Bellweather Hotel, 25 October 1994. Tomas Reyes is to premiere “Waltz for a Closed Room” at nine. At 20:40 the grand piano falls silent and the last page of his score vanishes. At reception, an unsigned correction to the programme waits unread. Find the page before the audience leaves.',
   reliability: 'There is no timer. Witnesses are accurate about what they directly observed and say plainly what they did not see. Maker’s charts, door and equipment logs and the backstage plan are certified and complete. A job title, an object carried or a motive is not proof of an action on its own.',
   rounds: [
     {
@@ -68,14 +68,14 @@ export const silentPiano: CaseDefinition = {
       proof: 'SP-A2 puts the single act of reaching into the lid at 20:09. SP-B2 places only Ines and Hugo near the piano then; Marguerite arrived at 20:12. The confirmed cause is a felt strip, which Ines and Marguerite carried but Hugo did not. Only Ines fits both the item and the time.',
     },
     {
-      id: 'SP3', act: 'The Silent Piano', label: 'The page', requires: ['SP2'], evidenceRefs: ['SP-A3', 'SP-B3'],
+      id: 'SP3', act: 'The Silent Piano', label: 'The page', requires: ['SP2'], evidenceRefs: ['SP-A2', 'SP-A3', 'SP-B3'],
       title: 'Down the stage-right corridor', question: 'Where did she take the missing last page?',
       options: ['The prop store', 'The green room', 'The instrument cupboard'], correct: 'The prop store',
       evidence: {
         A: { id: 'SP-A3', title: 'The porter in the corridor', source: 'Witness statement · Lewis Ash, porter', paragraphs: [
           '“Two people left the ballroom through the stage-right door between 20:10 and 20:12. The first carried a flat paper folder, and a pencilled VII showed at the corner of the printed music inside. The second had empty hands. I could not see either face.”',
           '“I followed the first one down the corridor. They went through a door with a brass handle and climbed exactly three steps. Then the door closed and I saw nothing more.”',
-          '“I did not see inside, and I did not see what was in the folder. I did not follow the second person at all.”',
+          '“I saw only that exposed corner, not the rest of the folder’s contents. I did not follow the second person.”',
         ] },
         B: { id: 'SP-B3', kind: 'access', title: 'The exit log and backstage plan', source: 'Certified exit log and floor plan · Facilities desk', paragraphs: [
           'Exit log, stage-right door: Ines Calder left at 20:10. Hugo Lang left at 20:11. No one else used that door between 20:05 and 20:25.',
@@ -100,6 +100,6 @@ export const silentPiano: CaseDefinition = {
     recovery: 'The prop-store door has a brass handle. You climb three steps and find a flat folder on a shelf, sealed with tape. Inside is the last page of the score, unharmed. Beside it sits a folded note.',
     note: '“I did not want the piano broken, only quiet. The closing theme of Tomas’s waltz is my late teacher’s, never published, and the programme gives him no credit. I silenced the piano so I could ask for one before it was played. I took the page so it would not be lost. Please give it back to him, and ask him to name my teacher.”',
     signature: 'Ines Calder · Bellweather Hotel, 25 October 1994',
-    conclusion: 'The note confirms why Ines did it. Before it, you had established her actions and the page’s hiding place, not her reason. The page goes back to Tomas, the felt strip comes off the strings, and the recital can be rescheduled with the programme corrected. The Silent Piano is resolved.',
+    conclusion: 'You had established Ines’s actions, not her reason. Her note explains the unsigned correction, but the musical attribution still needs checking. Tomas gets his page back; the felt comes off the strings. He postpones the premiere until the claim can be heard. The Silent Piano is resolved.',
   },
 };

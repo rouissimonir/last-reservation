@@ -1,5 +1,9 @@
 # Checkpoint fixes
 
+## Authorized case repair/polish · 16 October 2026
+
+The user explicitly requested repair then polish after case review. Verified and fixed LR6/PB5 one-perspective shortcuts, insufficient coat-location/key-custody/typewriter-original proofs, and delayed rescue after locating Teddy. Shorter introductions and distinct resolution scenes preserve all 33 answers, original save identities and the entire mini-case. No new fixes.md input or repaired native launch is claimed. Findings, retained decisions, counterexample tests and actual browser/command evidence: `docs/project/CASE_REPAIR_POLISH.md`. Current TypeScript/lint/87 tests and exports pass (83 in the scoped repair-only checkpoint); latest Doctor 20/21, online schema fetch failed. Earlier licensing edits and outer-repository work are preserved separately. No push.
+
 ## Privacy and native-link audit · 16 October 2026
 
 Verified and corrected MONETIZATION.md instructions that overgeneralized RevenueCat diagnostics/identifiers/linking and blurred custom gameplay events with native purchase traffic. Added a source/vendor manifest inventory, three narrow evidenced required-reason entries, real preflight checks and Expo-merge/provenance tests. Native external URLs are now canonicalized before the supported Router entry forwards them to its query parser; malformed/oversized/unknown inputs and arbitrary query/access flags are not forwarded. Four input-policy and two actual Router registration/event tests pass. The upstream advisory, web/Expo Go limitations and signed-device gap remain explicit. Final check: TypeScript/lint/75 tests and exports pass; Doctor has two online failures; preflight still fails on the same missing publisher fields. No case, save, entitlement, dependency, supplied-art or raw startup-report changes. See `docs/project/PRIVACY_AND_LINK_CHECKPOINT.md`. No new fixes.md input or native launch repair is claimed.

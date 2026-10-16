@@ -190,6 +190,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
         if (scene.round >= p.round) return <><Title>Keep investigating.</Title><Button onPress={conceal}>Return to cover</Button></>;
         return <>{roundHeader(scene.round)}<Label>DEDUCTION CONFIRMED</Label><Title>{rounds[scene.round].deduction}</Title>
           <Copy>This finding has been added to your shared notebook.</Copy>
+          {rounds[scene.round].afterDeduction && <Copy>{rounds[scene.round].afterDeduction}</Copy>}
           {scene.round < rounds.length - 1 && <View style={s.confirmedStrip}><Label>HOW THE EVIDENCE FITS</Label><Copy>{rounds[scene.round].proof}</Copy></View>}
           <Button onPress={() => navigate(nextScene(p))}>{p.round === rounds.length ? 'Read the resolution →' : 'Open the next chapter →'}</Button>
         </>;

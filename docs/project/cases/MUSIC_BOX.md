@@ -35,8 +35,12 @@ Ruth (load and weights; can't see the car after it leaves), Remy and Bruno (trut
 
 ## Ending
 
-Pressing room: the paper drying on the rail, the box unharmed, fresh paper and Lucy's note (soup soaking it; afraid of the room-service rule). Motive only in the note.
+Pressing room: Lucy is finishing the wrapping beside the unharmed box. The manager challenges her Room 105 account, giving MB2 a consequence in the resolution. Lucy explains the soup and room-service rule in person; her words are recorded, rather than discovered in an abandoned note.
 
-## Review record
+## Historical review record
 
 AI blind solve round 1 found MB1 solvable from either sheet (Remy's unloading line and an intro that said what reached the pantry) and MB3 guessable from a key-holder line naming Lucy. Fixed: Remy's line and the key holder removed, intro reworded. Round 2: all answers unique and both sheets needed; remaining note — B plus the intro still points strongly to the first floor, though a fourth item cannot be excluded without A. No human playtest yet.
+
+## 16 October repair checkpoint
+
+Earlier AI review records are historical, not proof of fairness. The user-authorized repairs, counterexample checks and actual command/browser results are recorded in `docs/project/CASE_REPAIR_POLISH.md`. No human playtest or measured duration is claimed.

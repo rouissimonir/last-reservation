@@ -4,14 +4,15 @@ import { test } from 'node:test';
 import { cases, getCase, validateCase } from '../src/game/cases';
 import { decodeSave, saveKey } from '../src/game/storage';
 
-// Digests were taken from the experiment's baseline revision (eb1d164) before The Silent Piano was added.
-// A change to either existing case, including its optional presentation fields, must be deliberate.
+// The mini-case keeps its original content digest. The Last Reservation digest was
+// deliberately refreshed for the user-authorized repair/polish checkpoint.
+// Pre-polish identities, all answers and legacy saves are independently pinned in case-repairs.test.ts.
 const BASELINE: Record<string, string> = {
   'the-missing-envelope': '2ccaf11430510e14f35b1e87eb1f53abb91008edfd669a26a61373cc11f422f1',
-  'the-last-reservation': '64b58c2cda3258b020f76bdc24bd31b153b77541cb78320b330350f986f9e0dd',
+  'the-last-reservation': 'cab0f6d896b6313b65a883446b1919ffd3bafb6fa787d70589c7ed5b8f3f1d5d',
 };
 
-test('existing case content is byte-for-byte what the baseline shipped', () => {
+test('original mini-case and deliberately reviewed full-case content snapshots remain exact', () => {
   for (const [id, digest] of Object.entries(BASELINE)) {
     assert.equal(createHash('sha256').update(JSON.stringify(getCase(id))).digest('hex'), digest, id);
     assert.deepEqual(validateCase(getCase(id)), []);

@@ -1,0 +1,299 @@
+{
+  "sourceCommit": "b1e204c",
+  "cases": [
+    {
+      "id": "the-missing-envelope",
+      "version": 1,
+      "edition": "01",
+      "saveKey": "two-sides/missing-envelope/v1",
+      "roundIds": [
+        "ME1",
+        "ME2",
+        "ME3"
+      ],
+      "evidenceIds": [
+        [
+          "A1",
+          "B1"
+        ],
+        [
+          "A2",
+          "B2"
+        ],
+        [
+          "A3",
+          "B3"
+        ]
+      ],
+      "answers": [
+        "22:10",
+        "Nora",
+        "Upstairs linen-room dry-document cabinet"
+      ]
+    },
+    {
+      "id": "the-last-reservation",
+      "version": 1,
+      "edition": "02",
+      "saveKey": "two-sides/the-last-reservation/v1",
+      "roundIds": [
+        "LR1",
+        "LR2",
+        "LR3",
+        "LR4",
+        "LR5",
+        "LR6"
+      ],
+      "evidenceIds": [
+        [
+          "LR-A1",
+          "LR-B1"
+        ],
+        [
+          "LR-A2",
+          "LR-B2"
+        ],
+        [
+          "LR-A3",
+          "LR-B3"
+        ],
+        [
+          "LR-A4",
+          "LR-B4"
+        ],
+        [
+          "LR-A5",
+          "LR-B5"
+        ],
+        [
+          "LR-A6",
+          "LR-B6"
+        ]
+      ],
+      "answers": [
+        "Ruth Vane",
+        "East archive passage",
+        "Owen Bell",
+        "Victor Hale",
+        "West staff reading room",
+        "Elin withdrew voluntarily to protect originals and await witnesses"
+      ]
+    },
+    {
+      "id": "the-silent-piano",
+      "version": 1,
+      "edition": "03",
+      "saveKey": "two-sides/the-silent-piano/v1",
+      "roundIds": [
+        "SP1",
+        "SP2",
+        "SP3"
+      ],
+      "evidenceIds": [
+        [
+          "SP-A1",
+          "SP-B1"
+        ],
+        [
+          "SP-A2",
+          "SP-B2"
+        ],
+        [
+          "SP-A3",
+          "SP-B3"
+        ]
+      ],
+      "answers": [
+        "A felt strip laid across the strings",
+        "Ines Calder",
+        "The prop store"
+      ]
+    },
+    {
+      "id": "the-masquerade-coat",
+      "version": 1,
+      "edition": "04",
+      "saveKey": "two-sides/the-masquerade-coat/v1",
+      "roundIds": [
+        "MC1",
+        "MC2",
+        "MC3"
+      ],
+      "evidenceIds": [
+        [
+          "MC-A1",
+          "MC-B1"
+        ],
+        [
+          "MC-A2",
+          "MC-B2"
+        ],
+        [
+          "MC-A3",
+          "MC-B3"
+        ]
+      ],
+      "answers": [
+        "35",
+        "Mrs Lind",
+        "Room 316"
+      ]
+    },
+    {
+      "id": "the-music-box",
+      "version": 1,
+      "edition": "05",
+      "saveKey": "two-sides/the-music-box/v1",
+      "roundIds": [
+        "MB1",
+        "MB2",
+        "MB3"
+      ],
+      "evidenceIds": [
+        [
+          "MB-A1",
+          "MB-B1"
+        ],
+        [
+          "MB-A2",
+          "MB-B2"
+        ],
+        [
+          "MB-A3",
+          "MB-B3"
+        ]
+      ],
+      "answers": [
+        "At the first-floor hatch",
+        "Lucy Marsh",
+        "The pressing room"
+      ]
+    },
+    {
+      "id": "the-room-never-booked",
+      "version": 1,
+      "edition": "06",
+      "saveKey": "two-sides/the-room-never-booked/v1",
+      "roundIds": [
+        "RB1",
+        "RB2",
+        "RB3",
+        "RB4",
+        "RB5"
+      ],
+      "evidenceIds": [
+        [
+          "RB-A1",
+          "RB-B1"
+        ],
+        [
+          "RB-A2",
+          "RB-B2"
+        ],
+        [
+          "RB-A3",
+          "RB-B3"
+        ],
+        [
+          "RB-A4",
+          "RB-B4"
+        ],
+        [
+          "RB-A5",
+          "RB-B5"
+        ]
+      ],
+      "answers": [
+        "Between 00:05 and 00:15",
+        "Abel Finch",
+        "She went up to Room 309 with Abel",
+        "At 05:41",
+        "The laundry"
+      ]
+    },
+    {
+      "id": "the-last-call",
+      "version": 1,
+      "edition": "07",
+      "saveKey": "two-sides/the-last-call/v1",
+      "roundIds": [
+        "LC1",
+        "LC2",
+        "LC3",
+        "LC4",
+        "LC5"
+      ],
+      "evidenceIds": [
+        [
+          "LC-A1",
+          "LC-B1"
+        ],
+        [
+          "LC-A2",
+          "LC-B2"
+        ],
+        [
+          "LC-A3",
+          "LC-B3"
+        ],
+        [
+          "LC-A4",
+          "LC-B4"
+        ],
+        [
+          "LC-A5",
+          "LC-B5"
+        ]
+      ],
+      "answers": [
+        "The roof plant room",
+        "Someone removed its wedge and the door latched itself",
+        "Carl Brandt",
+        "Behind the water tank, at the shelves",
+        "Carl switched off the roof circuit on his round"
+      ]
+    },
+    {
+      "id": "the-portrait-behind-the-wall",
+      "version": 1,
+      "edition": "08",
+      "saveKey": "two-sides/the-portrait-behind-the-wall/v1",
+      "roundIds": [
+        "PB1",
+        "PB2",
+        "PB3",
+        "PB4",
+        "PB5"
+      ],
+      "evidenceIds": [
+        [
+          "PB-A1",
+          "PB-B1"
+        ],
+        [
+          "PB-A2",
+          "PB-B2"
+        ],
+        [
+          "PB-A3",
+          "PB-B3"
+        ],
+        [
+          "PB-A4",
+          "PB-B4"
+        ],
+        [
+          "PB-A5",
+          "PB-B5"
+        ]
+      ],
+      "answers": [
+        "Letter D, from Clara to her father",
+        "Clara Bellweather",
+        "In March 1936, before the job was signed off",
+        "Ambrose Bellweather",
+        "She left on the 7:10 train to marry Jonah Reed, against her father’s wishes"
+      ]
+    }
+  ]
+}
