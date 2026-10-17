@@ -29,7 +29,7 @@ export default function HelpScreen() {
             <Copy>Hide the evidence before passing the phone. The Notebook holds confirmed deductions and lets you revisit a sheet through its private handoff.</Copy>
           </View>
           <View style={s.section}><Label>READING & PROGRESS</Label>
-            <Copy>Play at your own pace, without sound or timers. Your device’s text size is supported. Each case also has a Larger body text option in Settings.</Copy>
+            <Copy>Play at your own pace. There are no timers, and sound is optional: music, effects and haptics can be changed in Sound & settings. Your device’s text size is supported. Each case also has a Larger body text option in Settings.</Copy>
             <Copy>Progress and reading settings are saved locally. You can leave a case and continue later. The game does not sync saves between devices. Reset this case in its Settings to remove its progress; other cases and purchases are preserved.</Copy>
             <Copy>Hiding a sheet helps keep the two roles separate. It does not prevent screenshots or someone looking over your shoulder.</Copy>
           </View>

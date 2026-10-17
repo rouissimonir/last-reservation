@@ -18,6 +18,8 @@ import { usePrivacy } from '@/game/use-privacy';
 import { canPlayCase } from '@/monetization/access';
 import { AFTER_MIDNIGHT } from '@/monetization/catalogue';
 import { usePurchases } from '@/monetization/purchases-provider';
+import { useSound } from '@/sound/sound-provider';
+import { SoundSettings } from './sound-settings';
 
 export function Investigation() {
   const [selected, setSelected] = useState<{ id: string; replay: boolean } | null>(null);
@@ -52,6 +54,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
   const { height } = useWindowDimensions();
   const compact = height < 740;
   const reducedMotion = useReducedMotion();
+  const { cue } = useSound();
   const [scene, setScene] = useState<Scene>(() => replay ? { kind: 'reset' } : resumeScene());
   const [choice, setChoice] = useState<string | null>(null);
   const [wrong, setWrong] = useState(false);
@@ -145,7 +148,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
           <View style={s.handoffRole}><RoleGlyph role={scene.role} small /><Label>INVESTIGATOR {scene.role}</Label></View>
           <Text accessibilityRole="header" style={s.handoffTitle}>Pass the phone to the{ '\n' }{roleNames[scene.role]}</Text>
           <Copy style={s.handoffReminder}>Only this investigator should open the next clue.</Copy>
-          <View style={s.handoffAction}><Button onPress={() => navigate({ ...scene, kind: 'private' })}>I’m ready</Button></View>
+          <View style={s.handoffAction}><Button sound="page" onPress={() => navigate({ ...scene, kind: 'private' })}>I’m ready</Button></View>
         </View>;
       }
       case 'private': {
@@ -168,20 +171,21 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
           {p.confirmed.length > 0 && <View style={s.confirmedStrip}><Label>FROM YOUR NOTEBOOK</Label><Copy>{rounds[p.round - 1].deduction}</Copy></View>}
           <Copy>Share what each of you found. Combine both perspectives before choosing your answer.</Copy>
           <Text accessibilityRole="header" style={s.question}>{activeRound.question}</Text>
-          <View style={s.options}>{activeRound.options.map((option, i) => <Button key={option} secondary selected={choice === option}
+          <View style={s.options}>{activeRound.options.map((option, i) => <Button key={option} secondary sound="select" selected={choice === option}
             onPress={() => { setChoice(option); setWrong(false); }}>{`${choice === option ? '✓' : String.fromCharCode(65 + i) + '.'}  ${option}`}</Button>)}</View>
           {wrong && <View accessibilityLiveRegion="polite" style={s.feedback}><Copy>That doesn’t fit all the evidence. Compare your clues and try again—there’s no penalty.</Copy></View>}
-          <Button disabled={!choice} onPress={() => {
+          <Button disabled={!choice} sound={null} onPress={() => {
             if (!choice) return;
             const round = p.round;
             const next = game.dispatch({ type: 'answer', round, answer: choice });
+            cue(next.round > round ? 'confirm' : 'wrong');
             if (next.round > round) navigate({ kind: 'confirmed', round });
             else setWrong(true);
           }}>Confirm our deduction →</Button>
           <View style={s.hints}><Label>A LITTLE ASSISTANCE</Label>
             <Copy style={s.muted}>Optional and free. Reveal one hint at a time. Hint 3 explains the answer.</Copy>
             {hints.map((hint, i) => <View key={i} style={s.hintCard}><Label>HINT {i + 1}</Label><Copy>{hint}</Copy></View>)}
-            {hints.length < 3 && <Button secondary onPress={() => game.dispatch({ type: 'hint', round: p.round })}>{hints.length === 2 ? 'Reveal solution hint (3 of 3)' : `Reveal hint ${hints.length + 1} of 3`}</Button>}
+            {hints.length < 3 && <Button secondary sound="hint" onPress={() => game.dispatch({ type: 'hint', round: p.round })}>{hints.length === 2 ? 'Reveal solution hint (3 of 3)' : `Reveal hint ${hints.length + 1} of 3`}</Button>}
           </View>
           <TextAction onPress={() => navigate({ kind: 'notebook' })}>Revisit evidence in the notebook</TextAction>
         </>;
@@ -192,7 +196,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
           <Copy>This finding has been added to your shared notebook.</Copy>
           {rounds[scene.round].afterDeduction && <Copy>{rounds[scene.round].afterDeduction}</Copy>}
           {scene.round < rounds.length - 1 && <View style={s.confirmedStrip}><Label>HOW THE EVIDENCE FITS</Label><Copy>{rounds[scene.round].proof}</Copy></View>}
-          <Button onPress={() => navigate(nextScene(p))}>{p.round === rounds.length ? 'Read the resolution →' : 'Open the next chapter →'}</Button>
+          <Button sound={p.round === rounds.length ? 'solved' : 'page'} onPress={() => navigate(nextScene(p))}>{p.round === rounds.length ? 'Read the resolution →' : 'Open the next chapter →'}</Button>
         </>;
       }
       case 'ending': {
@@ -223,10 +227,11 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
       </>;
       case 'settings': return <>
         <Label>READING & PROGRESS</Label><Title>Make yourself comfortable.</Title>
-        <Copy>System text scaling is always supported. For a little more room, enlarge the body text below. Short reveals follow your device’s reduced-motion preference. No audio is needed.</Copy>
+        <Copy>System text scaling is always supported. For a little more room, enlarge the body text below. Short reveals follow your device’s reduced-motion preference.</Copy>
         <Button secondary selected={p.settings.largeText} onPress={() => game.dispatch({ type: 'largeText' })}>
           {p.settings.largeText ? 'Larger body text: On' : 'Larger body text: Off'}
         </Button>
+        <SoundSettings />
         <View style={s.confirmedStrip}><Label>LOCAL TO THIS DEVICE</Label><Copy>Progress and viewed hints are saved separately for each case. Opening the app shows the case library; returning from the background conceals private evidence. Private sheets always reopen through a handoff.</Copy></View>
         <Button secondary onPress={() => navigate({ kind: 'reset' })}>Reset this case…</Button>
         <Button onPress={conceal}>Back to the cover</Button>
@@ -253,7 +258,7 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
           </SceneReveal>
         </ScrollView>
         {ready && scene.kind === 'private' && evidenceUnlocked(p, scene.round, scene.role) &&
-          <View style={s.actionDock}><Button onPress={finishEvidence}>Hide evidence & continue</Button></View>}
+          <View style={s.actionDock}><Button sound="handoff" onPress={finishEvidence}>Hide evidence & continue</Button></View>}
         {ready && (game.saveError || game.volatile) && <View accessibilityLiveRegion="polite" style={s.saveWarning}>
           <Text style={s.saveWarningText}>{game.volatile ? 'Playing without saving. Your existing save is untouched.' : 'Progress is in memory. Saving failed.'}</Text>
           {game.saveError && !game.volatile && <Button secondary onPress={game.retrySave}>Retry saving</Button>}

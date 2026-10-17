@@ -1,5 +1,7 @@
 # TWO SIDES MVP status
 
+**Latest sound and feel checkpoint, 17 October:** original generated soundtrack, effects, haptics and a Sound & settings screen; case content and saves unchanged. Results and native limits: `docs/project/STATUS.md` and `docs/project/SOUND_AND_FEEL.md`.
+
 **Latest case repair/polish checkpoint, 16 October:** `docs/project/CASE_REPAIR_POLISH.md` records repaired deduction premises/finales, immediate rescue after LC1, shorter introductions and varied resolutions. All original answers/save contracts and the unchanged mini-case are protected. Current worktree TypeScript/lint/87 tests and web/native JS exports pass; 83 tests belong to the scoped repair-only checkpoint, with four earlier licensing tests preserved separately. Latest Doctor is 20/21 (online schema fetch failed). Three complete browser walkthroughs and LC1 were checked at 375×667; five real JPEG captures are saved. Publisher/device/store/human/dependency gates remain open. Earlier results below are history.
 
 Review checkpoint · 15 October 2026 · Windows PowerShell.

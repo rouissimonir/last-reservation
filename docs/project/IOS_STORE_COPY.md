@@ -37,7 +37,7 @@ MADE FOR CONVERSATION
 • Confirmed deductions collected in your Notebook.
 • Three optional hints for every deduction, included.
 • Local progress saves and replay for each case.
-• Larger body text, no timer, and no sound required.
+• An original piano soundtrack and soft effects, with music, effects and haptics switches. Larger body text, no timer, and no sound required.
 
 Take your time. Compare your stories. The answer lies between you.
 

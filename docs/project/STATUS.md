@@ -1,6 +1,12 @@
 # TWO SIDES — status
 
-## Latest case repair and prose polish
+## Latest: sound and feel (17 October 2026)
+
+See `SOUND_AND_FEEL.md` and `assets/audio/README.md`. Added an original, code-generated piano soundtrack ("Bellweather Nocturne", a 60-second seamless loop), eight soft effects and haptics, with music, effects and haptics switches and five-step volume levels in a new `/settings` route and inside each case's Settings. Defaults are on and quiet (music 2 of 5, effects 3 of 5). Preferences live under their own key `two-sides/preferences/v1`; no case content, case id, save key or save format changed. The audio session follows the silent setting, mixes with other audio and never plays in the background; the expo-audio plugin requests no microphone and no background mode. Scene reveals now ease out over 280 ms (still off under reduced motion). Installed with `npx expo install`: expo-audio, expo-haptics and expo-asset (a required expo-audio peer that Doctor flagged).
+
+Actual results in the current worktree: `npm run check` PASS (typecheck, lint, notices check, **78 domain + 18 component tests**; new: 6 preference/asset tests, 3 sound component tests, and the storage-boundary test now allows the preferences provider while forbidding ownership terms in sound code). `npm run audio:check` PASS (byte-identical regeneration). iOS, Android and web JS exports PASS with all nine WAV files bundled; the notice inventory was refreshed from those exports and `notices:verify-exports` PASS. `npx expo install --check` PASS. Doctor 20/21, failing only the online schema fetch. Browser (Expo web dev server): music started after the first tap, looped at volume 0.28 for level 2, paused at 0 when switched off and resumed when switched on; tap, select, page, handoff and confirm cues played during a real Missing Envelope round; preferences were stored under the new key; no console errors. No person has listened to the audio yet, and none of this is native or device evidence: silent switch, haptics, fades and App Store processing of expo-audio's recorder code need a signed device build.
+
+## Earlier: case repair and prose polish
 
 See `CASE_REPAIR_POLISH.md`. Fixed LR6 and PB5 cross-role finales, actual coat-room entry proof, exclusive key/machine use, original-document provenance and rescue immediately after LC1. Shortened seven introductions by about 43% combined; all 33 correct answers, case/save identities and the complete mini-case are preserved. Three cases were played through their endings in the phone-width browser, plus LC1 rescue/retry/handoff. Five actual JPEGs are saved.
 

@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { AccessibilityInfo, Animated, Image, Platform, Pressable, StyleSheet, Text, TextProps, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Image, Platform, Pressable, StyleSheet, Text, TextProps, View } from 'react-native';
 
 import { Evidence, Role } from '@/game/case';
 import { colors as c, mono, serif, space } from '@/game/tokens';
+import { Cue, useSound } from '@/sound/sound-provider';
 
 export const ReadingContext = createContext<{ largeText: boolean; compact: boolean; reducedMotion: boolean; paperDate?: string }>(
   { largeText: false, compact: false, reducedMotion: true });
@@ -17,14 +18,17 @@ export function Label({ children, paper = false }: { children: ReactNode; paper?
 export function Title({ children }: { children: ReactNode }) {
   return <Text accessibilityRole="header" style={ui.title}>{children}</Text>;
 }
-export function Button({ children, onPress, secondary, disabled = false, selected = false, accessibilityLabel }: {
+// Every press gives a quiet cue (and haptic, when enabled). Pass sound={null} when the caller
+// chooses the cue itself, for example after checking an answer.
+export function Button({ children, onPress, secondary, disabled = false, selected = false, accessibilityLabel, sound = 'tap' }: {
   children: string; onPress: () => void; secondary?: boolean; disabled?: boolean; selected?: boolean;
-  accessibilityLabel?: string;
+  accessibilityLabel?: string; sound?: Cue | null;
 }) {
   const [focused, setFocused] = useState(false);
   const { reducedMotion } = useContext(ReadingContext);
+  const { cue } = useSound();
   return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} accessibilityState={{ disabled, selected }} disabled={disabled}
-    onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+    onPress={() => { if (sound) cue(sound); onPress(); }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [ui.button, secondary && ui.secondary, selected && ui.selected,
       focused && ui.focused, disabled && ui.disabled, pressed && !disabled && ui.pressed,
       pressed && !disabled && !reducedMotion && ui.pressedScale]}>
@@ -32,9 +36,10 @@ export function Button({ children, onPress, secondary, disabled = false, selecte
     <Text style={[ui.buttonText, secondary && ui.secondaryText, disabled && ui.disabledText]}>{children}</Text>
   </Pressable>;
 }
-export function TextAction({ children, onPress }: { children: string; onPress: () => void }) {
+export function TextAction({ children, onPress, sound = 'tap' }: { children: string; onPress: () => void; sound?: Cue | null }) {
   const [focused, setFocused] = useState(false);
-  return <Pressable accessibilityRole="button" onPress={onPress}
+  const { cue } = useSound();
+  return <Pressable accessibilityRole="button" onPress={() => { if (sound) cue(sound); onPress(); }}
     onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [ui.textAction, pressed && ui.textActionPressed, focused && ui.focused]}>
     <Text style={ui.textActionText}>{children}</Text>
@@ -132,11 +137,11 @@ export function SceneReveal({ children, reduced, enabled }: { children: ReactNod
   useEffect(() => {
     if (reduced || !enabled) { entry.setValue(1); return; }
     entry.setValue(0);
-    const reveal = Animated.timing(entry, { toValue: 1, duration: 160, useNativeDriver: Platform.OS !== 'web' });
+    const reveal = Animated.timing(entry, { toValue: 1, duration: 280, easing: Easing.out(Easing.cubic), useNativeDriver: Platform.OS !== 'web' });
     reveal.start();
     return () => reveal.stop();
   }, [entry, reduced, enabled]);
-  return <Animated.View style={{ opacity: entry, transform: [{ translateY: entry.interpolate({ inputRange: [0, 1], outputRange: [5, 0] }) }] }}>{children}</Animated.View>;
+  return <Animated.View style={{ opacity: entry, transform: [{ translateY: entry.interpolate({ inputRange: [0, 1], outputRange: [8, 0] }) }] }}>{children}</Animated.View>;
 }
 
 export const ui = StyleSheet.create({

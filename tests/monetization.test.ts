@@ -150,7 +150,11 @@ const read = (f: string) => readFileSync(f, 'utf8');
 
 test('no purchase bypass: ownership is never stored locally and the preview flag has one guarded reader', () => {
   const storageUsers = source.filter(f => /from '@react-native-async-storage\/async-storage'/.test(read(f))).map(f => f.replace(/\\/g, '/').split('/src/')[1]);
-  assert.deepEqual(storageUsers, ['game/use-investigation.ts']);
+  // Case saves and sound preferences are the only stored data; neither may mention ownership.
+  assert.deepEqual(storageUsers, ['game/use-investigation.ts', 'sound/sound-provider.tsx']);
+  const soundFiles = source.filter(f => f.replace(/\\/g, '/').includes('/src/sound/'));
+  assert.ok(soundFiles.length >= 3);
+  for (const f of soundFiles) assert.doesNotMatch(read(f), /entitlement|purchase|owned|collection/i, f);
   const flagReaders = source.filter(f => read(f).includes('EXPO_PUBLIC_DEV_PREVIEW_PREMIUM')).map(f => f.replace(/\\/g, '/').split('/src/')[1]);
   assert.deepEqual(flagReaders, ['monetization/config.ts']);
   const provider = read(source.find(f => f.endsWith('purchases-provider.tsx'))!);

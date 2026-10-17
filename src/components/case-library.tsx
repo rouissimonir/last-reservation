@@ -69,7 +69,10 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
           <Label>TWO / SIDES · BELLWEATHER HOTEL</Label>
           <Title>Choose your case.</Title>
           <Copy>Two people. One phone. Compare your evidence and solve it together.</Copy>
-          <TextAction onPress={() => router.push('/help')}>How to play, support & privacy</TextAction>
+          <View style={s.links}>
+            <TextAction onPress={() => router.push('/help')}>How to play, support & privacy</TextAction>
+            <TextAction onPress={() => router.push('/settings')}>Sound & settings</TextAction>
+          </View>
           <FirstCaseNote onOpen={onOpen} />
           {access.devPreview && <View style={s.devNote}><Label>DEVELOPMENT PREVIEW</Label>
             <Copy style={s.description}>After Midnight cases are open without a purchase because this development build was started with the preview flag. Release builds ignore it.</Copy></View>}
@@ -98,6 +101,7 @@ const s = StyleSheet.create({
   frame: { flex: 1, width: '100%', maxWidth: 600, alignSelf: 'center', backgroundColor: c.navy },
   safe: { flex: 1 }, content: { padding: 20, paddingBottom: 40, gap: 20 },
   note: { padding: 16, gap: 10, borderWidth: 1, borderColor: c.brass, borderRadius: 6, backgroundColor: 'rgba(23,43,57,0.94)' },
+  links: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' },
   devNote: { padding: 12, gap: 6, borderWidth: 1, borderColor: c.burgundy, borderRadius: 6, backgroundColor: c.panel },
   section: { gap: 8, paddingTop: 10, borderTopWidth: 1, borderColor: c.line },
   paidSection: { padding: 18, borderWidth: 1, borderColor: c.brass, borderRadius: 7, backgroundColor: 'rgba(91,58,38,0.35)', gap: 12 },
