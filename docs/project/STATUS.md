@@ -1,5 +1,11 @@
 # TWO SIDES — status
 
+## Latest: iOS ASO pack and connected RevenueCat project (18 October 2026)
+
+`IOS_STORE_COPY.md` and `store/ios/en-US.json` contain complete English name/subtitle/promo/keywords/description/IAP/reviewer copy, checked against field limits, screenshot planning and publisher gates. Keep Last Reservation first. Store name: TWO SIDES: Co-op Mystery; subtitle: Two players. One shared phone. Native launcher name stays TWO SIDES. Fixed the empty web title and added public description metadata. No case, save, art or entitlement changes.
+
+OAuth succeeded for the official MCP connection and CLI. With explicit user authorization created TWO SIDES (`projcfa9edbc`) separately from resumax. One Test Store non-consumable at USD 4.99 is attached to `after_midnight_collection` and the sole `$rc_lifetime` package in `after_midnight`; API readbacks and dashboard inspected. Apple app/product, bundle ID, Apple public key and support/privacy URLs are still missing. No Test Store key was substituted into production. 103 current-worktree tests, final TypeScript/lint, web and iOS JS exports pass. Alignment passes; Doctor fails schema fetch (20/21); preflight fails four publisher fields. Details/screenshot/native gates: `ASO_REVENUECAT_CHECKPOINT.md`. No push/submission. Earlier licensing work preserved separately. Older OAuth-timeout reports below are superseded.
+
 ## Latest: RevenueCat and offer integration (18 October 2026)
 
 See `REVENUECAT_CHECKPOINT.md`. Preserved five free cases plus one non-consumable for the three After Midnight cases, with USD 4.99 as the US store configuration target. Updated the supplied marketing copy and localized CTA; kept The Last Reservation first, as explicitly confirmed by the user on 18 October. The existing native SDK adapter now accepts only the sole Lifetime non-subscription package, rejects explicit consumables/unknown Apple types, and scopes/invalidates cached quotes correctly. Actual active verified entitlements still determine access.

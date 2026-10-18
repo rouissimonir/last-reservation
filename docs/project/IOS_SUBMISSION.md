@@ -1,5 +1,7 @@
 # iOS submission checkpoint
 
+**18 October update:** complete English store/reviewer copy, verified field lengths and screenshot plan are in `IOS_STORE_COPY.md` and `store/ios/en-US.json`. RevenueCat OAuth succeeds and the explicitly authorized TWO SIDES Test Store catalog is configured; no real Apple app/product/key is configured. Latest 103-test, web/iOS-JS export results and remaining publisher/device gates: `ASO_REVENUECAT_CHECKPOINT.md`. Still not submission-ready; older counts below are historical.
+
 16 October 2026. Target selected by the user: **iOS first**. **Not yet submission-ready.** This is an evidence register, not a claim of App Review approval.
 
 Latest local evidence: `PRIVACY_AND_LINK_CHECKPOINT.md` — 75 passing tests, corrected disclosures, evidenced minimum required-reason declarations and a native link-entry mitigation. `PRIVACY_DATA_INVENTORY.md` records current data flows and exact native-manifest sources. Earlier visual/flow checks are in `SUBMISSION_REGRESSION.md`. Final archive aggregation, store privacy answers and native-device gates remain unverified; local checks do not clear them.

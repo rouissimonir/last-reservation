@@ -1,5 +1,7 @@
 # Purchase setup — steps that need your accounts
 
+**18 October follow-up:** OAuth now succeeds. The user authorized a separate TWO SIDES project, created as `projcfa9edbc`, with one USD 4.99 Test Store non-consumable mapped to `after_midnight_collection`, offering `after_midnight` and its sole `$rc_lifetime` package. Readbacks verified. This is a test catalog; real Apple app/product/key and publisher fields remain unset. See `ASO_REVENUECAT_CHECKPOINT.md` for current evidence. Older timeout/account statements below describe the earlier checkpoint.
+
 The app already includes the RevenueCat native SDK adapter, entitlement gate, purchase/restore handling and a custom offer screen. On 18 October the official `RevenueCat/ai-toolkit` marketplace and `revenuecat@RevenueCat` plugin (2.3.0) were installed and verified enabled. OAuth timed out before authorization completed; project access and live catalog changes have not been confirmed. The account/store setup below remains outstanding unless a later checkpoint records actual evidence. Agreements, banking, credentials and signed-device checks still need the publisher. Current command/test evidence: `REVENUECAT_CHECKPOINT.md`.
 
 ## 0. Decide the app identifiers (blocker)

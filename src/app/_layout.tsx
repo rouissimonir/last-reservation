@@ -11,7 +11,7 @@ export default function RootLayout() {
       <StatusBar style="light" />
       <Stack screenOptions={{ headerShown: false, animation: 'none', gestureEnabled: false,
         contentStyle: { backgroundColor: colors.deep } }}>
-        <Stack.Screen name="index" options={{ title: 'TWO SIDES · The Bellweather Files' }} />
+        <Stack.Screen name="index" options={{ title: 'TWO SIDES: Co-op Mystery' }} />
         <Stack.Screen name="after-midnight" options={{ title: 'TWO SIDES · After Midnight Collection' }} />
         <Stack.Screen name="help" options={{ title: 'TWO SIDES · Help & Privacy' }} />
         <Stack.Screen name="settings" options={{ title: 'TWO SIDES · Settings' }} />

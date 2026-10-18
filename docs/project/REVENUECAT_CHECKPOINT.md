@@ -1,5 +1,7 @@
 # RevenueCat and offer checkpoint · 18 October 2026
 
+**Later follow-up:** `ASO_REVENUECAT_CHECKPOINT.md` supersedes the OAuth-timeout/account statements below: OAuth succeeded and an authorized separate TWO SIDES Test Store catalog now exists. Real Apple integration and native transaction evidence remain pending. This document retains the earlier app-code checkpoint history.
+
 The user authorized retaining five free mysteries and a USD 4.99 US-storefront target for one non-consumable unlocking exactly three After Midnight cases. This checkpoint updates the existing integration; it does not claim a live store connection.
 
 ## Implemented
