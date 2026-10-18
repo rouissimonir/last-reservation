@@ -1,5 +1,7 @@
 # iOS submission checkpoint
 
+**Latest identity update, 18 October:** `APPLE_IDENTITY_CHECKPOINT.md` records the publisher-confirmed name/subtitle, permanent bundle ID, SKU and actual ASC Apple ID, local Apple SDK configuration and linked RevenueCat App Store catalog. Earlier missing-identity/key statements below are superseded locally. Preflight still fails on real support/privacy URLs; Apple purchase credentials/product setup, remote build environment and signed native/device/sandbox evidence remain outstanding. No submission performed.
+
 **18 October update:** complete English store/reviewer copy, verified field lengths and screenshot plan are in `IOS_STORE_COPY.md` and `store/ios/en-US.json`. RevenueCat OAuth succeeds and the explicitly authorized TWO SIDES Test Store catalog is configured; no real Apple app/product/key is configured. Latest 103-test, web/iOS-JS export results and remaining publisher/device gates: `ASO_REVENUECAT_CHECKPOINT.md`. Still not submission-ready; older counts below are historical.
 
 16 October 2026. Target selected by the user: **iOS first**. **Not yet submission-ready.** This is an evidence register, not a claim of App Review approval.

@@ -1,14 +1,14 @@
 # iOS English submission copy
 
-18 October 2026. Complete copy for publisher review; **not uploaded or submission-ready**. Source fields: `store/ios/en-US.json`. Confirm name availability in App Store Connect; public search does not establish availability or trademark clearance.
+18 October 2026. Complete copy for publisher review; **not uploaded or submission-ready**. Source fields: `store/ios/en-US.json`. The publisher explicitly selected TWO SIDES: Co-op Mystery. The title is cropped out of the supplied screenshot, so its current App Store reservation was not independently verified. This is not a trademark-clearance claim.
 
 ## App Store name (24/30 characters)
 
 TWO SIDES: Co-op Mystery
 
-## Subtitle (30/30 characters)
+## Subtitle (29/30 characters)
 
-Two players. One shared phone.
+Two players. One shared phone
 
 ## Promotional text (168/170 characters)
 
@@ -80,7 +80,7 @@ Help & Privacy and Settings are reachable from the library. Case progress is sto
 - Primary language: English (U.S.). Current cases are English only; translated listings must not imply translated gameplay.
 - Download price: Free. One optional non-consumable for After Midnight. US target USD 4.99; other storefronts use their localized price. Do not put a fixed dollar price in the description.
 - Release: recommend manual release after approval. This is a recommendation, not an applied account setting.
-- Home-screen name remains TWO SIDES. The longer store title explains the same brand. Internal slug, deep-link scheme and save identities stay unchanged.
+- Home-screen name is TWO SIDES; store and Expo names are TWO SIDES: Co-op Mystery. Internal slug, deep-link scheme and save identities stay unchanged.
 - Leave What's New empty for the initial version unless App Store Connect requires it. Do not invent update history.
 
 ## Screenshot sequence and copy
@@ -106,13 +106,15 @@ Apple currently accepts portrait 6.9-inch captures at 1260×2736, 1290×2796 or 
 
 ## Publisher-owned fields still required
 
-Permanent iOS bundle ID; App Store Connect record/SKU; seller/publisher and copyright holder; support contact and live HTTPS support URL; complete HTTPS privacy-policy URL; App Review contact name/email/phone; territories; rights declarations and age-rating answers. Copyright needs the actual rights-holder name and year.
+Confirmed: bundle ID `com.monirrouissi.twosides`, App Store Connect Apple ID `6824306758`, SKU `TWOSIDES_IOS_001`, name TWO SIDES: Co-op Mystery and subtitle Two players. One shared phone. These match the publisher's screenshot/text and are recorded in `store/ios/app-record.json`.
+
+Still required: seller/publisher and copyright holder; support contact and live HTTPS support URL; complete HTTPS privacy-policy URL; App Review contact name/email/phone; territories; rights declarations and age-rating answers. Copyright needs the actual rights-holder name and year.
 
 Before submitting review notes, add the real IAP product ID and any required review setup, verify navigation on the signed release build, and record actual device/build and sandbox evidence. The notes describe implemented flows, not proof that native purchases have passed.
 
 ## ASO approach and limits
 
-The title preserves the brand and adds a co-op mystery descriptor. The subtitle explains the shared-phone experience. Keywords cover detective, cooperative, partner/date-night and deduction intent without repeating title/subtitle words. This is a relevance-based launch hypothesis, not measured keyword demand or a ranking promise. Do not add competing app names, remote multiplayer, unsupported escape-room mechanics, unmeasured durations or claims that premium cases are longer.
+The title preserves TWO SIDES and adds the co-op mystery descriptor. The subtitle explains the shared-phone experience. Keywords cover detective, cooperative, partner/date-night and deduction intent without repeating title/subtitle words. This is a relevance-based launch hypothesis, not measured keyword demand or a ranking promise. Do not add competing app names, remote multiplayer, unsupported escape-room mechanics, unmeasured durations or claims that premium cases are longer.
 
 After launch, compare impressions, product-page views and downloads in App Store Connect. Assess store-page conversion separately from paid-collection conversion. Test screenshot variants through Apple's Product Page Optimization once eligible and with sufficient traffic. This change adds no analytics infrastructure or rating prompts.
 
@@ -125,4 +127,4 @@ After launch, compare impressions, product-page views and downloads in App Store
 - [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/): accurate metadata and additional-purchase disclosures.
 - [RevenueCat Apple privacy guidance](https://www.revenuecat.com/docs/platform-resources/apple-platform-resources/apple-app-privacy).
 
-Execution evidence and remaining gates: ASO_REVENUECAT_CHECKPOINT.md. Nothing has been published or submitted.
+Latest identity/RevenueCat evidence and remaining gates: APPLE_IDENTITY_CHECKPOINT.md. Earlier ASO evidence: ASO_REVENUECAT_CHECKPOINT.md. Nothing has been published or submitted.

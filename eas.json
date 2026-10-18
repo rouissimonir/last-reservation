@@ -17,5 +17,13 @@
       "autoIncrement": true,
       "env": { "EXPO_PUBLIC_DEV_PREVIEW_PREMIUM": "0" }
     }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "6824306758",
+        "sku": "TWOSIDES_IOS_001"
+      }
+    }
   }
 }

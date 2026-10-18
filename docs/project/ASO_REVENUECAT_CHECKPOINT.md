@@ -1,5 +1,7 @@
 # App Store copy and RevenueCat checkpoint
 
+**Latest follow-up:** `APPLE_IDENTITY_CHECKPOINT.md` supersedes the missing Apple app/bundle/key statements below: publisher-confirmed identity is configured, a matching RevenueCat App Store app/catalog entry exists and the Apple public key is locally configured. Real Apple credentials/IAP/price, remote build environment and native transaction proof remain open. Final name/subtitle are TWO SIDES: Co-op Mystery / Two players. One shared phone.
+
 18 October 2026. Authorized: prepare full iOS submission details and ASO copy, check the integration, and create a **new TWO SIDES RevenueCat project**. No App Store submission, native/cloud build, payment, permissions change or work on the unrelated resumax apps was performed.
 
 ## Submission and app metadata

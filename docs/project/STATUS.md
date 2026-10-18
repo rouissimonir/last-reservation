@@ -1,5 +1,11 @@
 # TWO SIDES — status
 
+## Latest: publisher-confirmed Apple identity (18 October 2026)
+
+Final explicit name/subtitle: TWO SIDES: Co-op Mystery / Two players. One shared phone. This supersedes the intervening Bellweather title reply. Expo/store metadata matches, native home-screen name stays TWO SIDES, and the original interface is preserved. Screenshot confirms bundle `com.monirrouissi.twosides`, SKU `TWOSIDES_IOS_001`, Apple ID `6824306758`; app-record.json and EAS production submission configuration record them. No upload or submission performed.
+
+RevenueCat App Store app `app8685bab13c` now matches the bundle/name; catalog entry `prodd120c3ae16` uses `com.monirrouissi.twosides.after_midnight_collection`, non-consumable, linked to the unchanged entitlement and sole Lifetime package alongside the Test Store product. Apple public key configured locally, ignored/untracked; clean iOS export confirms embedding. Apple credentials are still false in the live readback, and the actual Apple IAP/US price and remote EAS environment remain unconfigured. Preflight now reports only support/privacy URLs. Current evidence: `APPLE_IDENTITY_CHECKPOINT.md`. Earlier missing-bundle/key statements below are historical; native/sandbox/privacy/rights/human checks remain open. Existing licensing edits and outer work preserved.
+
 ## Latest: iOS ASO pack and connected RevenueCat project (18 October 2026)
 
 `IOS_STORE_COPY.md` and `store/ios/en-US.json` contain complete English name/subtitle/promo/keywords/description/IAP/reviewer copy, checked against field limits, screenshot planning and publisher gates. Keep Last Reservation first. Store name: TWO SIDES: Co-op Mystery; subtitle: Two players. One shared phone. Native launcher name stays TWO SIDES. Fixed the empty web title and added public description metadata. No case, save, art or entitlement changes.
