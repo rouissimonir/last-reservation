@@ -6,6 +6,7 @@ import { Emblem } from '@/game/presentation';
 
 const illustrations: Record<Emblem, ImageSourcePropType> = {
   envelope: require('../../assets/art/optimized/case-envelope.png'),
+  ledger: require('../../assets/art/covers/optimized/reservation-ledger.png'),
   piano: require('../../assets/art/covers/optimized/silent-piano.png'),
   mask: require('../../assets/art/covers/optimized/masquerade-mask.png'),
   'music-box': require('../../assets/art/covers/optimized/music-box.png'),

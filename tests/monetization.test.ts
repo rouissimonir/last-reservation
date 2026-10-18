@@ -25,7 +25,8 @@ test('catalogue: five free cases, three paid, every case in exactly one collecti
 
 test('without an entitlement all five free cases play and no paid case does', () => {
   const playable = cases.filter(c => canPlayCase(NO_ACCESS, c.id)).map(c => c.id);
-  assert.deepEqual(playable, [...FREE_COLLECTION.caseIds]);
+  // Access membership is independent of the library display order.
+  assert.deepEqual([...playable].sort(), [...FREE_COLLECTION.caseIds].sort());
   for (const id of AFTER_MIDNIGHT.caseIds) assert.equal(canPlayCase(NO_ACCESS, id), false, id);
   // An unknown or near-miss entitlement unlocks nothing.
   for (const e of ['after_midnight', 'AFTER_MIDNIGHT_COLLECTION', 'premium', '']) {

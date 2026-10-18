@@ -12,7 +12,7 @@ export type Collection = {
 
 export const FREE_COLLECTION: Collection = {
   id: 'bellweather_files', title: 'The Bellweather Files', kind: 'free', entitlementId: null, offeringId: null,
-  caseIds: ['the-missing-envelope', 'the-last-reservation', 'the-silent-piano', 'the-masquerade-coat', 'the-music-box'],
+  caseIds: ['the-last-reservation', 'the-silent-piano', 'the-masquerade-coat', 'the-music-box', 'the-missing-envelope'],
 };
 export const AFTER_MIDNIGHT: Collection = {
   id: 'after_midnight', title: 'After Midnight Collection', kind: 'paid',
@@ -20,7 +20,7 @@ export const AFTER_MIDNIGHT: Collection = {
   caseIds: ['the-room-never-booked', 'the-last-call', 'the-portrait-behind-the-wall'],
 };
 export const collections: readonly Collection[] = [FREE_COLLECTION, AFTER_MIDNIGHT];
-export const RECOMMENDED_FIRST_CASE = 'the-missing-envelope';
+export const RECOMMENDED_FIRST_CASE = 'the-last-reservation';
 
 export function collectionOf(caseId: string): Collection {
   const found = collections.find(item => item.caseIds.includes(caseId));

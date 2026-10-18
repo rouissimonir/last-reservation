@@ -13,7 +13,7 @@ Decided 16 October 2026. This supersedes every earlier monetization proposal in 
 
 ## Player flow (implemented)
 
-1. Library leads with “New to TWO SIDES? Start with The Missing Envelope” while that case is unstarted, and badges it “Recommended first case”.
+1. Library leads with The Last Reservation, badged “Recommended first case” while unstarted. Free display order: Last Reservation, Silent Piano, Masquerade Coat, Music Box, Missing Envelope. The mini-case remains available; the duplicate envelope starter panel is removed. Display order does not renumber case editions or affect access/save identities.
 2. Library has two sections: The Bellweather Files · FREE, and After Midnight Collection (ONE-TIME PURCHASE / OWNED / PREVIEW).
 3. The offer can be opened at any time from the library; finishing the free cases is not required.
 4. Selecting a locked premium case opens the offer (`/after-midnight?source=locked_case`). A premium case opened without access (for example after a refund) shows a gate instead of any case content; its save is kept.

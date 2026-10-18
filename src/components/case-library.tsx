@@ -47,16 +47,6 @@ function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; loc
   </View>;
 }
 
-function FirstCaseNote({ onOpen }: { onOpen: Open }) {
-  const game = useInvestigation(RECOMMENDED_FIRST_CASE);
-  if (game.status !== 'ready' || game.progress.started) return null;
-  return <View style={s.note}>
-    <Label>NEW TO TWO SIDES?</Label>
-    <Copy style={s.description}>Start with {getCase(RECOMMENDED_FIRST_CASE).title}. It is short and shows how the two roles work together.</Copy>
-    <Button onPress={() => onOpen(RECOMMENDED_FIRST_CASE)}>{`Start ${getCase(RECOMMENDED_FIRST_CASE).title}`}</Button>
-  </View>;
-}
-
 export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (source: OfferSource) => void }) {
   const { state, access } = usePurchases();
   const owned = ownsCollection(access, AFTER_MIDNIGHT);
@@ -70,10 +60,9 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
           <Title>Choose your case.</Title>
           <Copy>Two people. One phone. Compare your evidence and solve it together.</Copy>
           <View style={s.links}>
-            <TextAction onPress={() => router.push('/help')}>How to play, support & privacy</TextAction>
-            <TextAction onPress={() => router.push('/settings')}>Sound & settings</TextAction>
+            <View style={s.link}><Button secondary accessibilityLabel="How to play, support & privacy" onPress={() => router.push('/help')}>Help</Button></View>
+            <View style={s.link}><Button secondary accessibilityLabel="Sound & settings" onPress={() => router.push('/settings')}>Settings</Button></View>
           </View>
-          <FirstCaseNote onOpen={onOpen} />
           {access.devPreview && <View style={s.devNote}><Label>DEVELOPMENT PREVIEW</Label>
             <Copy style={s.description}>After Midnight cases are open without a purchase because this development build was started with the preview flag. Release builds ignore it.</Copy></View>}
 
@@ -100,8 +89,8 @@ const s = StyleSheet.create({
   root: { flex: 1, backgroundColor: c.deep },
   frame: { flex: 1, width: '100%', maxWidth: 600, alignSelf: 'center', backgroundColor: c.navy },
   safe: { flex: 1 }, content: { padding: 20, paddingBottom: 40, gap: 20 },
-  note: { padding: 16, gap: 10, borderWidth: 1, borderColor: c.brass, borderRadius: 6, backgroundColor: 'rgba(23,43,57,0.94)' },
-  links: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' },
+  links: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
+  link: { flex: 1, minWidth: 120 },
   devNote: { padding: 12, gap: 6, borderWidth: 1, borderColor: c.burgundy, borderRadius: 6, backgroundColor: c.panel },
   section: { gap: 8, paddingTop: 10, borderTopWidth: 1, borderColor: c.line },
   paidSection: { padding: 18, borderWidth: 1, borderColor: c.brass, borderRadius: 7, backgroundColor: 'rgba(91,58,38,0.35)', gap: 12 },

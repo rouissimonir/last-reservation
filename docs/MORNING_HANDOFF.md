@@ -1,5 +1,7 @@
 # TWO SIDES morning handoff
 
+**18 October library update:** The Last Reservation now leads the library with a reservation ledger illustration. Compact Help/Settings controls replace the crowded links; Missing Envelope remains available last among free cases. Current-worktree check passes 96 tests, web export passes six routes, alignment passes; Doctor still fails its online schema fetch. Browser ordering/navigation/artwork and 320px controls were checked; screenshots and details are in `docs/project/STATUS.md`. Existing saves, case content, purchases and separate unfinished licensing changes are preserved. No push or submission.
+
 **Current case repair/polish, 16 October:** Read `docs/project/CASE_REPAIR_POLISH.md` for repaired proofs, immediate LC1 rescue, shorter prose, varied endings and actual browser evidence. Current worktree TypeScript/lint/87 tests and web/native JS exports pass; the scoped repair-only checkpoint contains 83 tests and preserves earlier unfinished licensing changes separately. Doctor is 20/21 with one online schema-fetch failure. All correct answers/save identities and original mini-case remain compatible. Three full case browser walkthroughs plus LC1 are complete; five JPEGs are saved. No new native/store/human validation. Current Git root and launch directory are the nested `C:\Users\thinkpad t490\Documents\apps\last-reservation\last-reservation`; run `npm run web -- --lan --port 8081`. Older branch/path/totals below are historical. No push or submission.
 
 15 October 2026 · local Windows checkout · branch `master`.
