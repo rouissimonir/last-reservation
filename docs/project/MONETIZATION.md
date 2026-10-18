@@ -5,10 +5,12 @@ Decided 16 October 2026. This supersedes every earlier monetization proposal in 
 ## Product decision
 
 - **Free collection, “The Bellweather Files”:** five complete, permanently free mysteries — The Missing Envelope, The Last Reservation, The Silent Piano, The Masquerade Coat, The Music Box. They stay free; their ids and saves are never changed.
-- **Paid collection, “After Midnight Collection”:** three new, longer mysteries — The Room That Was Never Booked, The Last Call at Midnight, The Portrait Behind the Wall — unlocked together by **one non-consumable purchase**.
+- **Paid collection, “After Midnight Collection”:** three additional mysteries — The Room That Was Never Booked, The Last Call at Midnight, The Portrait Behind the Wall — unlocked together by **one non-consumable purchase**. Do not advertise them as longer without supporting paired playtests.
 - US storefront target price **USD 4.99** (set in App Store Connect / Google Play, not in code). The app always shows the store's localized `priceString`; "$4.99" is never hard-coded.
 - The purchase covers this named collection only. It does not promise future releases. No subscriptions, advertising, paid hints, energy, timers or consumables.
 - Positioning line: **“One purchase. Two players. Three new mysteries.”**
+- Offer copy: “Three new mysteries unfold after dark at the Bellweather Hotel. Compare your clues, question each other’s theories, and uncover the truth together.” Terms: “One-time purchase. Hints included. No subscription.” The ready purchase button is “Unlock all 3 — {localized price}”; underneath: “Includes the three After Midnight cases. Future collections sold separately.”
+- Free collection: “Five complete mysteries. Free to play together.” First-case wording follows the library's selected recommendation; The Last Reservation remains first unless the user explicitly reverses the 18 October library decision.
 - No playtime is advertised. Player-facing covers/cards show deduction counts and no time limit; provisional durations remain author metadata only.
 
 ## Player flow (implemented)
@@ -43,6 +45,11 @@ Resetting a case only rewrites that case's save key; purchases live in the store
 - Pending (Ask to Buy, deferred payments) unlocks automatically when the customer-info listener reports the entitlement.
 - On every return to the foreground the provider re-reads customer info, so refunds/revocations reported by the store remove access and completed pending purchases grant it.
 - Web and Expo Go never construct the SDK path; nothing is mocked as successful.
+- The native adapter accepts exactly one `$rc_lifetime` package in the named offering. It rejects subscription categories/periods, explicit consumables and missing prices; iOS additionally requires StoreKit 2's `NON_CONSUMABLE` product type. Android's unknown subtype is accepted only under `NON_SUBSCRIPTION`; its non-consumable setup still needs store/dashboard verification. A rejected or reloaded offering clears its previously cached package, and purchases are scoped to the offering id.
+
+## Early testing before paid promotion
+
+Invite the Instagram couple to try the game as early testers before discussing a paid promotion. Ask about clarity of the two roles, puzzle fairness, story payoff and interest in the named collection. Do not claim validated duration, conversion, or premium story quality from code checks. No outreach has been sent or promotion purchased.
 
 ## Analytics
 

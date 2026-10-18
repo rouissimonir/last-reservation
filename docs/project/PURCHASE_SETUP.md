@@ -1,6 +1,6 @@
 # Purchase setup — steps that need your accounts
 
-Nothing below has been done. It needs your Apple, Google, RevenueCat and Expo accounts, and some steps accept agreements or create live store products, which only you should do. The code is ready for these identifiers.
+The app already includes the RevenueCat native SDK adapter, entitlement gate, purchase/restore handling and a custom offer screen. On 18 October the official `RevenueCat/ai-toolkit` marketplace and `revenuecat@RevenueCat` plugin (2.3.0) were installed and verified enabled. OAuth timed out before authorization completed; project access and live catalog changes have not been confirmed. The account/store setup below remains outstanding unless a later checkpoint records actual evidence. Agreements, banking, credentials and signed-device checks still need the publisher. Current command/test evidence: `REVENUECAT_CHECKPOINT.md`.
 
 ## 0. Decide the app identifiers (blocker)
 
@@ -18,10 +18,18 @@ Nothing below has been done. It needs your Apple, Google, RevenueCat and Expo ac
 | Internal collection id | `after_midnight` | `src/monetization/catalogue.ts` |
 | RevenueCat entitlement id | `after_midnight_collection` | catalogue (`entitlementId`) |
 | RevenueCat offering id | `after_midnight` | catalogue (`offeringId`) |
-| Package in that offering | Lifetime (`$rc_lifetime`) | The app takes the offering's Lifetime package, or its only package |
+| Package in that offering | Lifetime (`$rc_lifetime`) | Exactly one package, backed by the non-consumable; no sole-subscription or current-offering fallback |
 | Store product id (proposed) | iOS `<bundle id>.after_midnight_collection`; Play `after_midnight_collection` | Store consoles, then attached in RevenueCat |
 
 The app never falls back to the "current" offering, so a misconfigured dashboard shows "not available" instead of selling the wrong product.
+
+The intended iOS configuration is one non-consumable at the US storefront target price USD 4.99, attached to entitlement `after_midnight_collection` and offering `after_midnight`. It unlocks exactly the three After Midnight cases; all five free cases stay accessible. The permanent Apple product id is still proposed rather than created. App prices come only from the store's localized `priceString`; a US target is not a fixed price for every storefront.
+
+## RevenueCat toolkit connection
+
+Official source: [RevenueCat/ai-toolkit](https://github.com/RevenueCat/ai-toolkit). Installed via `codex plugin marketplace add RevenueCat/ai-toolkit` then `codex plugin add revenuecat@RevenueCat`. `codex plugin list --marketplace RevenueCat --json` confirmed version 2.3.0 installed and enabled. Plugin installation is a local developer-tool change, not an npm dependency or a live RevenueCat catalog operation.
+
+Complete the queued OAuth authorization. If it expires, restart it with `codex mcp login RevenueCat`. Do not commit OAuth URLs/tokens, server secrets or signing credentials. Until authenticated project tools and the correct app are available, do not claim projects/products/entitlements/offerings have been created or inspected. The existing custom paywall remains; no separate RevenueCatUI redesign is required. Native sandbox purchase/restore and SDK-configuration logs remain required evidence.
 
 ## 2. App Store Connect
 

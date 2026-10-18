@@ -16,6 +16,7 @@ export function createPurchaseService(): PurchaseService {
   if (Constants.executionEnvironment === ExecutionEnvironment.StoreClient) return unavailableService('expo-go');
   const apiKey = Platform.OS === 'ios' ? purchaseConfig.iosApiKey : Platform.OS === 'android' ? purchaseConfig.androidApiKey : undefined;
   if (!apiKey) return unavailableService('not-configured');
+  const storePlatform = Platform.OS;
   const packages = new Map<string, PurchasesPackage>();
 
   return {
@@ -33,16 +34,27 @@ export function createPurchaseService(): PurchaseService {
     // getCustomerInfo serves the SDK's cached, signed info offline and refreshes it when online.
     refresh: async () => snapshot(await Purchases.getCustomerInfo()),
     async loadOffer(offeringId) {
+      // Rejected/replaced offers must not leave an old purchasable package cached.
+      packages.clear();
       const offerings = await Purchases.getOfferings();
       // Only the named offering: never fall back to "current", which could sell a different product.
       const offering = offerings.all[offeringId];
-      const item = offering?.lifetime ?? (offering?.availablePackages.length === 1 ? offering.availablePackages[0] : null);
-      if (!item) return null;
-      packages.set(item.identifier, item);
+      const item = offering?.lifetime;
+      // This screen promises a single one-time unlock. A sole monthly package is not a
+      // substitute. Apple exposes NON_CONSUMABLE under StoreKit 2; Google exposes the
+      // NON_SUBSCRIPTION category (consumability is configured in the store/dashboard).
+      if (!item || offering.availablePackages.length !== 1 || item.identifier !== '$rc_lifetime' ||
+        item.packageType !== 'LIFETIME' || offering.availablePackages[0].identifier !== item.identifier ||
+        offering.availablePackages[0].product.identifier !== item.product.identifier ||
+        item.product.productCategory !== 'NON_SUBSCRIPTION' || item.product.subscriptionPeriod !== null ||
+        (storePlatform === 'ios' && item.product.productType !== 'NON_CONSUMABLE') ||
+        (storePlatform === 'android' && !['UNKNOWN', 'NON_CONSUMABLE'].includes(item.product.productType)) ||
+        !item.product.priceString.trim()) return null;
+      packages.set(`${offeringId}:${item.identifier}`, item);
       return { packageId: item.identifier, priceString: item.product.priceString };
     },
-    async purchase(_offeringId, packageId) {
-      const item = packages.get(packageId);
+    async purchase(offeringId, packageId) {
+      const item = packages.get(`${offeringId}:${packageId}`);
       if (!item) return { kind: 'failed', failure: 'store' };
       try {
         const { customerInfo } = await Purchases.purchasePackage(item);

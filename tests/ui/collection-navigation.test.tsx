@@ -42,7 +42,7 @@ describe('collection navigation uses the named destination', () => {
 
   it('owned Choose a case returns to the library; the web preview cannot buy or restore', async () => {
     const view = await render(<AfterMidnightOffer />);
-    expect(screen.queryByRole('button', { name: 'Buy the collection' })).toBeNull();
+    expect(screen.queryByRole('button', { name: /Unlock all 3/ })).toBeNull();
     await fireEvent.press(screen.getByRole('button', { name: 'Restore Purchases' }));
     expect(mockRestore).not.toHaveBeenCalled();
     mockValue.state = { ...mockValue.state, entitlements: ['after_midnight_collection'], entitlementsKnown: true };

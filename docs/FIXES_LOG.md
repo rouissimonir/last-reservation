@@ -1,5 +1,9 @@
 # Checkpoint fixes
 
+## Explicit RevenueCat integration request · 18 October 2026
+
+Confirmed an important defect in the existing native adapter: falling back to an offering's sole package could sell a subscription under the one-time offer copy. Replaced it with strict sole-Lifetime/non-subscription validation; iOS requires NON_CONSUMABLE. Cleared stale cached quotes and bound purchases to the loaded offering. Added six adapter tests with the SDK bridge mocked plus a localized-price/pending button component check. Updated requested marketing copy and installed/enabled the official RevenueCat toolkit. All 103 current-worktree tests and exports pass; account OAuth timed out, publisher configuration remains absent, and native sandbox/device proof remains pending. This is the user's explicit integration scope, not a new fixes.md finding or a native-startup repair. See `docs/project/REVENUECAT_CHECKPOINT.md`. No live catalog mutation or push; earlier licensing edits and outer work preserved.
+
 ## Authorized case repair/polish · 16 October 2026
 
 The user explicitly requested repair then polish after case review. Verified and fixed LR6/PB5 one-perspective shortcuts, insufficient coat-location/key-custody/typewriter-original proofs, and delayed rescue after locating Teddy. Shorter introductions and distinct resolution scenes preserve all 33 answers, original save identities and the entire mini-case. No new fixes.md input or repaired native launch is claimed. Findings, retained decisions, counterexample tests and actual browser/command evidence: `docs/project/CASE_REPAIR_POLISH.md`. Current TypeScript/lint/87 tests and exports pass (83 in the scoped repair-only checkpoint); latest Doctor 20/21, online schema fetch failed. Earlier licensing edits and outer-repository work are preserved separately. No push.

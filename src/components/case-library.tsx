@@ -50,7 +50,6 @@ function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; loc
 export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (source: OfferSource) => void }) {
   const { state, access } = usePurchases();
   const owned = ownsCollection(access, AFTER_MIDNIGHT);
-  const price = state.offer.status === 'ready' ? state.offer.offer.priceString : null;
   return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion: true }}>
     <View style={s.root}><View style={s.frame}>
       <HotelBackdrop cover={false} />
@@ -67,14 +66,16 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
             <Copy style={s.description}>After Midnight cases are open without a purchase because this development build was started with the preview flag. Release builds ignore it.</Copy></View>}
 
           <View style={s.section}><Label>{FREE_COLLECTION.title.toUpperCase()} · FREE</Label>
-            <Text accessibilityRole="header" style={s.sectionTitle}>Five complete mysteries, free to play.</Text></View>
+            <Text accessibilityRole="header" style={s.sectionTitle}>Five complete mysteries. Free to play together.</Text>
+            <Copy style={s.description}>One phone, two perspectives. Start with {getCase(RECOMMENDED_FIRST_CASE).title}.</Copy></View>
           {FREE_COLLECTION.caseIds.map(id => <CaseCard key={id} item={getCase(id)} locked={false} onOpen={onOpen} onOffer={onOffer} />)}
 
           <View style={[s.section, s.paidSection]}>
             <Label>{AFTER_MIDNIGHT.title.toUpperCase()} · {owned ? (access.devPreview && !state.entitlements.includes(AFTER_MIDNIGHT.entitlementId ?? '') ? 'PREVIEW' : 'OWNED') : 'ONE-TIME PURCHASE'}</Label>
             <Text accessibilityRole="header" style={s.sectionTitle}>One purchase. Two players. Three new mysteries.</Text>
             <Copy style={s.description}>{owned ? 'Your three After Midnight cases are open below.' :
-              `Three longer cases set in the small hours. ${price ? `${price}, paid once.` : 'Paid once, at the price your app store shows.'} Hints included.`}</Copy>
+              'Three new mysteries unfold after dark at the Bellweather Hotel. Compare your clues, question each other’s theories, and uncover the truth together.'}</Copy>
+            <Copy style={s.description}>One-time purchase. Hints included. No subscription.</Copy>
             <Button secondary onPress={() => onOffer('library')}>{owned ? 'About this collection' : 'See the collection'}</Button>
           </View>
           {AFTER_MIDNIGHT.caseIds.map(id => <CaseCard key={id} item={getCase(id)} locked={!owned} onOpen={onOpen} onOffer={onOffer} />)}

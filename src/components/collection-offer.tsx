@@ -70,10 +70,11 @@ export function CollectionOffer({ source, onClose, onCases }: {
     const { priceString } = state.offer.offer;
     return <View style={s.priceBox}>
       <Text style={s.price}>{priceString}</Text>
-      <Copy style={s.small}>One-time purchase for this collection. Price set by your app store, in your local currency.</Copy>
-      <Button disabled={busy || state.activity === 'pending'} accessibilityLabel={`Buy the After Midnight Collection for ${priceString}, one time`} onPress={() => { void purchase(); }}>
-        {state.activity === 'purchasing' ? 'Waiting for the store…' : state.activity === 'pending' ? 'Waiting for approval…' : 'Buy the collection'}
+      <Copy style={s.small}>One-time purchase. Hints included. No subscription.</Copy>
+      <Button disabled={busy || state.activity === 'pending'} accessibilityLabel={`Unlock all 3 — ${priceString}`} onPress={() => { void purchase(); }}>
+        {state.activity === 'purchasing' ? 'Waiting for the store…' : state.activity === 'pending' ? 'Waiting for approval…' : `Unlock all 3 — ${priceString}`}
       </Button>
+      <Copy style={s.small}>Includes the three After Midnight cases. Future collections sold separately.</Copy>
     </View>;
   };
 
@@ -89,7 +90,8 @@ export function CollectionOffer({ source, onClose, onCases }: {
           <Label>THE BELLWEATHER FILES · AFTER DARK</Label>
           <Title>{AFTER_MIDNIGHT.title}</Title>
           <Text style={s.tagline}>One purchase. Two players. Three new mysteries.</Text>
-          <Copy>Three longer cases set in the small hours at the Bellweather Hotel. Each one asks a different kind of question of your evidence: a night rebuilt from half-remembered sounds, a building read as a map, and paper that tells its own age.</Copy>
+          <Copy>Three new mysteries unfold after dark at the Bellweather Hotel. Compare your clues, question each other’s theories, and uncover the truth together.</Copy>
+          <Copy>One-time purchase. Hints included. No subscription.</Copy>
           {access.devPreview && !verifiedOwner && <View style={s.devNote}><Label>DEVELOPMENT PREVIEW</Label>
             <Copy style={s.small}>These cases are open in this development build without a purchase. Release builds cannot do this.</Copy></View>}
 
