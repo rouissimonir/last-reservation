@@ -1,5 +1,9 @@
 # TWO SIDES — status
 
+## Latest: Apple In-App Purchase credentials (19 October 2026)
+
+Uploaded the publisher-supplied In-App Purchase `.p8` file and identifiers to the existing TWO SIDES RevenueCat App Store app, under explicit authorization. Persisted/reloaded dashboard validation shows valid key format and permissions; missing-key banner cleared. Official CLI reports `subscription_key_configured: true` with bundle `com.monirrouissi.twosides`. The separate App Store Connect API key remains false. See `APPLE_PURCHASE_KEY_CHECKPOINT.md` and its screenshot for evidence and remaining native/store gates. No secret, app code or unrelated release/licensing work included in the scoped checkpoint; latest app checks remain those of the unchanged visual-assets build below.
+
 ## Latest: App Store visual assets (19 October 2026)
 
 New ImageGen brass keyhole logo with two facing ivory/burgundy profiles; configured 1024px opaque icon and transparent splash/adaptive/monochrome plus favicon exports. Original brand/game artwork is preserved. Five 1320×2868 screenshot layout drafts show real production-web cover, private Witness clue, neutral handoff, hint 1 and free library. They carry explicit draft markings and false native/submission readiness flags; final iPhone captures and native icon/splash checks require a native build/macOS or device. No fabricated gameplay or claim of native validation. Prompts, raw captures, hashes, scripts, contact sheet and handoff: `APP_STORE_ASSETS.md` and `store/ios/screenshots-drafts/README.md`.
