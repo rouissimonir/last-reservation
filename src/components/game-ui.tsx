@@ -20,14 +20,14 @@ export function Title({ children }: { children: ReactNode }) {
 }
 // Every press gives a quiet cue (and haptic, when enabled). Pass sound={null} when the caller
 // chooses the cue itself, for example after checking an answer.
-export function Button({ children, onPress, secondary, disabled = false, selected = false, accessibilityLabel, sound = 'tap' }: {
+export function Button({ children, onPress, secondary, disabled = false, selected = false, accessibilityLabel, expanded, sound = 'tap' }: {
   children: string; onPress: () => void; secondary?: boolean; disabled?: boolean; selected?: boolean;
-  accessibilityLabel?: string; sound?: Cue | null;
+  accessibilityLabel?: string; expanded?: boolean; sound?: Cue | null;
 }) {
   const [focused, setFocused] = useState(false);
   const { reducedMotion } = useContext(ReadingContext);
   const { cue } = useSound();
-  return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} accessibilityState={{ disabled, selected }} disabled={disabled}
+  return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} accessibilityState={{ disabled, selected, expanded }} aria-expanded={expanded} disabled={disabled}
     onPress={() => { if (sound) cue(sound); onPress(); }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
     style={({ pressed }) => [ui.button, secondary && ui.secondary, selected && ui.selected,
       focused && ui.focused, disabled && ui.disabled, pressed && !disabled && ui.pressed,

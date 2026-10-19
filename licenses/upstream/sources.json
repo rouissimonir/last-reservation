@@ -1,0 +1,38 @@
+[
+  {
+    "id": "expo",
+    "file": "licenses/upstream/expo.txt",
+    "url": "https://raw.githubusercontent.com/expo/expo/396da4641605bb19c1e6b3efff1cafaab8890a29/LICENSE",
+    "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+  },
+  {
+    "id": "metro",
+    "file": "licenses/upstream/metro.txt",
+    "url": "https://raw.githubusercontent.com/react/metro/v0.84.5/LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+  },
+  {
+    "id": "standard-navigation",
+    "file": "licenses/upstream/standard-navigation.txt",
+    "url": "https://raw.githubusercontent.com/react-navigation/standard-navigation/4ebc8b3229da88cb6ade1ff4484491915bedd7cc/LICENSE",
+    "sha256": "77aa111867b23a7dd45fd66c958c410a0a4b09f2f49e1ea0c16af01d1582d291"
+  },
+  {
+    "id": "react-navigation",
+    "file": "licenses/upstream/react-navigation.txt",
+    "url": "https://raw.githubusercontent.com/react-navigation/react-navigation/11e8bd2d709ace941b305c25452f6be2dfa65a7f/packages/native/LICENSE",
+    "sha256": "c3bc4b85acdbcfe7b2ffe3c986dcfc0cc98980c1b98154c87fa5a894acd9ac78"
+  },
+  {
+    "id": "purchases-hybrid-common",
+    "file": "licenses/upstream/purchases-hybrid-common.txt",
+    "url": "https://raw.githubusercontent.com/RevenueCat/purchases-hybrid-common/19.12.0/LICENSE",
+    "sha256": "77e57f8a31eb21899940135b8f3acba2b0fc1825cc07db66e7b63b2f936f35ff"
+  },
+  {
+    "id": "purchases-ios",
+    "file": "licenses/upstream/purchases-ios.txt",
+    "url": "https://raw.githubusercontent.com/RevenueCat/purchases-ios/5.95.0/LICENSE",
+    "sha256": "9f0832999aa913fb2d4a94179839573467a2b79b43f6417ebaab93003506f1a2"
+  }
+]

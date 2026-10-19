@@ -1,5 +1,7 @@
 # iPhone App Store screenshot layout drafts
 
+19 October follow-up: new iPhone-framed variants are in `../screenshots-iphone-drafts/`. A device frame is allowed in principle; the outstanding issue is checking that these web captures accurately match the eventual submitted iOS build. Compare the native layout and replace differing captures before finalization. This is not a claim that Apple bans web-sourced images or requires every marketing layout to omit device frames. The original files below remain preserved.
+
 **NOT submission-ready.** These are five polished layout drafts containing real production Expo **web** captures. No iOS simulator/device was available on this Windows host. Do not upload the drafts as native iPhone screenshots. Each export includes an explicit draft footer; the manifest marks native verification and submission readiness false.
 
 ## Deliverables

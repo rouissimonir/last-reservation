@@ -1,16 +1,21 @@
 """Frame real web captures for layout review. These are NOT iOS screenshots.
 
 Run from the app root with Python + Pillow. No UI is fabricated or retouched.
-Native captures must replace these sources before App Store submission.
+Compare with the native iOS build and replace any differing captures before submission.
 """
+import argparse
 import hashlib
 import json
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "store/ios/screenshots-drafts"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--iphone-frame", action="store_true", help="Use the generated empty iPhone-style frame; preserve the original draft set.")
+args = parser.parse_args()
+SOURCE = ROOT / "store/ios/screenshots-drafts"
+OUT = ROOT / "store/ios/screenshots-iphone-drafts" if args.iphone_frame else SOURCE
 SIZE = (1320, 2868)
 NAVY = "#0c1822"
 IVORY = "#f3e7ce"
@@ -47,6 +52,45 @@ background = Image.alpha_composite(background, Image.new("RGBA", SIZE, (8, 19, 2
 emblem = Image.open(ROOT / "assets/brand/v2/splash-mark.png").convert("RGBA")
 emblem.thumbnail((160, 160), Image.Resampling.LANCZOS)
 records = []
+phone = None
+phone_hole = None
+if args.iphone_frame:
+    with Image.open(ROOT / "store/ios/device-frames/iphone-style-black.png") as source:
+        phone = source.convert("RGBA")
+    assert phone.getchannel("A").getextrema() == (0, 255)
+    # Find the screen opening in the isolated asset, not in the game captures.
+    phone = phone.crop(phone.getchannel("A").getbbox())
+    size_scale = min(960 / phone.width, 1880 / phone.height)
+    phone = phone.resize((round(phone.width * size_scale), round(phone.height * size_scale)), Image.Resampling.LANCZOS)
+    border_mask = phone.getchannel("A").point(lambda alpha: 255 if alpha > 32 else 0)
+    ImageDraw.floodfill(border_mask, (0, 0), 255)
+    phone_hole = ImageOps.invert(border_mask)
+    assert phone_hole.getbbox() is not None, "Frame needs an enclosed transparent screen opening."
+
+
+def place_iphone(canvas, capture):
+    """Assemble a generated empty frame around untouched real screen pixels."""
+    assert phone is not None and phone_hole is not None
+    x, y = (SIZE[0] - phone.width) // 2, 860
+    left, top, right, bottom = phone_hole.getbbox()
+    # Keep the entire capture clear of camera hardware and rounded glass corners.
+    slot = (left + 12, top + 125, right - 12, bottom - 60)
+    scale = min((slot[2] - slot[0]) / capture.width, (slot[3] - slot[1]) / capture.height)
+    content = capture.resize((round(capture.width * scale), round(capture.height * scale)), Image.Resampling.LANCZOS)
+    sx = (slot[0] + slot[2] - content.width) // 2
+    sy = (slot[1] + slot[3] - content.height) // 2
+    assert phone_hole.crop((sx, sy, sx + content.width, sy + content.height)).getextrema() == (255, 255), "Screen capture would intersect the device rim/camera."
+    shadow = Image.new("RGBA", SIZE, (0, 0, 0, 0))
+    ImageDraw.Draw(shadow).rounded_rectangle((x - 16, y + 15, x + phone.width + 16, y + phone.height + 34), radius=125, fill=(0, 0, 0, 175))
+    canvas = Image.alpha_composite(canvas, shadow.filter(ImageFilter.GaussianBlur(25)))
+    glass = Image.new("RGBA", phone.size, NAVY)
+    glass.putalpha(phone_hole)
+    canvas.alpha_composite(glass, (x, y))
+    canvas.alpha_composite(phone, (x, y))
+    canvas.paste(content, (x + sx, y + sy))
+    area = (x + sx, y + sy, x + sx + content.width, y + sy + content.height)
+    assert ImageChops.difference(canvas.crop(area).convert("RGB"), content).getbbox() is None
+    return canvas, {"capture_bounds": list(area), "capture_pixels_preserved": True}
 
 for index, (slug, title, description, label) in enumerate(SCENES, 1):
     canvas = background.copy()
@@ -63,31 +107,37 @@ for index, (slug, title, description, label) in enumerate(SCENES, 1):
         centered(draw, 445 + row * 145, line, font("georgiab.ttf", title_size))
     centered(draw, 765, description, fitted(description, "segoeui.ttf", 40, 1160))
 
-    raw_path = OUT / "raw" / f"{slug}.jpg"
+    raw_path = SOURCE / "raw" / f"{slug}.jpg"
     screen = Image.open(raw_path).convert("RGB")
-    # Fit without cropping, stretching, changing UI or adding a fake status bar.
-    scale = min(980 / screen.width, 1810 / screen.height)
-    screen = screen.resize((round(screen.width * scale), round(screen.height * scale)), Image.Resampling.LANCZOS)
-    left, top = (SIZE[0] - screen.width) // 2, 920
-    outer = (left - 22, top - 22, left + screen.width + 22, top + screen.height + 22)
-    shadow = Image.new("RGBA", SIZE, (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).rounded_rectangle((outer[0] - 10, outer[1] + 20, outer[2] + 10, outer[3] + 38), radius=58, fill=(0, 0, 0, 185))
-    canvas = Image.alpha_composite(canvas, shadow.filter(ImageFilter.GaussianBlur(26)))
+    placement = {}
+    if args.iphone_frame:
+        canvas, placement = place_iphone(canvas, screen)
+    else:
+        # Fit without cropping, stretching, changing UI or adding a fake status bar.
+        scale = min(980 / screen.width, 1810 / screen.height)
+        screen = screen.resize((round(screen.width * scale), round(screen.height * scale)), Image.Resampling.LANCZOS)
+        left, top = (SIZE[0] - screen.width) // 2, 920
+        outer = (left - 22, top - 22, left + screen.width + 22, top + screen.height + 22)
+        shadow = Image.new("RGBA", SIZE, (0, 0, 0, 0))
+        ImageDraw.Draw(shadow).rounded_rectangle((outer[0] - 10, outer[1] + 20, outer[2] + 10, outer[3] + 38), radius=58, fill=(0, 0, 0, 185))
+        canvas = Image.alpha_composite(canvas, shadow.filter(ImageFilter.GaussianBlur(26)))
+        ImageDraw.Draw(canvas).rounded_rectangle(outer, radius=48, fill="#070c11", outline=BRASS, width=3)
+        canvas.paste(screen, (left, top))
     draw = ImageDraw.Draw(canvas)
-    draw.rounded_rectangle(outer, radius=48, fill="#070c11", outline=BRASS, width=3)
-    canvas.paste(screen, (left, top))
-    centered(draw, 2785, "LAYOUT DRAFT · REAL WEB CAPTURE · NATIVE CAPTURE PENDING", font("seguisb.ttf", 24), BRASS)
+    footer = "LAYOUT DRAFT · REAL WEB CAPTURE · iOS BUILD COMPARISON PENDING" if args.iphone_frame else "LAYOUT DRAFT · REAL WEB CAPTURE · NATIVE CAPTURE PENDING"
+    centered(draw, 2785, footer, fitted(footer, "seguisb.ttf", 24, 1200), BRASS)
     output = OUT / "en-US" / f"{slug}-DRAFT.png"
     canvas.convert("RGB").save(output, optimize=True)
     with Image.open(output) as exported:
         assert exported.size == SIZE and exported.mode == "RGB" and exported.format == "PNG"
     records.append({
         "order": index, "file": str(output.relative_to(OUT)).replace("\\", "/"),
-        "source": f"raw/{slug}.jpg", "source_sha256": hashlib.sha256(raw_path.read_bytes()).hexdigest(),
+        "source": (f"../screenshots-drafts/raw/{slug}.jpg" if args.iphone_frame else f"raw/{slug}.jpg"), "source_sha256": hashlib.sha256(raw_path.read_bytes()).hexdigest(),
         "output_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "source_pixels": list(Image.open(raw_path).size), "output_pixels": list(SIZE),
         "headline": title.replace("\n", " "),
         "native_capture_verified": False, "submission_ready": False,
+        **placement,
     })
     print(output.relative_to(ROOT))
 
@@ -98,6 +148,8 @@ manifest = {
     "capture_note": "Full-page browser capture preserves the complete 440x956 fixed app viewport. No UI retouching.",
     "capture_build": "production web export from Apple identity checkpoint 1aebd9b; no gameplay changes in this assets checkpoint",
     "native_capture_verified": False, "submission_ready": False, "screenshots": records,
+    "device_frame": "../device-frames/iphone-style-black.png" if args.iphone_frame else "simple code-native rounded frame",
+    "native_layout_compared": False,
 }
 (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
@@ -107,5 +159,6 @@ for i, record in enumerate(records):
         shot.thumbnail((310, 674), Image.Resampling.LANCZOS)
         sheet.paste(shot, (10 + i * 330, 24))
 sheet_draw = ImageDraw.Draw(sheet)
-sheet_draw.text((825, 726), "DESIGN REVIEW · WEB CAPTURES · REPLACE WITH VERIFIED IPHONE CAPTURES BEFORE UPLOAD", anchor="mm", font=font("seguisb.ttf", 22), fill=BRASS)
+review_label = "DESIGN REVIEW · WEB CAPTURES · COMPARE WITH THE iOS BUILD BEFORE UPLOAD" if args.iphone_frame else "DESIGN REVIEW · WEB CAPTURES · REPLACE WITH VERIFIED IPHONE CAPTURES BEFORE UPLOAD"
+sheet_draw.text((825, 726), review_label, anchor="mm", font=font("seguisb.ttf", 22), fill=BRASS)
 sheet.save(OUT / "contact-sheet.jpg", quality=92)

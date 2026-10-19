@@ -1,0 +1,838 @@
+{
+  "packages": [
+    {
+      "path": "node_modules/@babel/runtime",
+      "name": "@babel/runtime",
+      "version": "7.29.10",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@expo-google-fonts/material-symbols",
+      "name": "@expo-google-fonts/material-symbols",
+      "version": "0.4.50",
+      "origins": [
+        "android",
+        "bundled font"
+      ]
+    },
+    {
+      "path": "node_modules/@expo/metro-runtime",
+      "name": "@expo/metro-runtime",
+      "version": "57.0.17",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@expo/ui",
+      "name": "@expo/ui",
+      "version": "57.0.25",
+      "origins": [
+        "android",
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/@radix-ui/react-compose-refs",
+      "name": "@radix-ui/react-compose-refs",
+      "version": "1.1.5",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@radix-ui/react-slot",
+      "name": "@radix-ui/react-slot",
+      "version": "1.5.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native-async-storage/async-storage",
+      "name": "@react-native-async-storage/async-storage",
+      "version": "2.2.0",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native-masked-view/masked-view",
+      "name": "@react-native-masked-view/masked-view",
+      "version": "0.3.2",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native/assets-registry",
+      "name": "@react-native/assets-registry",
+      "version": "0.86.3",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native/js-polyfills",
+      "name": "@react-native/js-polyfills",
+      "version": "0.86.3",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native/normalize-colors",
+      "name": "@react-native/normalize-colors",
+      "version": "0.86.3",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@react-native/virtualized-lists",
+      "name": "@react-native/virtualized-lists",
+      "version": "0.86.3",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@revenuecat/purchases-js",
+      "name": "@revenuecat/purchases-js",
+      "version": "1.70.0",
+      "origins": [
+        "embedded in hybrid mappings"
+      ]
+    },
+    {
+      "path": "node_modules/@revenuecat/purchases-js-hybrid-mappings",
+      "name": "@revenuecat/purchases-js-hybrid-mappings",
+      "version": "19.12.0",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@revenuecat/purchases-typescript-internal",
+      "name": "@revenuecat/purchases-typescript-internal",
+      "version": "19.12.0",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/@ungap/structured-clone",
+      "name": "@ungap/structured-clone",
+      "version": "1.4.0",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/abort-controller",
+      "name": "abort-controller",
+      "version": "3.0.0",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/base64-js",
+      "name": "base64-js",
+      "version": "1.5.1",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/color",
+      "name": "color",
+      "version": "4.2.3",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/color-convert",
+      "name": "color-convert",
+      "version": "2.0.1",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/color-name",
+      "name": "color-name",
+      "version": "1.1.4",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/color-string",
+      "name": "color-string",
+      "version": "1.9.1",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/css-in-js-utils",
+      "name": "css-in-js-utils",
+      "version": "3.1.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/decode-uri-component",
+      "name": "decode-uri-component",
+      "version": "0.2.2",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/escape-string-regexp",
+      "name": "escape-string-regexp",
+      "version": "4.0.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/event-target-shim",
+      "name": "event-target-shim",
+      "version": "5.0.1",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/expo",
+      "name": "expo",
+      "version": "57.0.30",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-asset",
+      "name": "expo-asset",
+      "version": "57.0.20",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-audio",
+      "name": "expo-audio",
+      "version": "57.0.5",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-constants",
+      "name": "expo-constants",
+      "version": "57.0.22",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-dev-client",
+      "name": "expo-dev-client",
+      "version": "57.0.20",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-device",
+      "name": "expo-device",
+      "version": "57.0.2",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-font",
+      "name": "expo-font",
+      "version": "57.0.4",
+      "origins": [
+        "android",
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-glass-effect",
+      "name": "expo-glass-effect",
+      "version": "57.0.4",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-haptics",
+      "name": "expo-haptics",
+      "version": "57.0.3",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-image",
+      "name": "expo-image",
+      "version": "57.0.5",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-linear-gradient",
+      "name": "expo-linear-gradient",
+      "version": "57.0.2",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-linking",
+      "name": "expo-linking",
+      "version": "57.0.13",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-modules-core",
+      "name": "expo-modules-core",
+      "version": "57.0.23",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-router",
+      "name": "expo-router",
+      "version": "57.0.28",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-splash-screen",
+      "name": "expo-splash-screen",
+      "version": "57.0.10",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-status-bar",
+      "name": "expo-status-bar",
+      "version": "57.0.1",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/expo-symbols",
+      "name": "expo-symbols",
+      "version": "57.0.3",
+      "origins": [
+        "android",
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-system-ui",
+      "name": "expo-system-ui",
+      "version": "57.0.4",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/expo-web-browser",
+      "name": "expo-web-browser",
+      "version": "57.0.3",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/fast-deep-equal",
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/fbjs",
+      "name": "fbjs",
+      "version": "3.0.5",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/filter-obj",
+      "name": "filter-obj",
+      "version": "1.1.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/flow-enums-runtime",
+      "name": "flow-enums-runtime",
+      "version": "0.0.6",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/hyphenate-style-name",
+      "name": "hyphenate-style-name",
+      "version": "1.1.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/inline-style-prefixer",
+      "name": "inline-style-prefixer",
+      "version": "7.0.1",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/invariant",
+      "name": "invariant",
+      "version": "2.2.4",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/is-arrayish",
+      "name": "is-arrayish",
+      "version": "0.3.4",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/is-plain-obj",
+      "name": "is-plain-obj",
+      "version": "2.1.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/memoize-one",
+      "name": "memoize-one",
+      "version": "5.2.1",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/merge-options",
+      "name": "merge-options",
+      "version": "3.0.4",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/metro/node_modules/metro-runtime",
+      "name": "metro-runtime",
+      "version": "0.84.5",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/nanoid",
+      "name": "nanoid",
+      "version": "3.3.20",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/nullthrows",
+      "name": "nullthrows",
+      "version": "1.1.1",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/postcss-value-parser",
+      "name": "postcss-value-parser",
+      "version": "4.2.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/promise",
+      "name": "promise",
+      "version": "8.3.0",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/query-string",
+      "name": "query-string",
+      "version": "7.1.3",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react",
+      "name": "react",
+      "version": "19.2.3",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-dom",
+      "name": "react-dom",
+      "version": "19.2.3",
+      "origins": [
+        "direct dependency",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-fast-compare",
+      "name": "react-fast-compare",
+      "version": "3.2.2",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-freeze",
+      "name": "react-freeze",
+      "version": "1.0.4",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/react-is",
+      "name": "react-is",
+      "version": "19.3.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native",
+      "name": "react-native",
+      "version": "0.86.3",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-gesture-handler",
+      "name": "react-native-gesture-handler",
+      "version": "2.32.0",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-purchases",
+      "name": "react-native-purchases",
+      "version": "10.14.0",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-reanimated",
+      "name": "react-native-reanimated",
+      "version": "4.5.1",
+      "origins": [
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-safe-area-context",
+      "name": "react-native-safe-area-context",
+      "version": "5.7.0",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-screens",
+      "name": "react-native-screens",
+      "version": "4.26.2",
+      "origins": [
+        "android",
+        "direct dependency",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-web",
+      "name": "react-native-web",
+      "version": "0.21.4",
+      "origins": [
+        "direct dependency",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-web/node_modules/@react-native/normalize-colors",
+      "name": "@react-native/normalize-colors",
+      "version": "0.74.89",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-web/node_modules/memoize-one",
+      "name": "memoize-one",
+      "version": "6.0.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/react-native-worklets",
+      "name": "react-native-worklets",
+      "version": "0.10.1",
+      "origins": [
+        "android",
+        "direct dependency"
+      ]
+    },
+    {
+      "path": "node_modules/regenerator-runtime",
+      "name": "regenerator-runtime",
+      "version": "0.13.11",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/scheduler",
+      "name": "scheduler",
+      "version": "0.27.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/shallowequal",
+      "name": "shallowequal",
+      "version": "1.1.0",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/simple-swizzle",
+      "name": "simple-swizzle",
+      "version": "0.2.4",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/split-on-first",
+      "name": "split-on-first",
+      "version": "1.1.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/stacktrace-parser",
+      "name": "stacktrace-parser",
+      "version": "0.1.11",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/standard-navigation",
+      "name": "standard-navigation",
+      "version": "0.0.5",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/strict-uri-encode",
+      "name": "strict-uri-encode",
+      "version": "2.0.0",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/styleq",
+      "name": "styleq",
+      "version": "0.1.3",
+      "origins": [
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/warn-once",
+      "name": "warn-once",
+      "version": "0.1.1",
+      "origins": [
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
+      "path": "node_modules/whatwg-fetch",
+      "name": "whatwg-fetch",
+      "version": "3.6.20",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "path": "node_modules/whatwg-url-minimum",
+      "name": "whatwg-url-minimum",
+      "version": "0.1.2",
+      "origins": [
+        "android",
+        "ios"
+      ]
+    }
+  ]
+}

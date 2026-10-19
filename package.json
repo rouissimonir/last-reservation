@@ -57,12 +57,15 @@
     "test": "npm run test:ci",
     "test:ci": "npm run test:domain && npm run test:ui",
     "build:preview": "expo export --platform web --output-dir dist",
-    "check": "npm run typecheck && npm run lint && npm test",
+    "check": "npm run typecheck && npm run lint && npm run notices:check && npm test",
     "release:preflight": "tsx scripts/release-preflight.ts",
     "audio:generate": "tsx scripts/generate-audio.ts",
     "audio:check": "tsx scripts/generate-audio.ts --check",
     "test:domain": "tsx --test tests/*.test.ts",
-    "test:ui": "jest --ci --runInBand"
+    "test:ui": "jest --ci --runInBand",
+    "notices:check": "tsx scripts/third-party-notices.ts --check",
+    "notices:generate": "tsx scripts/third-party-notices.ts",
+    "notices:verify-exports": "tsx scripts/third-party-notices.ts --check --verify-exports"
   },
   "private": true
 }

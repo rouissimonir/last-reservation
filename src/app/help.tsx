@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, Copy, HotelBackdrop, Label, ReadingContext, TextAction, Title } from '@/components/game-ui';
 import { colors as c } from '@/game/tokens';
 import { purchaseConfig, safeLink } from '@/monetization/config';
+import { ThirdPartyNotices } from '@/components/third-party-notices';
 
 export default function HelpScreen() {
   const [linkError, setLinkError] = useState(false);
@@ -47,6 +48,7 @@ export default function HelpScreen() {
             {(!privacy || !support) && <Copy>Public support and privacy links are awaiting publisher configuration. This build is not ready for store submission.</Copy>}
             {linkError && <Copy accessibilityLiveRegion="polite">The page could not be opened. Check your connection and try again.</Copy>}
           </View>
+          <View style={s.section}><Label>ACKNOWLEDGMENTS</Label><ThirdPartyNotices /></View>
           <Text style={s.footer}>TWO SIDES · The Bellweather Files</Text>
           <Button onPress={close}>Back to the cases</Button>
         </ScrollView>

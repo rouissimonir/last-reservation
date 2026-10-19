@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-19",
+  "app_name": "TWO SIDES: Co-op Mystery",
+  "source_type": "real Expo production web UI, browser capture; NOT native iOS",
+  "source_origin": "http://127.0.0.1:8105/",
+  "requested_viewport_css": [
+    440,
+    956
+  ],
+  "capture_note": "Full-page browser capture preserves the complete 440x956 fixed app viewport. No UI retouching.",
+  "capture_build": "production web export from Apple identity checkpoint 1aebd9b; no gameplay changes in this assets checkpoint",
+  "native_capture_verified": false,
+  "submission_ready": false,
+  "screenshots": [
+    {
+      "order": 1,
+      "file": "en-US/01-cover-DRAFT.png",
+      "source": "../screenshots-drafts/raw/01-cover.jpg",
+      "source_sha256": "01f3230a5abd6a35acd69f29658f9b33072a233b0f3219fb26bbc50f9bde1284",
+      "output_sha256": "355827adade63c1a496773cf8b2a27e8c9ff684d725fcdf8d94f24c8ce41a4b7",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Two players. One shared phone.",
+      "native_capture_verified": false,
+      "submission_ready": false,
+      "capture_bounds": [
+        290,
+        1025,
+        1032,
+        2637
+      ],
+      "capture_pixels_preserved": true
+    },
+    {
+      "order": 2,
+      "file": "en-US/02-evidence-DRAFT.png",
+      "source": "../screenshots-drafts/raw/02-evidence.jpg",
+      "source_sha256": "b94ea493f9ae484e60cf9cc63f90383cfe03b63eebb293cbdacead2ba9650f15",
+      "output_sha256": "c99da2a347a2a3c283ed256a02df500e17266963dabb7c2ff7f6ba746f5c25f9",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Your clues are half the story.",
+      "native_capture_verified": false,
+      "submission_ready": false,
+      "capture_bounds": [
+        290,
+        1025,
+        1032,
+        2637
+      ],
+      "capture_pixels_preserved": true
+    },
+    {
+      "order": 3,
+      "file": "en-US/03-handoff-DRAFT.png",
+      "source": "../screenshots-drafts/raw/03-handoff.jpg",
+      "source_sha256": "284c1d16c034495f22f23545a85f1c4f23dc2073e595f97242f4332bd80645a6",
+      "output_sha256": "dee09e8c78160eb1466781aab69ca6838b7db3f9187209f4af715c1d7b025bb6",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Pass the phone. Solve it together.",
+      "native_capture_verified": false,
+      "submission_ready": false,
+      "capture_bounds": [
+        290,
+        1025,
+        1032,
+        2637
+      ],
+      "capture_pixels_preserved": true
+    },
+    {
+      "order": 4,
+      "file": "en-US/04-hint-DRAFT.png",
+      "source": "../screenshots-drafts/raw/04-hint.jpg",
+      "source_sha256": "4146ef1b65ed0f237210ce46eb2341fbe8f4d08230e76b44e657b6e3236f8e4e",
+      "output_sha256": "ca6d483eb5c16bf929096c1ab54ee91a3ee9ec9b1362758ea4fbba0b95e89cfc",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "A nudge. When you need it.",
+      "native_capture_verified": false,
+      "submission_ready": false,
+      "capture_bounds": [
+        290,
+        1025,
+        1032,
+        2637
+      ],
+      "capture_pixels_preserved": true
+    },
+    {
+      "order": 5,
+      "file": "en-US/05-library-DRAFT.png",
+      "source": "../screenshots-drafts/raw/05-library.jpg",
+      "source_sha256": "d5df4c83469be63fb91ae7a4dd32832b5ff5bc927e9e362bf792ff8d9898066d",
+      "output_sha256": "c712f5fc4658342f73d1ce313f1164ea360f249931c9cf1367514f1275df142e",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Five mysteries. Free to play together.",
+      "native_capture_verified": false,
+      "submission_ready": false,
+      "capture_bounds": [
+        290,
+        1025,
+        1032,
+        2637
+      ],
+      "capture_pixels_preserved": true
+    }
+  ],
+  "device_frame": "../device-frames/iphone-style-black.png",
+  "native_layout_compared": false
+}

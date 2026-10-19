@@ -1,0 +1,1122 @@
+[
+  {
+    "credit": {
+      "name": "@babel/runtime",
+      "version": "7.29.10"
+    },
+    "files": [
+      {
+        "path": "node_modules/@babel/runtime/LICENSE",
+        "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@expo-google-fonts/material-symbols",
+      "version": "0.4.50"
+    },
+    "files": [
+      {
+        "path": "node_modules/@expo-google-fonts/material-symbols/LICENSE",
+        "sha256": "f81a99a72ec5e64e3f74fad0db3df27ab69ab0edd4878368f83379d3e4fc9313"
+      },
+      {
+        "path": "node_modules/@expo-google-fonts/material-symbols/LICENSE_FONT",
+        "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@expo/metro-runtime",
+      "version": "57.0.17"
+    },
+    "files": [
+      {
+        "path": "node_modules/@expo/metro-runtime/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@expo/ui",
+      "version": "57.0.25"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/expo.txt",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@radix-ui/react-compose-refs",
+      "version": "1.1.5"
+    },
+    "files": [
+      {
+        "path": "node_modules/@radix-ui/react-compose-refs/LICENSE",
+        "sha256": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@radix-ui/react-slot",
+      "version": "1.5.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/@radix-ui/react-slot/LICENSE",
+        "sha256": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native-async-storage/async-storage",
+      "version": "2.2.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/@react-native-async-storage/async-storage/LICENSE",
+        "sha256": "212dbf14b113759356207347826f21ac3c81151943fdb89ce25da5dc6214831c"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native-masked-view/masked-view",
+      "version": "0.3.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/@react-native-masked-view/masked-view/LICENSE",
+        "sha256": "22a28f29cff8f5ecf9f463301d9c03b8245a2952ebae0bcab633fd654c0792fb"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native/assets-registry",
+      "version": "0.86.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native/js-polyfills",
+      "version": "0.86.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native/normalize-colors",
+      "version": "0.86.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native/virtualized-lists",
+      "version": "0.86.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@revenuecat/purchases-js",
+      "version": "1.70.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/@revenuecat/purchases-js/LICENSE",
+        "sha256": "b175672dbc142198bae1daa4bdef4893103d75c111a949f1e33d6493d67658bf"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@revenuecat/purchases-js-hybrid-mappings",
+      "version": "19.12.0"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/purchases-hybrid-common.txt",
+        "sha256": "77e57f8a31eb21899940135b8f3acba2b0fc1825cc07db66e7b63b2f936f35ff"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@revenuecat/purchases-typescript-internal",
+      "version": "19.12.0"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/purchases-hybrid-common.txt",
+        "sha256": "77e57f8a31eb21899940135b8f3acba2b0fc1825cc07db66e7b63b2f936f35ff"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@ungap/structured-clone",
+      "version": "1.4.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/@ungap/structured-clone/LICENSE",
+        "sha256": "dc6d4961d8b6ee747231582ae9c53ce1d66bf76bc9f5a28f554c0e97210953bf"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "abort-controller",
+      "version": "3.0.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/abort-controller/LICENSE",
+        "sha256": "dbbf03317f0101fed5643cd87ca80fb769e358fa4f428445bf2315deeb23a154"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "base64-js",
+      "version": "1.5.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/base64-js/LICENSE",
+        "sha256": "5b37224c080cdcc97c871ada971c224e9926370fe74f11b539aa1cf9f3b1aca1"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "color",
+      "version": "4.2.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/color/LICENSE",
+        "sha256": "4c0844caafd3db9a4b643ea493558873710f4e9c8b257887ba066e5e80557848"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "color-convert",
+      "version": "2.0.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/color-convert/LICENSE",
+        "sha256": "693866fc419c6f61c8570438ec00659d156ec2b4d4a4d04091711f5f11a365d4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "color-name",
+      "version": "1.1.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/color-name/LICENSE",
+        "sha256": "7357445bac398c76c0aef75a587009fe406d40de6a79789eb5b7ecbbad317ef2"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "color-string",
+      "version": "1.9.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/color-string/LICENSE",
+        "sha256": "8984783ab2478bbee455f0eb6c375b5b62c57c86d4a55f6bf96dfd08e8d48a10"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "css-in-js-utils",
+      "version": "3.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/css-in-js-utils/LICENSE",
+        "sha256": "350d3529dc75e7a9b463b62c959a2abd24b568b8a6a39e3fb006f1a3c8cb31a0"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "decode-uri-component",
+      "version": "0.2.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/decode-uri-component/license",
+        "sha256": "ed7a9a0f74e43951b2520efe1a4349cb9ed5f3dff0b0f268e2e51a4d38df7ea4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "escape-string-regexp",
+      "version": "4.0.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/escape-string-regexp/license",
+        "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "event-target-shim",
+      "version": "5.0.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/event-target-shim/LICENSE",
+        "sha256": "97d87142793695cd73243de7258694abe85b3b6060fca7f247b0a2afa8219678"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo",
+      "version": "57.0.30"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-asset",
+      "version": "57.0.20"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-asset/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-audio",
+      "version": "57.0.5"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-audio/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-constants",
+      "version": "57.0.22"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-constants/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-dev-client",
+      "version": "57.0.20"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-dev-client/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-device",
+      "version": "57.0.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-device/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-font",
+      "version": "57.0.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-font/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-glass-effect",
+      "version": "57.0.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-glass-effect/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-haptics",
+      "version": "57.0.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-haptics/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-image",
+      "version": "57.0.5"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-image/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-linear-gradient",
+      "version": "57.0.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-linear-gradient/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-linking",
+      "version": "57.0.13"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-linking/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-modules-core",
+      "version": "57.0.23"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-modules-core/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-router",
+      "version": "57.0.28"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/expo.txt",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-splash-screen",
+      "version": "57.0.10"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-splash-screen/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-status-bar",
+      "version": "57.0.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-status-bar/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-symbols",
+      "version": "57.0.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-symbols/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-system-ui",
+      "version": "57.0.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-system-ui/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "expo-web-browser",
+      "version": "57.0.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-web-browser/LICENSE",
+        "sha256": "fb3ca4a837f5779e83cef89b78253a8949cfb9429c340309f62d0465ec6610b4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "fast-deep-equal",
+      "version": "3.1.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/fast-deep-equal/LICENSE",
+        "sha256": "7bf9b2de73a6b356761c948d0e9eeb4be6c1270bd04c79cd489c1e400ffdfc1a"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "fbjs",
+      "version": "3.0.5"
+    },
+    "files": [
+      {
+        "path": "node_modules/fbjs/LICENSE",
+        "sha256": "f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "filter-obj",
+      "version": "1.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/filter-obj/license",
+        "sha256": "6fb9754611c20f6649f68805e8c990e83261f29316e29de9e6cedae607b8634c"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "flow-enums-runtime",
+      "version": "0.0.6"
+    },
+    "files": [
+      {
+        "path": "node_modules/flow-enums-runtime/LICENSE",
+        "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "hyphenate-style-name",
+      "version": "1.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/hyphenate-style-name/LICENSE",
+        "sha256": "b87a4f179468c16de6b7c40e40d5c4fa0f93ac5950a5ca1cec22f55132ab256c"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "inline-style-prefixer",
+      "version": "7.0.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/inline-style-prefixer/LICENSE",
+        "sha256": "4345c259177dc1f552479360a7deed393207504d75603111c81efeba2202c559"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "invariant",
+      "version": "2.2.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/invariant/LICENSE",
+        "sha256": "f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "is-arrayish",
+      "version": "0.3.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/is-arrayish/LICENSE",
+        "sha256": "92b07a2e5b0e051d37dde85042c736d6d551cfcbc0983f39d7ef903b3986bbc1"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "is-plain-obj",
+      "version": "2.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/is-plain-obj/license",
+        "sha256": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "memoize-one",
+      "version": "5.2.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/memoize-one/LICENSE",
+        "sha256": "b1c501095de70182748cb8e8d97ac5577701a4ef3b755ba30d59fd87b24bdb0f"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "merge-options",
+      "version": "3.0.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/merge-options/license",
+        "sha256": "3bdd8ad524e991a3935c66486592544527d3155e027f7645aac8483f4a8f821c"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "metro-runtime",
+      "version": "0.84.5"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/metro.txt",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "nanoid",
+      "version": "3.3.20"
+    },
+    "files": [
+      {
+        "path": "node_modules/nanoid/LICENSE",
+        "sha256": "da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "nullthrows",
+      "version": "1.1.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/nullthrows/LICENSE",
+        "sha256": "dd5f97aa25431e25fea6654f12f4ce167dc19b3148ab515cc271aa8efe6eb0be"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "postcss-value-parser",
+      "version": "4.2.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/postcss-value-parser/LICENSE",
+        "sha256": "3687447039151857a6ba378db062172c7f33d4aa70a615c87a43a9c50e990485"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "promise",
+      "version": "8.3.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/promise/LICENSE",
+        "sha256": "5e733eb92ed0c571da3f27c5da203e0a9f975b4f96e7692c9fa3660ca54820ec"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "query-string",
+      "version": "7.1.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/query-string/license",
+        "sha256": "846c2349412e40c3c33095b2903f6a311ef4b30ccd26c214044a2cdc24fdc5cc"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react",
+      "version": "19.2.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-dom",
+      "version": "19.2.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-dom/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-fast-compare",
+      "version": "3.2.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-fast-compare/LICENSE",
+        "sha256": "1e187eec147d04bcbb3b7aef9f3b0ea82228961fa7d390d3efb9e57751dbe0cb"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-freeze",
+      "version": "1.0.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-freeze/LICENSE",
+        "sha256": "19ba4296d3501ae3a71920bc9872a5c50ce94105bbf4c2a21d5172658cedd6ae"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-is",
+      "version": "19.3.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-is/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native",
+      "version": "0.86.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-gesture-handler",
+      "version": "2.32.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-gesture-handler/LICENSE",
+        "sha256": "f1ae22eddd3a96c3b7b8a494ef03749ae6a1e19574bacc9c195d83c916de09e2"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-purchases",
+      "version": "10.14.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-purchases/LICENSE",
+        "sha256": "b175672dbc142198bae1daa4bdef4893103d75c111a949f1e33d6493d67658bf"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-reanimated",
+      "version": "4.5.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-reanimated/LICENSE",
+        "sha256": "f1ae22eddd3a96c3b7b8a494ef03749ae6a1e19574bacc9c195d83c916de09e2"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-safe-area-context",
+      "version": "5.7.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-safe-area-context/LICENSE",
+        "sha256": "f5c7a4d527258e11fdfe3d84eb73cd14fe6d64224ef051e59f6ee21fe378800c"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-screens",
+      "version": "4.26.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-screens/LICENSE",
+        "sha256": "95b52e497653b738fd50e4bd3a8197dc41593c63129acb4f8069dbf49530ef82"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-web",
+      "version": "0.21.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-web/LICENSE",
+        "sha256": "f961d81b4027c179ccd9200e72fa141f8c0575c1f3c93593f36645dc72bf5216"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "@react-native/normalize-colors",
+      "version": "0.74.89"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "memoize-one",
+      "version": "6.0.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-web/node_modules/memoize-one/LICENSE",
+        "sha256": "b1c501095de70182748cb8e8d97ac5577701a4ef3b755ba30d59fd87b24bdb0f"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-native-worklets",
+      "version": "0.10.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/react-native-worklets/LICENSE",
+        "sha256": "92c22d327a6644efda43527bfa6f136f4382359f40bc288eda0764f67be9c269"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "regenerator-runtime",
+      "version": "0.13.11"
+    },
+    "files": [
+      {
+        "path": "node_modules/regenerator-runtime/LICENSE",
+        "sha256": "51887a3d47051ac2fce1210562e5b9fe0830a8a8fabeb272c2d586eeb18a05fd"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "scheduler",
+      "version": "0.27.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/scheduler/LICENSE",
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "shallowequal",
+      "version": "1.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/shallowequal/LICENSE",
+        "sha256": "709e45bb17277819ce27e9abe5dc8e56fe93081e54adb6e6385517f28aa11ac4"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "simple-swizzle",
+      "version": "0.2.4"
+    },
+    "files": [
+      {
+        "path": "node_modules/simple-swizzle/LICENSE",
+        "sha256": "8f67ef1afdbd7b8ddc3e2da9968bb97af30795ae9c90a2cc4d867e5608216973"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "split-on-first",
+      "version": "1.1.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/split-on-first/license",
+        "sha256": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "stacktrace-parser",
+      "version": "0.1.11"
+    },
+    "files": [
+      {
+        "path": "node_modules/stacktrace-parser/LICENSE",
+        "sha256": "e1898814043cb5500483d9c8517edda824b352f696d35e5043fcfb537c221531"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "standard-navigation",
+      "version": "0.0.5"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/standard-navigation.txt",
+        "sha256": "77aa111867b23a7dd45fd66c958c410a0a4b09f2f49e1ea0c16af01d1582d291"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "strict-uri-encode",
+      "version": "2.0.0"
+    },
+    "files": [
+      {
+        "path": "node_modules/strict-uri-encode/license",
+        "sha256": "e6fdf7ac2af533b4436d99aa75df32aa78690510f7d68a3e73e8576967298d2f"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "styleq",
+      "version": "0.1.3"
+    },
+    "files": [
+      {
+        "path": "node_modules/styleq/LICENSE",
+        "sha256": "b00770e3c5d6a029cb104f7ac0d328c88ec684d31e8188c61ca91fcc17743cdc"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "warn-once",
+      "version": "0.1.1"
+    },
+    "files": [
+      {
+        "path": "node_modules/warn-once/LICENSE",
+        "sha256": "f9a72660f8b9b8a9ae3773ecaab64f61d1412a4f1c9eb945e455d22608fdc348"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "whatwg-fetch",
+      "version": "3.6.20"
+    },
+    "files": [
+      {
+        "path": "node_modules/whatwg-fetch/LICENSE",
+        "sha256": "c887d1c97797646dbb216925ab44a93c6b3e7f03bbe6ef6e0f92b8b8ade63014"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "whatwg-url-minimum",
+      "version": "0.1.2"
+    },
+    "files": [
+      {
+        "path": "node_modules/whatwg-url-minimum/LICENSE.md",
+        "sha256": "c2ecf83f830f226f662c99d003162002c78edd8b59f1105621bdcc2c44043a7d"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "React Navigation (vendored by Expo Router)",
+      "version": "upstream notice"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/react-navigation.txt",
+        "sha256": "c3bc4b85acdbcfe7b2ffe3c986dcfc0cc98980c1b98154c87fa5a894acd9ac78"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "react-helmet-async (vendored by Expo Router)",
+      "version": "vendor notice"
+    },
+    "files": [
+      {
+        "path": "node_modules/expo-router/vendor/react-helmet-async/LICENSE",
+        "sha256": "c358ea82eed53098b2ee0913e1de8243c69d45862e11c48614db47fd5889d947"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "PurchasesHybridCommon",
+      "version": "19.12.0"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/purchases-hybrid-common.txt",
+        "sha256": "77e57f8a31eb21899940135b8f3acba2b0fc1825cc07db66e7b63b2f936f35ff"
+      }
+    ]
+  },
+  {
+    "credit": {
+      "name": "RevenueCat for iOS",
+      "version": "5.95.0"
+    },
+    "files": [
+      {
+        "path": "licenses/upstream/purchases-ios.txt",
+        "sha256": "9f0832999aa913fb2d4a94179839573467a2b79b43f6417ebaab93003506f1a2"
+      }
+    ]
+  }
+]

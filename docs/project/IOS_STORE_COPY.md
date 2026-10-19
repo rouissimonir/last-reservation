@@ -30,7 +30,7 @@ Step into an atmospheric hotel in 1994, where witness accounts and hotel records
 
 FIVE COMPLETE MYSTERIES, FREE
 
-Start with The Last Reservation, then investigate The Silent Piano, The Masquerade Coat, The Music Box and The Missing Envelope. Each case tells its own contained story, with private evidence, optional hints and a conclusion to uncover.
+Start with The Last Reservation, then investigate The Silent Piano,  The Masquerade Coat, The Music Box and The Missing Envelope. Each case tells its own contained story, with private evidence, optional hints and a conclusion to uncover.
 
 BUILT FOR TWO
 

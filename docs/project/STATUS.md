@@ -1,5 +1,9 @@
 # TWO SIDES — status
 
+## Latest: iPhone-framed screenshot drafts (19 October 2026)
+
+Generated an empty hardware-only iPhone-style frame and integrated it through the existing renderer around all five unchanged web captures. New 1320×2868 RGB drafts, ordered manifest and contact sheet live in `store/ios/screenshots-iphone-drafts/`; original set/raw captures preserved. Geometry and lossless-composite checks protect the real game pixels; camera hardware never covers content. Native iOS layout comparison remains pending because the publisher has not built yet. Frames are a presentation choice, not evidence of native accuracy or App Review approval. See `IPHONE_SCREENSHOT_FRAMES.md`; no runtime/store/upload change.
+
 ## Latest: App Store Connect API credentials (19 October 2026)
 
 The publisher-supplied separate API key is saved and validates after reload: correct format plus permissions to list apps/get subscription info. Official CLI confirms both Apple credential flags true for the existing app/bundle. Optional vendor number remains blank. No App Store product/metadata change or native transaction occurred; key contents were not printed or committed. `APP_STORE_CONNECT_KEY_CHECKPOINT.md` records proof, plugin discovery and remaining store/native gates. Earlier missing-API-key statements are historical; unrelated licensing/release edits preserved.
