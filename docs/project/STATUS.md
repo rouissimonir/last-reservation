@@ -1,5 +1,9 @@
 # TWO SIDES — status
 
+## Latest: App Store Connect API credentials (19 October 2026)
+
+The publisher-supplied separate API key is saved and validates after reload: correct format plus permissions to list apps/get subscription info. Official CLI confirms both Apple credential flags true for the existing app/bundle. Optional vendor number remains blank. No App Store product/metadata change or native transaction occurred; key contents were not printed or committed. `APP_STORE_CONNECT_KEY_CHECKPOINT.md` records proof, plugin discovery and remaining store/native gates. Earlier missing-API-key statements are historical; unrelated licensing/release edits preserved.
+
 ## Latest: Apple In-App Purchase credentials (19 October 2026)
 
 Uploaded the publisher-supplied In-App Purchase `.p8` file and identifiers to the existing TWO SIDES RevenueCat App Store app, under explicit authorization. Persisted/reloaded dashboard validation shows valid key format and permissions; missing-key banner cleared. Official CLI reports `subscription_key_configured: true` with bundle `com.monirrouissi.twosides`. The separate App Store Connect API key remains false. See `APPLE_PURCHASE_KEY_CHECKPOINT.md` and its screenshot for evidence and remaining native/store gates. No secret, app code or unrelated release/licensing work included in the scoped checkpoint; latest app checks remain those of the unchanged visual-assets build below.
