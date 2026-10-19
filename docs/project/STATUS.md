@@ -1,5 +1,9 @@
 # TWO SIDES — status
 
+## Latest: hint ratings and animations (19 October 2026)
+
+Added a hint-based rating (0 hints = 3 stars … solution hint = 0 per deduction; case tiers Perfect Deduction / Sharp Minds / Steady Hands / Case Solved), shown in the hint panel, on each confirmed deduction, as an animated seal on the resolution screen and as a badge on the case card. Added motion throughout (launch title card, library, cover, roles, selection, wrong answer, hints, confirmation, resolution) and two sound cues. Ratings derive from the saved hint counts, so there is **no save change**; reduced motion skips or flattens everything. `npm run check` PASS (typecheck, lint, notices, 86 domain + 34 component tests; new: rating rules for all eight cases, real-screen rating flows, launch card). `npm run audio:check` PASS. Web export built and played in desktop Chromium: no console errors; launch card, hint panel, stamp, three seal tiers captured. Not verified: native devices, haptics, audio by ear, low-end performance. Details: `GAMIFICATION.md`.
+
 ## Latest: iPhone-framed screenshot drafts (19 October 2026)
 
 Generated an empty hardware-only iPhone-style frame and integrated it through the existing renderer around all five unchanged web captures. New 1320×2868 RGB drafts, ordered manifest and contact sheet live in `store/ios/screenshots-iphone-drafts/`; original set/raw captures preserved. Geometry and lossless-composite checks protect the real game pixels; camera hardware never covers content. Native iOS layout comparison remains pending because the publisher has not built yet. Frames are a presentation choice, not evidence of native accuracy or App Review approval. See `IPHONE_SCREENSHOT_FRAMES.md`; no runtime/store/upload change.

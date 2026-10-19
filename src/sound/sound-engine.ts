@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 import { effectsVolume, musicVolume, SoundPreferences } from './preferences';
 
-export type Cue = 'tap' | 'select' | 'page' | 'handoff' | 'confirm' | 'wrong' | 'hint' | 'solved';
+export type Cue = 'tap' | 'select' | 'page' | 'handoff' | 'confirm' | 'wrong' | 'hint' | 'solved' | 'star' | 'perfect';
 const EFFECTS: Record<Cue, number> = {
   tap: require('../../assets/audio/tap.wav'),
   select: require('../../assets/audio/select.wav'),
@@ -14,9 +14,11 @@ const EFFECTS: Record<Cue, number> = {
   wrong: require('../../assets/audio/wrong.wav'),
   hint: require('../../assets/audio/hint.wav'),
   solved: require('../../assets/audio/solved.wav'),
+  star: require('../../assets/audio/star.wav'),
+  perfect: require('../../assets/audio/perfect.wav'),
 };
 // Effects sit slightly apart so the louder moments (a confirmed deduction) stay gentle.
-const CUE_GAIN: Record<Cue, number> = { tap: 0.55, select: 0.6, page: 0.7, handoff: 0.7, confirm: 0.8, wrong: 0.65, hint: 0.7, solved: 0.85 };
+const CUE_GAIN: Record<Cue, number> = { tap: 0.55, select: 0.6, page: 0.7, handoff: 0.7, confirm: 0.8, wrong: 0.65, hint: 0.7, solved: 0.85, star: 0.5, perfect: 0.9 };
 const HAPTIC: Record<Cue, () => Promise<void>> = {
   tap: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft),
   select: () => Haptics.selectionAsync(),
@@ -26,6 +28,8 @@ const HAPTIC: Record<Cue, () => Promise<void>> = {
   wrong: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning),
   hint: () => Haptics.selectionAsync(),
   solved: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success),
+  star: () => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light),
+  perfect: () => Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success),
 };
 
 // Owns the native players outside React. Sound is decorative: every failure is swallowed.

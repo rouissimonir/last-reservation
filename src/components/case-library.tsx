@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { CaseEmblem } from './case-emblem';
-import { Button, Copy, HotelBackdrop, Label, ReadingContext, TextAction, Title } from './game-ui';
+import { Button, Copy, HotelBackdrop, Label, ReadingContext, TextAction, Title, useReducedMotion } from './game-ui';
+import { Entrance } from './motion';
+import { StarRow, tierColor } from './rating';
 import { CaseDefinition, getCase } from '@/game/cases';
 import { presentationFor } from '@/game/presentation';
+import { caseRating, hintsText, tierInfo } from '@/game/rating';
 import { colors as c, serif } from '@/game/tokens';
 import { useInvestigation } from '@/game/use-investigation';
 import { ownsCollection } from '@/monetization/access';
@@ -14,8 +18,9 @@ import { usePurchases } from '@/monetization/purchases-provider';
 export type OfferSource = 'library' | 'locked_case';
 type Open = (id: string, replay?: boolean) => void;
 
-function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; locked: boolean; onOpen: Open; onOffer: (source: OfferSource) => void }) {
+function CaseCard({ item, locked, index, onOpen, onOffer }: { item: CaseDefinition; locked: boolean; index: number; onOpen: Open; onOffer: (source: OfferSource) => void }) {
   const game = useInvestigation(item.id);
+  const { reducedMotion } = useContext(ReadingContext);
   const p = game.progress;
   const ready = game.status === 'ready';
   const finished = p.round === item.rounds.length;
@@ -23,7 +28,8 @@ function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; loc
   const progress = ready ? !p.started ? 'Not started' :
     `${finished ? 'Resolved' : 'In progress'} · ${p.confirmed.length} of ${item.rounds.length} deductions` :
     game.status === 'loading' ? 'Checking saved progress…' : 'Saved progress needs attention';
-  return <View style={[s.card, locked && s.lockedCard]}>
+  const rating = ready && finished ? caseRating(p) : null;
+  return <Entrance reduced={reducedMotion} delay={Math.min(index, 6) * 90 + 150}><View style={[s.card, locked && s.lockedCard]}>
     <View style={s.cardTop}>
       <View style={s.cardText}>
         <Label>FILE {item.edition} · {item.format.toUpperCase()}</Label>
@@ -39,18 +45,23 @@ function CaseCard({ item, locked, onOpen, onOffer }: { item: CaseDefinition; loc
       <Button secondary accessibilityLabel={`See the After Midnight Collection, which includes ${item.title}`} onPress={() => onOffer('locked_case')}>See the collection</Button>
     </> : <>
       <Text accessibilityLiveRegion="polite" style={s.status}>{progress}</Text>
+      {rating && <View style={s.rating}>
+        <StarRow stars={tierInfo[rating.tier].seal} size={16} color={tierColor[rating.tier]} />
+        <Text style={[s.ratingText, { color: tierColor[rating.tier] }]}>{tierInfo[rating.tier].title} · score {rating.score} · {hintsText(rating.hints)}</Text>
+      </View>}
       <Button accessibilityLabel={`Open ${item.title}`} disabled={game.status === 'loading'} onPress={() => onOpen(item.id)}>
         {!ready ? 'Review saved progress' : p.started ? 'Continue investigation' : 'Open the case'}
       </Button>
       {ready && p.started && <TextAction onPress={() => onOpen(item.id, true)}>Replay this case…</TextAction>}
     </>}
-  </View>;
+  </View></Entrance>;
 }
 
 export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (source: OfferSource) => void }) {
   const { state, access } = usePurchases();
   const owned = ownsCollection(access, AFTER_MIDNIGHT);
-  return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion: true }}>
+  const reducedMotion = useReducedMotion();
+  return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion }}>
     <View style={s.root}><View style={s.frame}>
       <HotelBackdrop cover={false} />
       <SafeAreaView style={s.safe}>
@@ -68,7 +79,7 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
           <View style={s.section}><Label>{FREE_COLLECTION.title.toUpperCase()} · FREE</Label>
             <Text accessibilityRole="header" style={s.sectionTitle}>Five complete mysteries. Free to play together.</Text>
             <Copy style={s.description}>One phone, two perspectives. Start with {getCase(RECOMMENDED_FIRST_CASE).title}.</Copy></View>
-          {FREE_COLLECTION.caseIds.map(id => <CaseCard key={id} item={getCase(id)} locked={false} onOpen={onOpen} onOffer={onOffer} />)}
+          {FREE_COLLECTION.caseIds.map((id, i) => <CaseCard key={id} item={getCase(id)} index={i} locked={false} onOpen={onOpen} onOffer={onOffer} />)}
 
           <View style={[s.section, s.paidSection]}>
             <Label>{AFTER_MIDNIGHT.title.toUpperCase()} · {owned ? (access.devPreview && !state.entitlements.includes(AFTER_MIDNIGHT.entitlementId ?? '') ? 'PREVIEW' : 'OWNED') : 'ONE-TIME PURCHASE'}</Label>
@@ -78,7 +89,7 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
             <Copy style={s.description}>One-time purchase. Hints included. No subscription.</Copy>
             <Button secondary onPress={() => onOffer('library')}>{owned ? 'About this collection' : 'See the collection'}</Button>
           </View>
-          {AFTER_MIDNIGHT.caseIds.map(id => <CaseCard key={id} item={getCase(id)} locked={!owned} onOpen={onOpen} onOffer={onOffer} />)}
+          {AFTER_MIDNIGHT.caseIds.map((id, i) => <CaseCard key={id} item={getCase(id)} index={i} locked={!owned} onOpen={onOpen} onOffer={onOffer} />)}
           <Text style={s.duration}>Play at your own pace. No sound required.</Text>
         </ScrollView>
       </SafeAreaView>
@@ -106,4 +117,6 @@ const s = StyleSheet.create({
   caseTitle: { color: c.ivory, fontFamily: serif, fontSize: 27, lineHeight: 34 },
   duration: { color: c.muted, fontSize: 13, lineHeight: 21 },
   status: { color: c.brass, fontSize: 14, lineHeight: 22 },
+  rating: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 },
+  ratingText: { fontSize: 13, lineHeight: 20, fontWeight: '600', flexShrink: 1 },
 });

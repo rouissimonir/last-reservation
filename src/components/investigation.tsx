@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -8,10 +8,13 @@ import { Button, ClosedFolder, Copy, EvidenceDocument, HotelBackdrop, Label,
 
 import { CaseEmblem } from './case-emblem';
 import { CaseLibrary, OfferSource } from './case-library';
+import { Entrance, PopIn, Shake, Stamp } from './motion';
+import { CaseResult, DeductionResult, StarRow } from './rating';
 import { roleNames } from '@/game/case';
 import { getCase } from '@/game/cases';
 import { canAnswer, evidenceUnlocked, nextScene, resumeScene, Scene, visibleHints } from '@/game/engine';
 import { presentationFor } from '@/game/presentation';
+import { caseRating, deductionTitle, hintsText, MAX_STARS, starsForHints } from '@/game/rating';
 import { colors as c, serif, space } from '@/game/tokens';
 import { useInvestigation } from '@/game/use-investigation';
 import { usePrivacy } from '@/game/use-privacy';
@@ -58,9 +61,11 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
   const [scene, setScene] = useState<Scene>(() => replay ? { kind: 'reset' } : resumeScene());
   const [choice, setChoice] = useState<string | null>(null);
   const [wrong, setWrong] = useState(false);
+  const [wrongCount, setWrongCount] = useState(0);
   const navigate = useCallback((target: Scene) => {
     setChoice(null);
     setWrong(false);
+    setWrongCount(0);
     setScene(target);
   }, []);
   const conceal = useCallback(() => navigate(resumeScene()), [navigate]);
@@ -79,10 +84,11 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
     const next = game.dispatch({ type: 'read', round: scene.round, role: scene.role });
     navigate(scene.revisit ? { kind: 'notebook' } : nextScene(next));
   };
-  const roundHeader = (n: number) => <View style={s.roundHeader}>
+  const roundHeader = (n: number, extra?: ReactNode) => <View style={s.roundHeader}>
     <Label>DEDUCTION {String(n + 1).padStart(2, '0')} OF {String(rounds.length).padStart(2, '0')}</Label>
-    <Text style={s.chapterWord}>{rounds[n].label}</Text>
+    {extra ?? <Text style={s.chapterWord}>{rounds[n].label}</Text>}
   </View>;
+  const rm = reducedMotion;
 
   const renderScene = () => {
     if (scene.kind === 'reset') return <>
@@ -103,24 +109,26 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
     }
     switch (scene.kind) {
       case 'cover': return <View style={[s.coverScene, compact && s.compactCover]}>
-        <View style={s.caseEdition}><View style={s.editionRule} /><Label>THE BELLWEATHER FILES · {item.edition}</Label><View style={s.editionRule} /></View>
-        <CaseEmblem emblem={presentationFor(caseId).emblem} />
+        <Entrance reduced={rm} duration={500} distance={6}><View style={s.caseEdition}><View style={s.editionRule} /><Label>THE BELLWEATHER FILES · {item.edition}</Label><View style={s.editionRule} /></View></Entrance>
+        <PopIn reduced={rm} delay={120} from={0.82}><CaseEmblem emblem={presentationFor(caseId).emblem} /></PopIn>
         <View style={s.coverTitleGroup}>
-          <Text style={s.hotelLocation}>{item.setting ?? 'Bellweather Hotel · October 1994'}</Text>
-          <Text accessibilityRole="header" style={[s.coverTitle, compact && s.compactCoverTitle]}>{item.coverTitle}</Text>
-          <Copy style={s.hook}>{item.hook}</Copy>
+          <Entrance reduced={rm} delay={300}><Text style={s.hotelLocation}>{item.setting ?? 'Bellweather Hotel · October 1994'}</Text></Entrance>
+          <Entrance reduced={rm} delay={420} distance={16} duration={520}><Text accessibilityRole="header" style={[s.coverTitle, compact && s.compactCoverTitle]}>{item.coverTitle}</Text></Entrance>
+          <Entrance reduced={rm} delay={640}><Copy style={s.hook}>{item.hook}</Copy></Entrance>
         </View>
-        <Text style={s.coverMetadata}>2 players · 1 phone</Text>
-        <View style={s.coverAction}>
+        <Entrance reduced={rm} delay={760}><Text style={s.coverMetadata}>2 players · 1 phone</Text></Entrance>
+        <Entrance reduced={rm} delay={880} style={s.coverAction}>
           <Button onPress={() => navigate(nextScene(p))}>{p.started ? 'Continue investigation' : 'Open the case'}</Button>
           {p.started && <Text style={s.progressNote}>{p.confirmed.length} of {rounds.length} deductions confirmed</Text>}
-        </View>
-        <View style={s.coverTools}>
-          <TextAction onPress={onCases}>Cases</TextAction>
-          <TextAction onPress={() => navigate({ kind: 'notebook' })}>Notebook</TextAction>
-          <View style={s.toolDivider} />
-          <TextAction onPress={() => navigate({ kind: 'settings' })}>Settings</TextAction>
-        </View>
+        </Entrance>
+        <Entrance reduced={rm} delay={1000}>
+          <View style={s.coverTools}>
+            <TextAction onPress={onCases}>Cases</TextAction>
+            <TextAction onPress={() => navigate({ kind: 'notebook' })}>Notebook</TextAction>
+            <View style={s.toolDivider} />
+            <TextAction onPress={() => navigate({ kind: 'settings' })}>Settings</TextAction>
+          </View>
+        </Entrance>
         <Text accessibilityLiveRegion="polite" style={s.saveStatus}>{saveLabel}</Text>
         <Text style={s.saveStatus}>{rounds.length} deductions · No time limit</Text>
       </View>;
@@ -132,13 +140,13 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
       </>;
       case 'roles': return <>
         <Label>TWO PEOPLE · ONE SHARED PHONE</Label><Title>Two sides of the story.</Title>
-        {(['A', 'B'] as const).map(role => <View style={s.roleCard} key={role}>
+        {(['A', 'B'] as const).map((role, i) => <Entrance reduced={rm} delay={120 + i * 160} key={role}><View style={s.roleCard}>
           <RoleGlyph role={role} /><View style={s.roleDetails}><Label>INVESTIGATOR {role}</Label>
             <Text style={s.roleName}>{roleNames[role]}</Text>
             <Copy>{role === 'A' ? 'Read the eyewitness accounts. Notice what people actually saw.' : 'Read maintenance, access and storage records. Look for what they establish.'}</Copy></View>
-        </View>)}
+        </View></Entrance>)}
         <Copy>Choose one role each. Read your evidence privately, then hide it before passing the phone. At each shared question, describe your findings aloud and decide together.</Copy>
-        <Copy>There is no timer or penalty. Hints are free. Use the notebook to revisit evidence through a private handoff.</Copy>
+        <Copy>There is no timer, and wrong answers cost nothing. Hints are free, but every deduction earns up to three stars: solve it with no hints for all three, and each hint you reveal takes one away. Use the notebook to revisit evidence through a private handoff.</Copy>
         <Button onPress={() => { const next = game.dispatch({ type: 'start' }); navigate(nextScene(next)); }}>We’ve chosen our roles →</Button>
       </>;
       case 'pass': {
@@ -165,46 +173,70 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
       case 'discuss': {
         if (!activeRound || !canAnswer(p, p.round)) return <><Title>Read both sides first.</Title><Button onPress={() => navigate(nextScene(p))}>Continue investigation</Button></>;
         const hints = visibleHints(p, p.round);
+        const used = p.hints[p.round];
+        const live = starsForHints(used);
         return <>
           {roundHeader(p.round)}<Label>PUT YOUR FINDINGS TOGETHER</Label><Title>{activeRound.title}</Title>
           <Text style={s.chapterWord}>{activeRound.act}</Text>
           {p.confirmed.length > 0 && <View style={s.confirmedStrip}><Label>FROM YOUR NOTEBOOK</Label><Copy>{rounds[p.round - 1].deduction}</Copy></View>}
           <Copy>Share what each of you found. Combine both perspectives before choosing your answer.</Copy>
           <Text accessibilityRole="header" style={s.question}>{activeRound.question}</Text>
-          <View style={s.options}>{activeRound.options.map((option, i) => <Button key={option} secondary sound="select" selected={choice === option}
-            onPress={() => { setChoice(option); setWrong(false); }}>{`${choice === option ? '✓' : String.fromCharCode(65 + i) + '.'}  ${option}`}</Button>)}</View>
-          {wrong && <View accessibilityLiveRegion="polite" style={s.feedback}><Copy>That doesn’t fit all the evidence. Compare your clues and try again—there’s no penalty.</Copy></View>}
+          <Shake reduced={rm} trigger={wrongCount}><View style={s.options}>{activeRound.options.map((option, i) => <Button key={option} secondary sound="select" selected={choice === option}
+            onPress={() => { setChoice(option); setWrong(false); }}>{`${choice === option ? '✓' : String.fromCharCode(65 + i) + '.'}  ${option}`}</Button>)}</View></Shake>
+          {wrong && <Entrance reduced={rm} distance={6} duration={260}><View accessibilityLiveRegion="polite" style={s.feedback}><Copy>That doesn’t fit all the evidence. Compare your clues and try again—there’s no penalty, and wrong answers never cost stars.</Copy></View></Entrance>}
           <Button disabled={!choice} sound={null} onPress={() => {
             if (!choice) return;
             const round = p.round;
             const next = game.dispatch({ type: 'answer', round, answer: choice });
             cue(next.round > round ? 'confirm' : 'wrong');
             if (next.round > round) navigate({ kind: 'confirmed', round });
-            else setWrong(true);
+            else { setWrong(true); setWrongCount(n => n + 1); }
           }}>Confirm our deduction →</Button>
           <View style={s.hints}><Label>A LITTLE ASSISTANCE</Label>
             <Copy style={s.muted}>Optional and free. Reveal one hint at a time. Hint 3 explains the answer.</Copy>
-            {hints.map((hint, i) => <View key={i} style={s.hintCard}><Label>HINT {i + 1}</Label><Copy>{hint}</Copy></View>)}
-            {hints.length < 3 && <Button secondary sound="hint" onPress={() => game.dispatch({ type: 'hint', round: p.round })}>{hints.length === 2 ? 'Reveal solution hint (3 of 3)' : `Reveal hint ${hints.length + 1} of 3`}</Button>}
+            <View accessibilityLiveRegion="polite" style={[s.reward, live === 3 && s.rewardClean]}>
+              <View style={s.rewardText}><Label>STARS FOR THIS DEDUCTION</Label>
+                <Text style={s.rewardLine}>{live} of {MAX_STARS} · {used === 0 ? 'Solve it without hints to keep all three.' :
+                  used >= 3 ? 'Solution hint revealed. Confirm the answer to move on.' :
+                  `${hintsText(used)} revealed. ${used === 1 ? 'Two stars' : 'One star'} left to earn.`}</Text></View>
+              <StarRow stars={live} size={26} />
+            </View>
+            {hints.map((hint, i) => <Entrance reduced={rm} key={i} distance={8}><View style={s.hintCard}><Label>HINT {i + 1}</Label><Copy>{hint}</Copy></View></Entrance>)}
+            {hints.length < 3 && <Button secondary sound="hint" accessibilityLabel={`${hints.length === 2 ? 'Reveal solution hint, 3 of 3' : `Reveal hint ${hints.length + 1} of 3`}. Costs one star.`}
+              onPress={() => game.dispatch({ type: 'hint', round: p.round })}>{`${hints.length === 2 ? 'Reveal solution hint (3 of 3)' : `Reveal hint ${hints.length + 1} of 3`} · −1 ★`}</Button>}
           </View>
           <TextAction onPress={() => navigate({ kind: 'notebook' })}>Revisit evidence in the notebook</TextAction>
         </>;
       }
       case 'confirmed': {
         if (scene.round >= p.round) return <><Title>Keep investigating.</Title><Button onPress={conceal}>Return to cover</Button></>;
-        return <>{roundHeader(scene.round)}<Label>DEDUCTION CONFIRMED</Label><Title>{rounds[scene.round].deduction}</Title>
+        const hintsUsed = p.hints[scene.round];
+        const finalRound = p.round === rounds.length;
+        return <>{roundHeader(scene.round)}<Label>DEDUCTION CONFIRMED</Label>
+          <Stamp reduced={rm} tilt={-4} style={s.confirmStamp}><View style={s.confirmStampBox}><Text style={s.confirmStampText}>CONFIRMED</Text></View></Stamp>
+          <Title>{rounds[scene.round].deduction}</Title>
+          <Entrance reduced={rm} delay={500}><View style={s.rewardEarned}>
+            <DeductionResult hints={hintsUsed} stars={starsForHints(hintsUsed)} entrance delay={650} />
+          </View></Entrance>
           <Copy>This finding has been added to your shared notebook.</Copy>
           {rounds[scene.round].afterDeduction && <Copy>{rounds[scene.round].afterDeduction}</Copy>}
           {scene.round < rounds.length - 1 && <View style={s.confirmedStrip}><Label>HOW THE EVIDENCE FITS</Label><Copy>{rounds[scene.round].proof}</Copy></View>}
-          <Button sound={p.round === rounds.length ? 'solved' : 'page'} onPress={() => navigate(nextScene(p))}>{p.round === rounds.length ? 'Read the resolution →' : 'Open the next chapter →'}</Button>
+          <Button sound={finalRound ? (caseRating(p).tier === 'perfect' ? 'perfect' : 'solved') : 'page'} onPress={() => navigate(nextScene(p))}>{finalRound ? 'Read the resolution →' : 'Open the next chapter →'}</Button>
         </>;
       }
       case 'ending': {
         if (p.round !== rounds.length) return <><Title>The case is still open.</Title><Button onPress={conceal}>Return to cover</Button></>;
-        return <><Label>{item.title.toUpperCase()} · RESOLVED</Label><Title>{item.endingTitle ?? (item.edition === '01' ? 'Safe. Still sealed.' : 'A visitor found.')}</Title><Copy>{ending.recovery}</Copy>
+        const rating = caseRating(p);
+        return <><Label>{item.title.toUpperCase()} · RESOLVED</Label><Title>{item.endingTitle ?? (item.edition === '01' ? 'Safe. Still sealed.' : 'A visitor found.')}</Title>
+          <CaseResult rating={rating} />
+          <Copy>{ending.recovery}</Copy>
           <Paper reference={`RESOLVED / ${item.edition}`}><Label paper>{item.noteLabel ?? (item.edition === '01' ? 'FOUND BESIDE THE ENVELOPE' : 'IN THE STAFF READING ROOM')}</Label><Text style={ui.documentTitle}>{item.noteTitle ?? (item.edition === '01' ? 'A signed note' : 'Elin’s closing words')}</Text><Copy style={ui.ink}>{ending.note}</Copy><Text style={s.signature}>{ending.signature}</Text></Paper>
           <Copy>{ending.conclusion}</Copy><View style={s.rule} /><Label>THE COMPLETE EVIDENCE CHAIN</Label>
-          {rounds.map((round, i) => <View key={i} style={s.proofCard}><Label>0{i + 1} · {round.label.toUpperCase()}</Label><Text style={s.proofTitle}>{round.deduction}</Text><Copy>{round.proof}</Copy></View>)}
+          {rounds.map((round, i) => <View key={i} style={s.proofCard}>
+            <View style={s.proofHead}><Label>0{i + 1} · {round.label.toUpperCase()}</Label>
+              <View style={s.proofStars}><StarRow stars={rating.deductions[i].stars} size={14} />
+                <Text style={s.proofStarsText}>{deductionTitle[rating.deductions[i].stars]} · {hintsText(rating.deductions[i].hints)}</Text></View></View>
+            <Text style={s.proofTitle}>{round.deduction}</Text><Copy>{round.proof}</Copy></View>)}
           <View style={s.closedStamp}><Text style={s.closedText}>CASE CLOSED</Text></View>
           <Copy style={s.center}>Two perspectives. One complete story.</Copy>
           <Button onPress={onCases}>Choose your next mystery</Button>
@@ -322,6 +354,17 @@ const s = StyleSheet.create({
   muted: { color: c.muted }, center: { textAlign: 'center' },
   rule: { height: 1, backgroundColor: c.line, marginVertical: 6 },
   proofCard: { gap: 10, paddingBottom: 22, borderBottomWidth: 1, borderColor: c.line },
+  proofHead: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 6 },
+  proofStars: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  proofStarsText: { color: c.muted, fontSize: 11, lineHeight: 17 },
+  reward: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, borderRadius: 4, borderWidth: 1, borderColor: c.line, backgroundColor: 'rgba(23,43,57,0.7)' },
+  rewardClean: { borderColor: 'rgba(242,207,122,0.55)' },
+  rewardText: { flex: 1, gap: 4 },
+  rewardLine: { color: c.ivory, fontSize: 14, lineHeight: 21 },
+  rewardEarned: { padding: 14, borderRadius: 4, borderLeftWidth: 2, borderColor: c.gold, backgroundColor: 'rgba(23,43,57,0.92)' },
+  confirmStamp: { alignSelf: 'flex-start' },
+  confirmStampBox: { borderWidth: 2, borderColor: c.brass, borderRadius: 3, paddingHorizontal: 14, paddingVertical: 6 },
+  confirmStampText: { color: c.brass, letterSpacing: 4, fontSize: 16, lineHeight: 24, fontWeight: '700' },
   proofTitle: { color: c.ivory, fontFamily: serif, fontSize: 24, lineHeight: 31 },
   signature: { color: c.burgundy, fontFamily: serif, fontSize: 19, lineHeight: 28, fontStyle: 'italic' },
   closedStamp: { alignSelf: 'center', borderWidth: 1, borderColor: c.brass, paddingHorizontal: 25, paddingVertical: 15, marginVertical: 8 },
