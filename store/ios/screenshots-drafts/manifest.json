@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-19",
+  "app_name": "TWO SIDES: Co-op Mystery",
+  "source_type": "real Expo production web UI, browser capture; NOT native iOS",
+  "source_origin": "http://127.0.0.1:8105/",
+  "requested_viewport_css": [
+    440,
+    956
+  ],
+  "capture_note": "Full-page browser capture preserves the complete 440x956 fixed app viewport. No UI retouching.",
+  "capture_build": "production web export from Apple identity checkpoint 1aebd9b; no gameplay changes in this assets checkpoint",
+  "native_capture_verified": false,
+  "submission_ready": false,
+  "screenshots": [
+    {
+      "order": 1,
+      "file": "en-US/01-cover-DRAFT.png",
+      "source": "raw/01-cover.jpg",
+      "source_sha256": "01f3230a5abd6a35acd69f29658f9b33072a233b0f3219fb26bbc50f9bde1284",
+      "output_sha256": "98aa26ab0e4d37da98f59a00dea171a1b325ffc2540c3d292ef84e557403c871",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Two players. One shared phone.",
+      "native_capture_verified": false,
+      "submission_ready": false
+    },
+    {
+      "order": 2,
+      "file": "en-US/02-evidence-DRAFT.png",
+      "source": "raw/02-evidence.jpg",
+      "source_sha256": "b94ea493f9ae484e60cf9cc63f90383cfe03b63eebb293cbdacead2ba9650f15",
+      "output_sha256": "0f64188d641bd7243c5235d6bdc1c04e1f07168eaa56c5b0cfb32f0a111623e3",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Your clues are half the story.",
+      "native_capture_verified": false,
+      "submission_ready": false
+    },
+    {
+      "order": 3,
+      "file": "en-US/03-handoff-DRAFT.png",
+      "source": "raw/03-handoff.jpg",
+      "source_sha256": "284c1d16c034495f22f23545a85f1c4f23dc2073e595f97242f4332bd80645a6",
+      "output_sha256": "72fd281deef28a3999898898c27f674328f1ce75d137e63444c5f38fd2e18dc2",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Pass the phone. Solve it together.",
+      "native_capture_verified": false,
+      "submission_ready": false
+    },
+    {
+      "order": 4,
+      "file": "en-US/04-hint-DRAFT.png",
+      "source": "raw/04-hint.jpg",
+      "source_sha256": "4146ef1b65ed0f237210ce46eb2341fbe8f4d08230e76b44e657b6e3236f8e4e",
+      "output_sha256": "e37edb36af272aeeb61adfb5d3bc0f339c3c7cdbb030dd03b250abc0c157bfaa",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "A nudge. When you need it.",
+      "native_capture_verified": false,
+      "submission_ready": false
+    },
+    {
+      "order": 5,
+      "file": "en-US/05-library-DRAFT.png",
+      "source": "raw/05-library.jpg",
+      "source_sha256": "d5df4c83469be63fb91ae7a4dd32832b5ff5bc927e9e362bf792ff8d9898066d",
+      "output_sha256": "a23dfdde0be66082fd5afd6c941c53a1f6ea951555a6be11bcbd1e277d3ef201",
+      "source_pixels": [
+        440,
+        956
+      ],
+      "output_pixels": [
+        1320,
+        2868
+      ],
+      "headline": "Five mysteries. Free to play together.",
+      "native_capture_verified": false,
+      "submission_ready": false
+    }
+  ]
+}

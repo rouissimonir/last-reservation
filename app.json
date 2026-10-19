@@ -5,7 +5,7 @@
     "slug": "last-reservation",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/brand/icon.png",
+    "icon": "./assets/brand/v2/icon.png",
     "scheme": "lastreservation",
     "userInterfaceStyle": "dark",
     "ios": {
@@ -33,8 +33,8 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#101D29",
-        "foregroundImage": "./assets/brand/adaptive-foreground.png",
-        "monochromeImage": "./assets/brand/monochrome.png"
+        "foregroundImage": "./assets/brand/v2/adaptive-foreground.png",
+        "monochromeImage": "./assets/brand/v2/monochrome.png"
       },
       "predictiveBackGestureEnabled": false
     },
@@ -43,7 +43,7 @@
       "shortName": "TWO SIDES",
       "lang": "en",
       "output": "static",
-      "favicon": "./assets/brand/favicon.png"
+      "favicon": "./assets/brand/v2/favicon.png"
     },
     "plugins": [
       "expo-router",
@@ -51,7 +51,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#101E29",
-          "image": "./assets/brand/splash-mark.png",
+          "image": "./assets/brand/v2/splash-mark.png",
           "imageWidth": 180
         }
       ],
