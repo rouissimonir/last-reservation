@@ -2,6 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from 'react
 import { LinearGradient } from 'expo-linear-gradient';
 import { AccessibilityInfo, Animated, Easing, Image, Platform, Pressable, StyleSheet, Text, TextProps, View } from 'react-native';
 
+import { Pulse } from './motion';
 import { Evidence, Role } from '@/game/case';
 import { colors as c, mono, serif, space } from '@/game/tokens';
 import { Cue, useSound } from '@/sound/sound-provider';
@@ -27,14 +28,16 @@ export function Button({ children, onPress, secondary, disabled = false, selecte
   const [focused, setFocused] = useState(false);
   const { reducedMotion } = useContext(ReadingContext);
   const { cue } = useSound();
-  return <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} accessibilityState={{ disabled, selected, expanded }} aria-expanded={expanded} disabled={disabled}
-    onPress={() => { if (sound) cue(sound); onPress(); }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
-    style={({ pressed }) => [ui.button, secondary && ui.secondary, selected && ui.selected,
-      focused && ui.focused, disabled && ui.disabled, pressed && !disabled && ui.pressed,
-      pressed && !disabled && !reducedMotion && ui.pressedScale]}>
-    <View pointerEvents="none" style={[ui.buttonShine, secondary && ui.secondaryShine]} />
-    <Text style={[ui.buttonText, secondary && ui.secondaryText, disabled && ui.disabledText]}>{children}</Text>
-  </Pressable>;
+  return <Pulse reduced={reducedMotion} trigger={selected} active={selected}>
+    <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel} accessibilityState={{ disabled, selected, expanded }} aria-expanded={expanded} disabled={disabled}
+      onPress={() => { if (sound) cue(sound); onPress(); }} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+      style={({ pressed }) => [ui.button, secondary && ui.secondary, selected && ui.selected,
+        focused && ui.focused, disabled && ui.disabled, pressed && !disabled && ui.pressed,
+        pressed && !disabled && !reducedMotion && ui.pressedScale]}>
+      <View pointerEvents="none" style={[ui.buttonShine, secondary && ui.secondaryShine]} />
+      <Text style={[ui.buttonText, secondary && ui.secondaryText, disabled && ui.disabledText]}>{children}</Text>
+    </Pressable>
+  </Pulse>;
 }
 export function TextAction({ children, onPress, sound = 'tap' }: { children: string; onPress: () => void; sound?: Cue | null }) {
   const [focused, setFocused] = useState(false);
@@ -114,23 +117,27 @@ export function EvidenceDocument({ evidence, role, round }: { evidence: Evidence
   </Paper>;
 }
 
-// Conservative default avoids motion until the operating system preference is known.
-export function useReducedMotion() {
-  const [reduced, setReduced] = useState(true);
+// Conservative default avoids motion until the operating system preference is known. Once it has
+// been read it is remembered, so screens opened later start with the right answer instead of
+// flashing their final state and then animating.
+let knownReducedMotion: boolean | null = null;
+export function useMotionPreference() {
+  const [reduced, setReduced] = useState(knownReducedMotion ?? true);
+  const [known, setKnown] = useState(knownReducedMotion !== null);
   useEffect(() => {
     let mounted = true;
     let changed = false;
-    const listener = AccessibilityInfo.addEventListener('reduceMotionChanged', value => {
-      changed = true;
-      if (mounted) setReduced(value);
-    });
-    void AccessibilityInfo.isReduceMotionEnabled().then(value => {
-      if (mounted && !changed) setReduced(value);
-    }).catch(() => {});
+    const apply = (value: boolean) => {
+      knownReducedMotion = value;
+      if (mounted) { setReduced(value); setKnown(true); }
+    };
+    const listener = AccessibilityInfo.addEventListener('reduceMotionChanged', value => { changed = true; apply(value); });
+    void AccessibilityInfo.isReduceMotionEnabled().then(value => { if (!changed) apply(value); }).catch(() => {});
     return () => { mounted = false; listener.remove(); };
   }, []);
-  return reduced;
+  return { reduced, known };
 }
+export const useReducedMotion = () => useMotionPreference().reduced;
 
 export function SceneReveal({ children, reduced, enabled }: { children: ReactNode; reduced: boolean; enabled: boolean }) {
   const [entry] = useState(() => new Animated.Value(1));

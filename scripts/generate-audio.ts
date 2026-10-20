@@ -240,6 +240,19 @@ const sounds: Record<string, () => Buf> = {
     ['D4', 'F#4', 'A4', 'C#5', 'E5'].forEach((note, i) => add(b, 0.35 + i * 0.09, electricPiano(midi(n(note)), 0.22), 3.2, false));
     add(b, 0.8, bell(midi(n('A5')), 0.2, 1.2), 2.6, false);
   }, 0.35, -5),
+  // A bright two-note chime as each star of a rating lands.
+  star: () => effect(0.9, b => {
+    add(b, 0, bell(midi(n('A5')), 0.45, 0.45), 0.9, false);
+    add(b, 0.06, bell(midi(n('E6')), 0.28, 0.4), 0.8, false);
+  }, 0.25, -11),
+  // A hint-free solve: the stamp, then a rising D-major arpeggio of bells with a sparkling top.
+  perfect: () => effect(4.6, b => {
+    add(b, 0, t => Math.sin(TAU * 80 * t) * env(t, 0.002, 0.09), 0.4, false);
+    add(b, 0, noiseVoice(61, t => env(t, 0.001, 0.03) * 0.5, 2000), 0.15, false);
+    ['D4', 'F#4', 'A4', 'D5', 'F#5', 'A5'].forEach((note, i) => add(b, 0.3 + i * 0.11, bell(midi(n(note)), 0.38, 1.4), 3.6, false));
+    ['D3', 'A3', 'D4', 'F#4', 'A4'].forEach((note, i) => add(b, 0.95 + i * 0.05, electricPiano(midi(n(note)), 0.2), 3.4, false));
+    [['D6', 1.5], ['A5', 1.75], ['F#6', 2.0]].forEach(([note, at]) => add(b, at as number, bell(midi(n(note as string)), 0.16, 1.1), 2.4, false));
+  }, 0.4, -4),
 };
 
 const check = process.argv.includes('--check');

@@ -26,7 +26,7 @@ export default function HelpScreen() {
           <Title>A little help, in confidence.</Title>
           <View style={s.section}><Label>HOW TO PLAY</Label>
             <Copy>Choose a case together, then decide who reads Witness accounts and who reads Hotel records. Pass the phone when asked. Only the named investigator should read each private sheet.</Copy>
-            <Copy>Explain what you learned in your own words. Compare both sides before choosing a deduction. Wrong answers let you try again; hints are optional and included.</Copy>
+            <Copy>Explain what you learned in your own words. Compare both sides before choosing a deduction. Wrong answers let you try again and never cost anything. Hints are optional and included, but each deduction earns up to three stars: each hint you reveal takes one away, and a hint-free case earns the top Perfect Deduction rating.</Copy>
             <Copy>Hide the evidence before passing the phone. The Notebook holds confirmed deductions and lets you revisit a sheet through its private handoff.</Copy>
           </View>
           <View style={s.section}><Label>READING & PROGRESS</Label>
