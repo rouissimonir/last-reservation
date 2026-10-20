@@ -26,6 +26,9 @@ const press = (name: string | RegExp) => fireEvent.press(screen.getByRole('butto
 // Plays The Missing Envelope through the real screens, taking hints[i] hints before answering round i.
 async function playCase(hints: number[], { wrongFirst = false } = {}) {
   await fireEvent.press(await screen.findByRole('button', { name: 'Open The Missing Envelope' }));
+  await playFromCover(hints, { wrongFirst });
+}
+async function playFromCover(hints: number[], { wrongFirst = false } = {}) {
   await fireEvent.press(await screen.findByRole('button', { name: 'Open the case' }));
   await press('Meet your two roles →');
   await press('We’ve chosen our roles →');
@@ -133,6 +136,37 @@ describe('hint-based rating, through the real screens', () => {
     await fireEvent.press(await screen.findByRole('button', { name: 'Continue investigation' }));
     expect(screen.getByText('Steady Hands')).toBeTruthy();
     expect(screen.getByText(/2 hints used/)).toBeTruthy();
+  });
+});
+
+describe('personal best', () => {
+  const replay = async () => {
+    await press('Play the case again…');
+    await press('Yes, reset this case');
+  };
+
+  it('survives replays: a better run is announced, a worse one keeps the best', async () => {
+    await render(<Investigation />);
+    await playCase([1]);
+    expect(await screen.findByText('Your best: Sharp Minds, score 89. Solved once.')).toBeTruthy();
+    await replay();
+    await playFromCover([]);
+    expect(await screen.findByText('New personal best for this case.')).toBeTruthy();
+    await replay();
+    await playFromCover([3, 3, 3]);
+    expect(await screen.findByText('Your best: Perfect Deduction, score 100. Solved 3 times.')).toBeTruthy();
+    await press('Choose your next mystery');
+    expect(await screen.findByText('Best: Perfect Deduction · score 100 · No hints · solved 3 times')).toBeTruthy();
+    expect(JSON.parse((await AsyncStorage.getItem('two-sides/the-missing-envelope/record/v1'))!)).toMatchObject({ solves: 3, bestScore: 100, bestHints: 0 });
+  });
+
+  it('never replaces an unreadable record', async () => {
+    await AsyncStorage.setItem('two-sides/the-missing-envelope/record/v1', '{damaged');
+    await render(<Investigation />);
+    await playCase([]);
+    expect(screen.getByText('Perfect Deduction')).toBeTruthy();
+    expect(screen.queryByText(/Your best|New personal best/)).toBeNull();
+    expect(await AsyncStorage.getItem('two-sides/the-missing-envelope/record/v1')).toBe('{damaged');
   });
 });
 

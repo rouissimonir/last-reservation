@@ -14,7 +14,8 @@ import { roleNames } from '@/game/case';
 import { getCase } from '@/game/cases';
 import { canAnswer, evidenceUnlocked, nextScene, resumeScene, Scene, visibleHints } from '@/game/engine';
 import { presentationFor } from '@/game/presentation';
-import { caseRating, deductionTitle, hintsText, MAX_STARS, starsForHints } from '@/game/rating';
+import { caseRating, deductionTitle, hintsText, MAX_STARS, starsForHints, tierInfo } from '@/game/rating';
+import { recordTier } from '@/game/records';
 import { colors as c, serif, space } from '@/game/tokens';
 import { useInvestigation } from '@/game/use-investigation';
 import { usePrivacy } from '@/game/use-privacy';
@@ -229,6 +230,10 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
         const rating = caseRating(p);
         return <><Label>{item.title.toUpperCase()} · RESOLVED</Label><Title>{item.endingTitle ?? (item.edition === '01' ? 'Safe. Still sealed.' : 'A visitor found.')}</Title>
           <CaseResult rating={rating} />
+          {game.record && <View accessibilityLiveRegion="polite" style={s.bestRecord}>
+            <Text style={s.bestRecordText}>{game.newBest ? 'New personal best for this case.' :
+              `Your best: ${tierInfo[recordTier(game.record)].title}, score ${game.record.bestScore}. Solved ${game.record.solves === 1 ? 'once' : `${game.record.solves} times`}.`}</Text>
+          </View>}
           <Copy>{ending.recovery}</Copy>
           <Paper reference={`RESOLVED / ${item.edition}`}><Label paper>{item.noteLabel ?? (item.edition === '01' ? 'FOUND BESIDE THE ENVELOPE' : 'IN THE STAFF READING ROOM')}</Label><Text style={ui.documentTitle}>{item.noteTitle ?? (item.edition === '01' ? 'A signed note' : 'Elin’s closing words')}</Text><Copy style={ui.ink}>{ending.note}</Copy><Text style={s.signature}>{ending.signature}</Text></Paper>
           <Copy>{ending.conclusion}</Copy><View style={s.rule} /><Label>THE COMPLETE EVIDENCE CHAIN</Label>
@@ -301,6 +306,8 @@ function CaseInvestigation({ caseId, replay, onCases, onOffer }: {
 }
 
 const s = StyleSheet.create({
+  bestRecord: { alignSelf: 'center', borderWidth: 1, borderColor: c.brass, borderRadius: 6, paddingHorizontal: 14, paddingVertical: 10 },
+  bestRecordText: { color: c.brass, fontSize: 14, lineHeight: 21, fontWeight: '600', textAlign: 'center' },
   root: { flex: 1, backgroundColor: c.deep },
   frame: { flex: 1, width: '100%', maxWidth: 600, alignSelf: 'center', backgroundColor: c.navy, overflow: 'hidden' },
   safeArea: { flex: 1 },

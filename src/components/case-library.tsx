@@ -9,6 +9,7 @@ import { StarRow, tierColor } from './rating';
 import { CaseDefinition, getCase } from '@/game/cases';
 import { presentationFor } from '@/game/presentation';
 import { caseRating, hintsText, tierInfo } from '@/game/rating';
+import { recordTier } from '@/game/records';
 import { colors as c, serif } from '@/game/tokens';
 import { useInvestigation } from '@/game/use-investigation';
 import { ownsCollection } from '@/monetization/access';
@@ -29,6 +30,9 @@ function CaseCard({ item, locked, index, onOpen, onOffer }: { item: CaseDefiniti
     `${finished ? 'Resolved' : 'In progress'} · ${p.confirmed.length} of ${item.rounds.length} deductions` :
     game.status === 'loading' ? 'Checking saved progress…' : 'Saved progress needs attention';
   const rating = ready && finished ? caseRating(p) : null;
+  // The personal best survives replays; saves solved before records existed still show their rating.
+  const best = game.record ? { tier: recordTier(game.record), text: `Best: ${tierInfo[recordTier(game.record)].title} · score ${game.record.bestScore} · ${hintsText(game.record.bestHints)} · solved ${game.record.solves === 1 ? 'once' : `${game.record.solves} times`}` } :
+    rating ? { tier: rating.tier, text: `${tierInfo[rating.tier].title} · score ${rating.score} · ${hintsText(rating.hints)}` } : null;
   return <Entrance reduced={reducedMotion} delay={Math.min(index, 6) * 90 + 150}><View style={[s.card, locked && s.lockedCard]}>
     <View style={s.cardTop}>
       <View style={s.cardText}>
@@ -45,9 +49,9 @@ function CaseCard({ item, locked, index, onOpen, onOffer }: { item: CaseDefiniti
       <Button secondary accessibilityLabel={`See the After Midnight Collection, which includes ${item.title}`} onPress={() => onOffer('locked_case')}>See the collection</Button>
     </> : <>
       <Text accessibilityLiveRegion="polite" style={s.status}>{progress}</Text>
-      {rating && <View style={s.rating}>
-        <StarRow stars={tierInfo[rating.tier].seal} size={16} color={tierColor[rating.tier]} />
-        <Text style={[s.ratingText, { color: tierColor[rating.tier] }]}>{tierInfo[rating.tier].title} · score {rating.score} · {hintsText(rating.hints)}</Text>
+      {best && <View style={s.rating}>
+        <StarRow stars={tierInfo[best.tier].seal} size={16} color={tierColor[best.tier]} />
+        <Text style={[s.ratingText, { color: tierColor[best.tier] }]}>{best.text}</Text>
       </View>}
       <Button accessibilityLabel={`Open ${item.title}`} disabled={game.status === 'loading'} onPress={() => onOpen(item.id)}>
         {!ready ? 'Review saved progress' : p.started ? 'Continue investigation' : 'Open the case'}

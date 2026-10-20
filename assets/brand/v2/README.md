@@ -13,3 +13,5 @@ Run `python scripts/export-brand-v2.py` from the app root with Pillow to reprodu
 - `monochrome.png`: white silhouette with the adaptive foreground alpha, for themed Android icons.
 
 Pillow performs size, canvas, color-mode and monochrome exports only. Creative artwork and background extraction were done by ImageGen. The operating system supplies launcher masking. Existing v1 brand files and all game artwork are preserved. iPhone launcher/splash appearance still requires a native build/device check.
+
+Launch animation: `launch/left.png` and `launch/right.png` (600px RGBA) are a straight crop of `splash-mark.png` at its seam (x 518 of 1024), made by `python scripts/export-launch-halves.py`. Stacked, they reproduce the emblem exactly.
