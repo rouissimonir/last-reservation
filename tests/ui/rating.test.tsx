@@ -127,6 +127,14 @@ describe('hint-based rating, through the real screens', () => {
     expect(await screen.findByText(/Sharp Minds · score 89 · 1 hint/)).toBeTruthy();
   });
 
+  it('counts solved free cases in the library, and only once something is solved', async () => {
+    await render(<Investigation />);
+    expect(screen.queryByText(/free cases solved/)).toBeNull();
+    await playCase([]);
+    await press('Choose your next mystery');
+    expect(await screen.findByText('1 of 5 free cases solved')).toBeTruthy();
+  });
+
   it('adds nothing to the save: reopening the finished case reproduces the same rating', async () => {
     const first = await render(<Investigation />);
     await playCase([2]);

@@ -4,6 +4,10 @@
 
 Added a hint-based rating (0 hints = 3 stars … solution hint = 0 per deduction; case tiers Perfect Deduction / Sharp Minds / Steady Hands / Case Solved), shown in the hint panel, on each confirmed deduction, as an animated seal on the resolution screen and as a badge on the case card. Added motion throughout (launch title card, library, cover, roles, selection, wrong answer, hints, confirmation, resolution) and two sound cues. Ratings derive from the saved hint counts, so there is **no save change**; reduced motion skips or flattens everything. `npm run check` PASS (typecheck, lint, notices, 86 domain + 34 component tests; new: rating rules for all eight cases, real-screen rating flows, launch card). `npm run audio:check` PASS. Web export built and played in desktop Chromium: no console errors; launch card, hint panel, stamp, three seal tiers captured. Not verified: native devices, haptics, audio by ear, low-end performance. Details: `GAMIFICATION.md`.
 
+## Latest: free-case tally in the library (20 October 2026)
+
+The free section of the library now says "N of 5 free cases solved" once at least one free case is solved, derived from the existing case saves (no new storage, no change to ids, content or entitlements; paid cases are not counted). `npm run check` PASS (91 domain + 37 component tests; one new screen test), TypeScript and lint pass. Not checked in a browser or on a device this pass.
+
 ## Fix: entrance crashed in Expo Go (20 October 2026)
 
 On a real iPhone in Expo Go the first release of the entrance threw `Invariant Violation: Transform origin z-position must be a number. Passed value: 6%` (reported by the publisher), because the `transformOrigin: '50.6% 89.6%'` string was not parsed there. The hinge is now plain translate/rotate/translate offsets from the emblem centre; no `transformOrigin` remains in `src/`. Re-checked in the web build (same swing, drift and slow return, no console errors), TypeScript and lint pass. The native runtime has not been re-run here: the publisher should confirm on the phone. The earlier note below that called `transformOrigin` an open native check is superseded.

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -19,7 +19,7 @@ import { usePurchases } from '@/monetization/purchases-provider';
 export type OfferSource = 'library' | 'locked_case';
 type Open = (id: string, replay?: boolean) => void;
 
-function CaseCard({ item, locked, index, onOpen, onOffer }: { item: CaseDefinition; locked: boolean; index: number; onOpen: Open; onOffer: (source: OfferSource) => void }) {
+function CaseCard({ item, locked, index, onOpen, onOffer, onSolved }: { item: CaseDefinition; locked: boolean; index: number; onOpen: Open; onOffer: (source: OfferSource) => void; onSolved?: (id: string, solved: boolean) => void }) {
   const game = useInvestigation(item.id);
   const { reducedMotion } = useContext(ReadingContext);
   const p = game.progress;
@@ -30,6 +30,8 @@ function CaseCard({ item, locked, index, onOpen, onOffer }: { item: CaseDefiniti
     `${finished ? 'Resolved' : 'In progress'} · ${p.confirmed.length} of ${item.rounds.length} deductions` :
     game.status === 'loading' ? 'Checking saved progress…' : 'Saved progress needs attention';
   const rating = ready && finished ? caseRating(p) : null;
+  const solved = ready && finished;
+  useEffect(() => { onSolved?.(item.id, solved); }, [onSolved, item.id, solved]);
   // The personal best survives replays; saves solved before records existed still show their rating.
   const best = game.record ? { tier: recordTier(game.record), text: `Best: ${tierInfo[recordTier(game.record)].title} · score ${game.record.bestScore} · ${hintsText(game.record.bestHints)} · solved ${game.record.solves === 1 ? 'once' : `${game.record.solves} times`}` } :
     rating ? { tier: rating.tier, text: `${tierInfo[rating.tier].title} · score ${rating.score} · ${hintsText(rating.hints)}` } : null;
@@ -65,6 +67,14 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
   const { state, access } = usePurchases();
   const owned = ownsCollection(access, AFTER_MIDNIGHT);
   const reducedMotion = useReducedMotion();
+  const [solvedIds, setSolvedIds] = useState<ReadonlySet<string>>(new Set());
+  const markSolved = useCallback((id: string, solved: boolean) => setSolvedIds(prev => {
+    if (prev.has(id) === solved) return prev;
+    const next = new Set(prev);
+    if (solved) next.add(id); else next.delete(id);
+    return next;
+  }), []);
+  const freeSolved = FREE_COLLECTION.caseIds.filter(id => solvedIds.has(id)).length;
   return <ReadingContext.Provider value={{ largeText: false, compact: false, reducedMotion }}>
     <View style={s.root}><View style={s.frame}>
       <HotelBackdrop cover={false} />
@@ -82,8 +92,9 @@ export function CaseLibrary({ onOpen, onOffer }: { onOpen: Open; onOffer: (sourc
 
           <View style={s.section}><Label>{FREE_COLLECTION.title.toUpperCase()} · FREE</Label>
             <Text accessibilityRole="header" style={s.sectionTitle}>Five complete mysteries. Free to play together.</Text>
-            <Copy style={s.description}>One phone, two perspectives. Start with {getCase(RECOMMENDED_FIRST_CASE).title}.</Copy></View>
-          {FREE_COLLECTION.caseIds.map((id, i) => <CaseCard key={id} item={getCase(id)} index={i} locked={false} onOpen={onOpen} onOffer={onOffer} />)}
+            <Copy style={s.description}>One phone, two perspectives. Start with {getCase(RECOMMENDED_FIRST_CASE).title}.</Copy>
+            {freeSolved > 0 && <Text accessibilityLiveRegion="polite" style={s.status}>{freeSolved} of {FREE_COLLECTION.caseIds.length} free cases solved</Text>}</View>
+          {FREE_COLLECTION.caseIds.map((id, i) => <CaseCard key={id} item={getCase(id)} index={i} locked={false} onOpen={onOpen} onOffer={onOffer} onSolved={markSolved} />)}
 
           <View style={[s.section, s.paidSection]}>
             <Label>{AFTER_MIDNIGHT.title.toUpperCase()} · {owned ? (access.devPreview && !state.entitlements.includes(AFTER_MIDNIGHT.entitlementId ?? '') ? 'PREVIEW' : 'OWNED') : 'ONE-TIME PURCHASE'}</Label>
