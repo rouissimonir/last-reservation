@@ -14,7 +14,10 @@ const leftLeaf = require('../../assets/brand/v2/launch/left.png');
 const rightLeaf = require('../../assets/brand/v2/launch/right.png');
 const EMBLEM = 176;
 // The seam's foot on the 1024px mark (x 518, y 918): the ivory leaf swings from there like a door.
-const HINGE = '50.6% 89.6%';
+// Pivoting is done with plain translate/rotate/translate (offsets from the image centre) because
+// the `transformOrigin` style is not accepted on every native runtime, Expo Go included.
+const HINGE_X = EMBLEM * 0.506 - EMBLEM / 2;
+const HINGE_Y = EMBLEM * 0.896 - EMBLEM / 2;
 
 // Game start: the keyhole emblem appears whole, its ivory leaf swings open, drifts on the light
 // and then settles slowly back into place while TWO and SIDES glide in with it. The seam flares
@@ -95,11 +98,14 @@ export function LaunchSequence() {
           </Animated.View>
           <Image source={rightLeaf} resizeMode="contain" style={s.leaf} />
           <Animated.Image source={leftLeaf} resizeMode="contain" style={[s.leaf, {
-            transformOrigin: HINGE,
             transform: [
               { translateX: keyframes([0, -8, -28, 0]) },
               { translateY: keyframes([0, -4, -16, 0]) },
+              { translateX: HINGE_X },
+              { translateY: HINGE_Y },
               { rotate: keyframes(['0deg', '-26deg', '-14deg', '0deg']) },
+              { translateY: -HINGE_Y },
+              { translateX: -HINGE_X },
             ],
           }]} />
         </Animated.View>
